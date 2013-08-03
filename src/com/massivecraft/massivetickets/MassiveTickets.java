@@ -114,7 +114,7 @@ public class MassiveTickets extends MPlugin
 		this.outerCmdTicketsVersion.register(this);
 
 		// Setup Listeners
-		//FactionsListenerMain.get().setup();
+		MainListener.get().setup();
 		
 		// Schedule recurring non-tps-dependent tasks
 		//TaskPlayerPowerUpdate.get().schedule(this);
