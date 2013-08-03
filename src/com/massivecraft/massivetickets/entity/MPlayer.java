@@ -1,6 +1,7 @@
 package com.massivecraft.massivetickets.entity;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -261,32 +262,42 @@ public class MPlayer extends SenderEntity<MPlayer>
 	 */
 	public String getListLine()
 	{
-		StringBuilder ret = new StringBuilder();
+		StringBuilder builder = new StringBuilder();
 		
 		if (this.hasModeratorId())
 		{
-			ret.append(ChatColor.GREEN.toString());
+			builder.append(ChatColor.GREEN.toString());
 		}
 		else
 		{
-			ret.append(ChatColor.RED.toString());
+			builder.append(ChatColor.RED.toString());
 		}
 		
-		ret.append("# ");
+		builder.append("# ");
 		
-		ret.append(this.getDisplayName());
+		builder.append(this.getDisplayName());
 		
 		if (this.hasMessage())
 		{
-			ret.append(Txt.parse(" <pink>"));
-			ret.append(this.getMessage());
+			builder.append(Txt.parse(" <pink>"));
+			builder.append(this.getMessage());
 		}
 		else
 		{
-			ret.append(Txt.parse(" <silver><em>no message error"));
+			builder.append(Txt.parse(" <silver><em>no message error"));
 		}
 		
-		return ret.toString();
+		String ret = builder.toString();
+		
+		// Avoid line wraps!
+		List<String> wrapped = Txt.wrap(ret);
+		if (wrapped.size() > 1)
+		{
+			ret = ret.substring(0, ret.length()-3);
+			ret += Txt.parse("<silver>...");
+		}
+		
+		return ret;
 	}
 	
 }

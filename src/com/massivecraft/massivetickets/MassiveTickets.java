@@ -129,9 +129,18 @@ public class MassiveTickets extends MPlugin
 		MainListener.get().setup();
 		
 		// Schedule recurring non-tps-dependent tasks
-		//TaskPlayerPowerUpdate.get().schedule(this);
+		BumpTask.get().schedule(this);
 		
 		postEnable();
+	}
+	
+	// -------------------------------------------- //
+	// BUMP
+	// -------------------------------------------- //
+	
+	public static String createBumpMessage()
+	{
+		return Txt.parse("<aqua>%d <pink>tickets <aqua>%d <pink>moderators", MPlayerColl.get().getAllTickets().size(), MPlayerColl.get().getAllCurrentlyWorking().size());
 	}
 	
 	// -------------------------------------------- //
