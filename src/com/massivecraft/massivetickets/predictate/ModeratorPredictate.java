@@ -1,17 +1,18 @@
-package com.massivecraft.massivetickets;
+package com.massivecraft.massivetickets.predictate;
 
 import org.bukkit.command.CommandSender;
 
+import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.mcore.Predictate;
 
-public class IsModeratorPredictate implements Predictate<CommandSender>
+public class ModeratorPredictate implements Predictate<CommandSender>
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static IsModeratorPredictate i = new IsModeratorPredictate();
-	public static IsModeratorPredictate get() { return i; }
+	private static ModeratorPredictate i = new ModeratorPredictate();
+	public static ModeratorPredictate get() { return i; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE

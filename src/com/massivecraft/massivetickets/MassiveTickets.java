@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import org.bukkit.command.CommandSender;
+
 import com.massivecraft.massivetickets.cmd.CmdTickets;
 import com.massivecraft.massivetickets.cmd.CmdTicketsCreate;
 import com.massivecraft.massivetickets.cmd.CmdTicketsDone;
@@ -18,6 +20,7 @@ import com.massivecraft.massivetickets.cmd.CmdTicketsYield;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MConfColl;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
+import com.massivecraft.massivetickets.predictate.ModeratorPredictate;
 import com.massivecraft.mcore.MPlugin;
 import com.massivecraft.mcore.cmd.VersionCommand;
 import com.massivecraft.mcore.mixin.Mixin;
@@ -135,6 +138,7 @@ public class MassiveTickets extends MPlugin
 	// ALERT MESSAGE HELPERS
 	// -------------------------------------------- //
 	
+	// All Moderators
 	public static boolean alertMessage(String message)
 	{
 		return alertMessage(MUtil.list(message));
@@ -150,16 +154,36 @@ public class MassiveTickets extends MPlugin
 		{
 			target.add(Txt.parse(MConf.get().getPrefix()) + message);
 		}
-		return Mixin.message(IsModeratorPredictate.get(), target);
+		return Mixin.message(ModeratorPredictate.get(), target);
+	}
+	
+	// One
+	public static boolean alertMessage(CommandSender sender, String message)
+	{
+		return alertMessage(sender, MUtil.list(message));
+	}
+	public static boolean alertMessage(CommandSender sender, String... messages)
+	{
+		return alertMessage(sender, Arrays.asList(messages));
+	}
+	public static boolean alertMessage(CommandSender sender, Collection<String> messages)
+	{
+		List<String> target = new ArrayList<String>();
+		for (String message : messages)
+		{
+			target.add(Txt.parse(MConf.get().getPrefix()) + message);
+		}
+		return Mixin.message(sender, target);
 	}
 
+	// All Moderators
 	public static boolean alertMsg(String msg)
 	{
-		return Mixin.msg(IsModeratorPredictate.get(), MConf.get().getPrefix() + msg);
+		return Mixin.msg(ModeratorPredictate.get(), MConf.get().getPrefix() + msg);
 	}
 	public static boolean alertMsg(String msg, Object... args)
 	{
-		return Mixin.msg(IsModeratorPredictate.get(), MConf.get().getPrefix() + msg, args);
+		return Mixin.msg(ModeratorPredictate.get(), MConf.get().getPrefix() + msg, args);
 	}
 	public static boolean alertMsg(Collection<String> msgs)
 	{
@@ -168,7 +192,26 @@ public class MassiveTickets extends MPlugin
 		{
 			target.add(MConf.get().getPrefix() + msg);
 		}
-		return Mixin.msg(IsModeratorPredictate.get(), target);
+		return Mixin.msg(ModeratorPredictate.get(), target);
+	}
+	
+	// One
+	public static boolean alertMsg(CommandSender sender, String msg)
+	{
+		return Mixin.msg(sender, MConf.get().getPrefix() + msg);
+	}
+	public static boolean alertMsg(CommandSender sender, String msg, Object... args)
+	{
+		return Mixin.msg(sender, MConf.get().getPrefix() + msg, args);
+	}
+	public static boolean alertMsg(CommandSender sender, Collection<String> msgs)
+	{
+		List<String> target = new ArrayList<String>();
+		for (String msg : msgs)
+		{
+			target.add(MConf.get().getPrefix() + msg);
+		}
+		return Mixin.msg(sender, target);
 	}
 	
 }
