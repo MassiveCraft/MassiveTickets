@@ -1,5 +1,8 @@
 package com.massivecraft.massivetickets;
 
+import com.massivecraft.massivetickets.cmd.CmdTickets;
+import com.massivecraft.massivetickets.entity.MConfColl;
+import com.massivecraft.massivetickets.entity.MPlayerColl;
 import com.massivecraft.mcore.MPlugin;
 
 public class MassiveTickets extends MPlugin
@@ -17,8 +20,8 @@ public class MassiveTickets extends MPlugin
 	// -------------------------------------------- //
 	
 	// Commands
-	//private CmdFactions outerCmdFactions;
-	//public CmdFactions getOuterCmdFactions() { return this.outerCmdFactions; }
+	private CmdTickets outerCmdTickets;
+	public CmdTickets getOuterCmdTickets() { return this.outerCmdTickets; }
 
 	// -------------------------------------------- //
 	// OVERRIDE
@@ -33,11 +36,12 @@ public class MassiveTickets extends MPlugin
 		ConfServer.get().load();
 		
 		// Initialize Database
-		//MPlayerColl.get().init();
+		MConfColl.get().init();
+		MPlayerColl.get().init();
 		
 		// Commands
-		//this.outerCmdFactions = new CmdFactions();
-		//this.outerCmdFactions.register(this);
+		this.outerCmdTickets = new CmdTickets(ConfServer.aliasesOuterTickets);
+		this.outerCmdTickets.register(this);
 
 		// Setup Listeners
 		//FactionsListenerMain.get().setup();

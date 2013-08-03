@@ -19,7 +19,38 @@ public class ConfServer extends SimpleConfig
 	// FIELDS
 	// -------------------------------------------- //
 	
-	public static List<String> baseCommandAliases = MUtil.list("t", "ticket", "tickets");
 	public static String dburi = "default";
+	
+	public static List<String> aliasesOuterTickets = MUtil.list("t", "tickets", "ticket");
+	
+	public static List<String> aliasesInnerTicketsList = MUtil.list("l", "list");
+	public static List<String> aliasesOuterTicketsList = new ArrayList<String>();
+	
+	public static List<String> aliasesInnerTicketsShow = MUtil.list("s", "show");
+	public static List<String> aliasesOuterTicketsShow = new ArrayList<String>();
+	
+	public static List<String> aliasesInnerTicketsCreate = MUtil.list("c", "create");
+	public static List<String> aliasesOuterTicketsCreate = MUtil.list("helpop", "modreq");
+	
+	public static List<String> aliasesInnerTicketsDone = MUtil.list("d", "done");
+	public static List<String> aliasesOuterTicketsDone = new ArrayList<String>();
+	
+	public static List<String> aliasesInnerTicketsPick = MUtil.list("p", "pick");
+	public static List<String> aliasesOuterTicketsPick = new ArrayList<String>();
+	
+	public static List<String> aliasesInnerTicketsYield = MUtil.list("y", "yield");
+	public static List<String> aliasesOuterTicketsYield = new ArrayList<String>();
+	
+	public static List<String> aliasesInnerTicketsHighscore = MUtil.list("h", "highscore");
+	public static List<String> aliasesOuterTicketsHighscore = new ArrayList<String>();
+	
+	public static List<String> aliasesInnerTicketsModlist = MUtil.list("m", "modlist");
+	public static List<String> aliasesOuterTicketsModlist = MUtil.list("modlist");
+	
+	public static List<String> aliasesInnerTicketsWorking = MUtil.list("w", "working");
+	public static List<String> aliasesOuterTicketsWorking = new ArrayList<String>();
+	
+	public static List<String> aliasesInnerTicketsVersion = MUtil.list("v", "version");
+	public static List<String> aliasesOuterTicketsVersion = new ArrayList<String>();
 	
 }

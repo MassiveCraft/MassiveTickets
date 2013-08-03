@@ -10,6 +10,7 @@ public enum Perm
 	// ENUM
 	// -------------------------------------------- //
 	
+	BASECOMMAND("basecommand"),
 	LIST("list"),
 	SHOW("show"),
 	SHOW_OTHER("show.other"),

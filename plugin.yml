@@ -9,6 +9,7 @@ permissions:
 # -------------------------------------------- #
 # THE REAL NODES
 # -------------------------------------------- #
+  massivetickets.basecommand: {description: use massivetickets, default: false}
   massivetickets.list: {description: list the tickets, default: false}
   massivetickets.show: {description: show a ticket, default: false}
   massivetickets.show.other: {description: show someone elses ticket, default: false}
@@ -27,6 +28,7 @@ permissions:
 # -------------------------------------------- #
   massivetickets.*:
     children:
+      massivetickets.basecommand: true
       massivetickets.list: true
       massivetickets.show: true
       massivetickets.show.other: true
@@ -69,6 +71,7 @@ permissions:
   massivetickets.kit.rank0:
     default: false
     children:
+      massivetickets.basecommand: true
       massivetickets.show: true
       massivetickets.create: true
       massivetickets.done: true
