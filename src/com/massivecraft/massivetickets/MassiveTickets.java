@@ -110,7 +110,7 @@ public class MassiveTickets extends MPlugin
 		this.outerCmdTicketsWorking = new CmdTicketsWorking(ConfServer.aliasesOuterTicketsWorking);
 		this.outerCmdTicketsWorking.register(this);
 		
-		this.outerCmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node, ConfServer.aliasesOuterTicketsVersion.toArray(new String[0]));
+		this.outerCmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node, ConfServer.aliasesOuterTicketsVersion);
 		this.outerCmdTicketsVersion.register(this);
 
 		// Setup Listeners
