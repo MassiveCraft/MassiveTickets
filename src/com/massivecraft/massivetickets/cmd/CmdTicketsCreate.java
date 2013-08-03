@@ -29,5 +29,6 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		message = ChatColor.stripColor(message);
 		
 		
+		
 	}
 }

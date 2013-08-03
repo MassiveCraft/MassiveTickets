@@ -15,6 +15,8 @@ public class MConf extends Entity<MConf>
 	// DERP ON BELOW
 	// -------------------------------------------- //
 	
-	// ... your fields go here :P ...
+	private String prefix = "<pink><T> ";
+	public String getPrefix() { return this.prefix; }
+	public void setPrefix(String prefix) { this.prefix = prefix; this.changed(); }
 
 }
