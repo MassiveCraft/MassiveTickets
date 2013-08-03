@@ -21,6 +21,7 @@ permissions:
   massivetickets.highscore: {description: show highscore, default: false}
   massivetickets.modlist: {description: list working moderators, default: false}
   massivetickets.working: {description: set if you are working, default: false}
+  massivetickets.version: {description: show plugin version, default: false}
 # -------------------------------------------- #
 # STAR NOTATION
 # -------------------------------------------- #
@@ -38,6 +39,7 @@ permissions:
       massivetickets.highscore: true
       massivetickets.modlist: true
       massivetickets.working: true
+      massivetickets.version: true
 # -------------------------------------------- #
 # KITS
 # -------------------------------------------- #
@@ -71,6 +73,7 @@ permissions:
       massivetickets.create: true
       massivetickets.done: true
       massivetickets.modlist: true
+      massivetickets.version: true
   massivetickets.kit.default:
     default: true
     children:
