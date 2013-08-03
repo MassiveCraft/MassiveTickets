@@ -1,0 +1,77 @@
+main: com.massivecraft.massivetickets.MassiveTickets
+name: MassiveTickets
+version: 1.0.0_dev
+website: http://massivecraft.com/massivetickets
+authors: [Cayorion]
+description: §eMassiveTickets is a help ticket plugin. §aCayorion §efrom the minecraft server §aMassiveCraft §eis the lead Factions programmer. Feel free to visit us at §bhttp://massivecraft.com
+depend: [mcore]
+permissions:
+# -------------------------------------------- #
+# THE REAL NODES
+# -------------------------------------------- #
+  massivetickets.list: {description: list the tickets, default: false}
+  massivetickets.show: {description: show a ticket, default: false}
+  massivetickets.show.other: {description: show someone elses ticket, default: false}
+  massivetickets.create: {description: create a new ticket, default: false}
+  massivetickets.done: {description: mark a ticket as done, default: false}
+  massivetickets.done.other: {description: mark someone elses ticket as done, default: false}
+  massivetickets.pick: {description: pick a ticket, default: false}
+  massivetickets.yield: {description: yield a ticket, default: false}
+  massivetickets.yield.other: {description: yield someone elses ticket, default: false}
+  massivetickets.highscore: {description: show highscore, default: false}
+  massivetickets.modlist: {description: list working moderators, default: false}
+  massivetickets.working: {description: set if you are working, default: false}
+# -------------------------------------------- #
+# STAR NOTATION
+# -------------------------------------------- #
+  massivetickets.*:
+    children:
+      massivetickets.list: true
+      massivetickets.show: true
+      massivetickets.show.other: true
+      massivetickets.create: true
+      massivetickets.done: true
+      massivetickets.done.other: true
+      massivetickets.pick: true
+      massivetickets.yield: true
+      massivetickets.yield.other: true
+      massivetickets.highscore: true
+      massivetickets.modlist: true
+      massivetickets.working: true
+# -------------------------------------------- #
+# KITS
+# -------------------------------------------- #
+  massivetickets.kit.op:
+    default: op
+    children:
+      massivetickets.*: true
+  massivetickets.kit.rank3:
+    default: false
+    children:
+      massivetickets.kit.rank2: true
+  massivetickets.kit.rank2:
+    default: false
+    children:
+      massivetickets.yield.other: true
+  massivetickets.kit.rank1:
+    default: false
+    children:
+      massivetickets.kit.rank0: true
+      massivetickets.list: true
+      massivetickets.show.other: true
+      massivetickets.done.other: true
+      massivetickets.pick: true
+      massivetickets.yield: true
+      massivetickets.highscore: true
+      massivetickets.working: true
+  massivetickets.kit.rank0:
+    default: false
+    children:
+      massivetickets.show: true
+      massivetickets.create: true
+      massivetickets.done: true
+      massivetickets.modlist: true
+  massivetickets.kit.default:
+    default: true
+    children:
+      massivetickets.kit.rank0: true
