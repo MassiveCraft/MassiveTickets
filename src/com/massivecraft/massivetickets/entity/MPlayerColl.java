@@ -1,11 +1,14 @@
 package com.massivecraft.massivetickets.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import com.massivecraft.massivetickets.ConfServer;
 import com.massivecraft.massivetickets.Const;
 import com.massivecraft.massivetickets.MassiveTickets;
-import com.massivecraft.massivetickets.predictate.CurrentlyWorkingPredictate;
+import com.massivecraft.massivetickets.predictate.IsCurrentlyWorkingPredictate;
+import com.massivecraft.massivetickets.predictate.IsTicketPredictate;
 import com.massivecraft.mcore.store.MStore;
 import com.massivecraft.mcore.store.SenderColl;
 
@@ -28,7 +31,23 @@ public class MPlayerColl extends SenderColl<MPlayer>
 	
 	public Collection<MPlayer> getAllCurrentlyWorking()
 	{
-		return this.getAll(CurrentlyWorkingPredictate.get());
+		return this.getAll(IsCurrentlyWorkingPredictate.get());
+	}
+	
+	public Collection<MPlayer> getAllTickets()
+	{
+		return this.getAll(IsTicketPredictate.get());
+	}
+	
+	// For the list command
+	public List<String> getAllTicketListLines()
+	{
+		List<String> ret = new ArrayList<String>();
+		for (MPlayer ticket : this.getAllTickets())
+		{
+			ret.add(ticket.getListLine());
+		}
+		return ret;
 	}
 	
 }

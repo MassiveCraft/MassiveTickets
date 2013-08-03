@@ -1,27 +1,25 @@
 package com.massivecraft.massivetickets.predictate;
 
-import org.bukkit.command.CommandSender;
-
-import com.massivecraft.massivetickets.Perm;
+import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.mcore.Predictate;
 
-public class ModeratorPredictate implements Predictate<CommandSender>
+public class IsCurrentlyWorkingPredictate implements Predictate<MPlayer>
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static ModeratorPredictate i = new ModeratorPredictate();
-	public static ModeratorPredictate get() { return i; }
+	private static IsCurrentlyWorkingPredictate i = new IsCurrentlyWorkingPredictate();
+	public static IsCurrentlyWorkingPredictate get() { return i; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //
 	
 	@Override
-	public boolean apply(CommandSender sender)
+	public boolean apply(MPlayer mplayer)
 	{
-		return Perm.PICK.has(sender, false);
+		return mplayer.isOnline() && mplayer.isWorking();		
 	}
-
+	
 }

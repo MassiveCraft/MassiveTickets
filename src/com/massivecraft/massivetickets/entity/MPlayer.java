@@ -4,11 +4,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import com.massivecraft.mcore.store.SenderEntity;
 import com.massivecraft.mcore.util.MUtil;
 import com.massivecraft.mcore.util.SenderUtil;
+import com.massivecraft.mcore.util.Txt;
 
 public class MPlayer extends SenderEntity<MPlayer>
 {
@@ -248,6 +250,43 @@ public class MPlayer extends SenderEntity<MPlayer>
 		Map<Integer, Integer> target = this.getCount(year);
 		target.put(week, count);
 		this.setCount(year, target);
+	}
+	
+	// -------------------------------------------- //
+	// FIELDS: HIGH
+	// -------------------------------------------- //
+	
+	/**
+	 * @return The oneliner to be used in the ticket list
+	 */
+	public String getListLine()
+	{
+		StringBuilder ret = new StringBuilder();
+		
+		if (this.hasModeratorId())
+		{
+			ret.append(ChatColor.GREEN.toString());
+		}
+		else
+		{
+			ret.append(ChatColor.RED.toString());
+		}
+		
+		ret.append("# ");
+		
+		ret.append(this.getDisplayName());
+		
+		if (this.hasMessage())
+		{
+			ret.append(Txt.parse(" <pink>"));
+			ret.append(this.getMessage());
+		}
+		else
+		{
+			ret.append(Txt.parse(" <silver><em>no message error"));
+		}
+		
+		return ret.toString();
 	}
 	
 }

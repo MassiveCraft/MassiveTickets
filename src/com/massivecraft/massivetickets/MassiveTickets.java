@@ -20,7 +20,7 @@ import com.massivecraft.massivetickets.cmd.CmdTicketsYield;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MConfColl;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
-import com.massivecraft.massivetickets.predictate.ModeratorPredictate;
+import com.massivecraft.massivetickets.predictate.IsModeratorPredictate;
 import com.massivecraft.mcore.MPlugin;
 import com.massivecraft.mcore.cmd.VersionCommand;
 import com.massivecraft.mcore.mixin.Mixin;
@@ -154,7 +154,7 @@ public class MassiveTickets extends MPlugin
 		{
 			target.add(Txt.parse(MConf.get().getPrefix()) + message);
 		}
-		return Mixin.message(ModeratorPredictate.get(), target);
+		return Mixin.message(IsModeratorPredictate.get(), target);
 	}
 	
 	// One
@@ -179,11 +179,11 @@ public class MassiveTickets extends MPlugin
 	// All Moderators
 	public static boolean alertMsg(String msg)
 	{
-		return Mixin.msg(ModeratorPredictate.get(), MConf.get().getPrefix() + msg);
+		return Mixin.msg(IsModeratorPredictate.get(), MConf.get().getPrefix() + msg);
 	}
 	public static boolean alertMsg(String msg, Object... args)
 	{
-		return Mixin.msg(ModeratorPredictate.get(), MConf.get().getPrefix() + msg, args);
+		return Mixin.msg(IsModeratorPredictate.get(), MConf.get().getPrefix() + msg, args);
 	}
 	public static boolean alertMsg(Collection<String> msgs)
 	{
@@ -192,7 +192,7 @@ public class MassiveTickets extends MPlugin
 		{
 			target.add(MConf.get().getPrefix() + msg);
 		}
-		return Mixin.msg(ModeratorPredictate.get(), target);
+		return Mixin.msg(IsModeratorPredictate.get(), target);
 	}
 	
 	// One
