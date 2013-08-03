@@ -7,12 +7,12 @@ import com.massivecraft.mcore.cmd.MCommand;
 
 public abstract class MassiveTicketsCommand extends MCommand
 {
-	public MPlayer mme;
+	public MPlayer msender;
 	
 	@Override
 	public void fixSenderVars()
 	{
-		this.mme = MPlayer.get(sender);
+		this.msender = MPlayer.get(sender);
 	}
 	
 	public MassiveTicketsCommand(List<String> aliases)

@@ -31,22 +31,20 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		message = ChatColor.stripColor(message);
 		
 		// Apply
-		boolean update = mme.hasMessage();
+		boolean update = msender.hasMessage();
 		String verb = update ? "updated" : "created";
 		
-		mme.setMessage(message);
-		if (!update) mme.setMillis(System.currentTimeMillis());
+		msender.setMessage(message);
+		if (!update) msender.setMillis(System.currentTimeMillis());
 		
 		// Inform
-		MassiveTickets.alertMsg("<white>%s <pink>%s ticket: %s", mme.getDisplayName(), verb, message);
-		MassiveTickets.alertMsg(me, "Your ticket was %. We will help you asap.", verb);
-		MassiveTickets.alertMsg(me, "There is currently <aqua>%d <pink>working moderators.", MPlayerColl.get().getAllCurrentlyWorking().size());
+		MassiveTickets.alertMsg("<white>%s <pink>%s ticket: %s", msender.getDisplayName(), verb, message);
+		MassiveTickets.alertMsg(sender, "Your ticket was %. We will help you asap.", verb);
+		MassiveTickets.alertMsg(sender, "There is currently <aqua>%d <pink>working moderators.", MPlayerColl.get().getAllCurrentlyWorking().size());
 		
-		// TODO Add these messages as well.
-		// Use /t s to show your ticket
-		// Use /t d to mark it as done
-		// Use /t m to list the moderators
-		// Use /t c <message> to update your current ticket message.
-		
+		MassiveTickets.alertMsg(sender, "Use " + MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow.getUseageTemplate() + " <pink>to show your ticket");
+		MassiveTickets.alertMsg(sender, "Use " + MassiveTickets.get().getOuterCmdTickets().cmdTicketsDone.getUseageTemplate() + " <pink>to mark it as done");
+		MassiveTickets.alertMsg(sender, "Use " + MassiveTickets.get().getOuterCmdTickets().cmdTicketsModlist.getUseageTemplate() + " <pink>to list the moderators");
+		MassiveTickets.alertMsg(sender, "Use " + MassiveTickets.get().getOuterCmdTickets().cmdTicketsCreate.getUseageTemplate() + " <pink>to update your current ticket message");
 	}
 }
