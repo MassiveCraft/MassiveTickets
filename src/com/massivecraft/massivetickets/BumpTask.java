@@ -1,6 +1,10 @@
 package com.massivecraft.massivetickets;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
 import com.massivecraft.massivetickets.entity.MConf;
+import com.massivecraft.massivetickets.predictate.IsModeratorPredictate;
 import com.massivecraft.mcore.ModuloRepeatTask;
 import com.massivecraft.mcore.util.TimeUnit;
 
@@ -32,7 +36,12 @@ public class BumpTask extends ModuloRepeatTask
 	@Override
 	public void invoke(long now)
 	{
-		MassiveTickets.alertMessage(MassiveTickets.createBumpMessage());
+		String message = MassiveTickets.createBumpMessage();
+		for (Player player : Bukkit.getOnlinePlayers())
+		{
+			if (!IsModeratorPredictate.get().apply(player)) continue;
+			MassiveTickets.alertMessage(player, message);
+		}
 	}
 	
 }
