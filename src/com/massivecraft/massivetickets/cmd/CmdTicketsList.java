@@ -33,4 +33,5 @@ public class CmdTicketsList extends MassiveTicketsCommand
 		// Send them
 		this.sendMessage(Txt.getPage(lines, pageHumanBased, "Ticket List", sender));		
 	}
+	
 }

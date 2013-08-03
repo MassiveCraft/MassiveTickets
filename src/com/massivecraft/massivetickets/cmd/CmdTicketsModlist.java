@@ -1,9 +1,13 @@
 package com.massivecraft.massivetickets.cmd;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.massivecraft.massivetickets.Perm;
+import com.massivecraft.massivetickets.entity.MPlayer;
+import com.massivecraft.massivetickets.entity.MPlayerColl;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
+import com.massivecraft.mcore.util.Txt;
 
 public class CmdTicketsModlist extends MassiveTicketsCommand
 {
@@ -17,6 +21,14 @@ public class CmdTicketsModlist extends MassiveTicketsCommand
 	@Override
 	public void perform()
 	{
-		// TODO
+		sendMessage(Txt.titleize("Moderators Working Right Now"));
+		
+		List<String> names = new ArrayList<String>();
+		for (MPlayer mplayer : MPlayerColl.get().getAllCurrentlyWorking())
+		{
+			names.add(mplayer.getDisplayName());
+		}
+		
+		sendMessage(Txt.implodeCommaAndDot(names, Txt.parse("<i>")));
 	}
 }
