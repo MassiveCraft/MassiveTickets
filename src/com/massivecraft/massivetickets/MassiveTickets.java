@@ -175,6 +175,25 @@ public class MassiveTickets extends MPlugin
 		}
 		return Mixin.message(sender, target);
 	}
+	
+	// One by id
+	public static boolean alertMessage(String senderId, String message)
+	{
+		return alertMessage(senderId, MUtil.list(message));
+	}
+	public static boolean alertMessage(String senderId, String... messages)
+	{
+		return alertMessage(senderId, Arrays.asList(messages));
+	}
+	public static boolean alertMessage(String senderId, Collection<String> messages)
+	{
+		List<String> target = new ArrayList<String>();
+		for (String message : messages)
+		{
+			target.add(Txt.parse(MConf.get().getPrefix()) + message);
+		}
+		return Mixin.message(senderId, target);
+	}
 
 	// All Moderators
 	public static boolean alertMsg(String msg)
@@ -212,6 +231,25 @@ public class MassiveTickets extends MPlugin
 			target.add(MConf.get().getPrefix() + msg);
 		}
 		return Mixin.msg(sender, target);
+	}
+	
+	// One by id
+	public static boolean alertMsg(String senderId, String msg)
+	{
+		return Mixin.msg(senderId, MConf.get().getPrefix() + msg);
+	}
+	public static boolean alertMsg(String senderId, String msg, Object... args)
+	{
+		return Mixin.msg(senderId, MConf.get().getPrefix() + msg, args);
+	}
+	public static boolean alertMsg(String senderId, Collection<String> msgs)
+	{
+		List<String> target = new ArrayList<String>();
+		for (String msg : msgs)
+		{
+			target.add(MConf.get().getPrefix() + msg);
+		}
+		return Mixin.msg(senderId, target);
 	}
 	
 }
