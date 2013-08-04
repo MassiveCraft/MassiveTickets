@@ -46,7 +46,9 @@ public class CmdTicketsWorking extends MassiveTicketsCommand
 		
 		// Inform
 		String verb = target ? "started" : "stopped"; 
-		MassiveTickets.alertModeratorsMsg("<white>%s <pink>%s twerking. There's now <aqua>%d <pink>moderators.", msender.getDisplayName(), verb, MPlayerColl.get().getAllCurrentlyWorking().size());
+		MassiveTickets.alertModeratorsMsg("<white>%s <pink>%s twerking.", msender.getDisplayName(), verb);
+		MassiveTickets.alertModeratorsMsg("There's now <aqua>%d <pink>moderators.", MPlayerColl.get().getAllCurrentlyWorking().size());
+		
 	}
 	
 }
