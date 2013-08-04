@@ -29,7 +29,7 @@ public class MConf extends Entity<MConf>
 	public EventPriority getBumpOnJoinPriority() { return this.bumpOnJoinPriority; }
 	public void setBumpOnJoinPriority(EventPriority bumpOnJoinPriority) { this.bumpOnJoinPriority = bumpOnJoinPriority; this.changed(); }
 	
-	private double bumpEachMinutes = 15D;
+	private double bumpEachMinutes = 10D;
 	public double getBumpEachMinutes() { return this.bumpEachMinutes; }
 	public void setBumpEachMinutes(double bumpEachMinutes) { this.bumpEachMinutes = bumpEachMinutes; this.changed(); }
 
