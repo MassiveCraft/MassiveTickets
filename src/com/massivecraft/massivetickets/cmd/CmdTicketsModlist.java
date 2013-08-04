@@ -29,6 +29,14 @@ public class CmdTicketsModlist extends MassiveTicketsCommand
 			names.add(mplayer.getDisplayName());
 		}
 		
-		sendMessage(Txt.implodeCommaAndDot(names, Txt.parse("<i>")));
+		if (names.size() > 0)
+		{
+			sendMessage(Txt.implodeCommaAndDot(names, Txt.parse("<i>")));
+		}
+		else
+		{
+			msg("<i><em>There are no moderators right now. Sorry.");
+		}
+		
 	}
 }
