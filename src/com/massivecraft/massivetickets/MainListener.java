@@ -124,14 +124,20 @@ public class MainListener implements Listener
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void doneMarkOnLeave(MCorePlayerLeaveEvent event)
 	{
+		// If a player is leaving the server ...
 		final Player player = event.getPlayer();
 		final MPlayer mplayer = MPlayer.get(player);
+		
+		// ... and it's actually a leave ...
+		if (!Mixin.isActualLeave(event)) return;
 		
 		// Force Sync
 		mplayer.sync();
 		
+		// ... and this player has made a ticket ... 
 		if (!mplayer.hasMessage()) return;
 		
+		// ... then mark it as done.
 		mplayer.markAsDone(null);
 	}
 	

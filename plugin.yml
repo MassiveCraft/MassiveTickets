@@ -1,5 +1,5 @@
 main: com.massivecraft.massivetickets.MassiveTickets
-name: MassiveTickets
+name: massivetickets
 version: 1.0.0_dev
 website: http://massivecraft.com/massivetickets
 authors: [Cayorion]
