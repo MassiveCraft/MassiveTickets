@@ -48,12 +48,20 @@ public class CmdTicketsHighscore extends MassiveTicketsCommand
 		
 		// Send Message
 		sendMessage(Txt.titleize("Highscore Year " + year + " Week " + week));
-		for (Entry<MPlayer, Integer> entry : MUtil.entriesSortedByValues(mplayer2count, false))
+		
+		if (mplayer2count.size() > 0)
 		{
-			MPlayer mplayer = entry.getKey();
-			Integer count = entry.getValue();
-			
-			msg("<white>%s <pink>%d", mplayer.getDisplayName(), count);
+			for (Entry<MPlayer, Integer> entry : MUtil.entriesSortedByValues(mplayer2count, false))
+			{
+				MPlayer mplayer = entry.getKey();
+				Integer count = entry.getValue();
+				
+				msg("<white>%s <pink>%d", mplayer.getDisplayName(), count);
+			}
+		}
+		else
+		{
+			msg("<i><em>no activity this week");
 		}
 		
 	}

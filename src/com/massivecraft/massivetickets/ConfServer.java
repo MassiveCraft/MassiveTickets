@@ -41,7 +41,7 @@ public class ConfServer extends SimpleConfig
 	public static List<String> aliasesInnerTicketsYield = MUtil.list("y", "yield");
 	public static List<String> aliasesOuterTicketsYield = new ArrayList<String>();
 	
-	public static List<String> aliasesInnerTicketsHighscore = MUtil.list("h", "highscore");
+	public static List<String> aliasesInnerTicketsHighscore = MUtil.list("hs", "highscore");
 	public static List<String> aliasesOuterTicketsHighscore = new ArrayList<String>();
 	
 	public static List<String> aliasesInnerTicketsModlist = MUtil.list("m", "modlist");
