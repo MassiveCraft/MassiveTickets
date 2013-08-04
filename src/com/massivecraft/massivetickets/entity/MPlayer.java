@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
+import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.mcore.store.SenderEntity;
 import com.massivecraft.mcore.util.MUtil;
 import com.massivecraft.mcore.util.SenderUtil;
@@ -31,10 +32,10 @@ public class MPlayer extends SenderEntity<MPlayer>
 	@Override
 	public MPlayer load(MPlayer that)
 	{
-		this.setWorking(that.isWorking());
 		this.setMessage(that.getMessage());
 		this.setMillis(that.getMillis());
 		this.setModeratorId(that.getModeratorId());
+		this.setWorking(that.isWorking());
 		this.setCount(that.getCount());
 				
 		return this;
@@ -43,11 +44,11 @@ public class MPlayer extends SenderEntity<MPlayer>
 	@Override
 	public boolean isDefault()
 	{
-		if (this.isWorking()) return false;
 		if (this.hasMessage()) return false;
 		if (this.hasMillis()) return false;
 		if (this.hasModeratorId()) return false;
-		if (this.hasCount()) return false;
+		if (this.isWorking()) return false;
+		if (this.hasCount()) return false;	
 		
 		return true;
 	}
@@ -55,11 +56,6 @@ public class MPlayer extends SenderEntity<MPlayer>
 	// -------------------------------------------- //
 	// FIELDS: DECLARE
 	// -------------------------------------------- //
-	
-	// Is this player a working moderator?
-	// The default is false. One must opt in for game management.
-	// To save database space we use null for the default value.
-	private Boolean working = null;
 	
 	// Did this player create a ticket?
 	// In such case this is the ticket message.
@@ -75,6 +71,11 @@ public class MPlayer extends SenderEntity<MPlayer>
 	// In such case this is the id/playername of that moderator.
 	private String moderatorId = null;
 	
+	// Is this player a working moderator?
+	// The default is false. One must opt in for game management.
+	// To save database space we use null for the default value.
+	private Boolean working = null;
+	
 	// This ticket done count is used for the highscore.
 	// "year --> week --> count" like this example:
 	// "count": {
@@ -89,24 +90,6 @@ public class MPlayer extends SenderEntity<MPlayer>
 	// -------------------------------------------- //
 	// FIELDS: LOW
 	// -------------------------------------------- //
-	
-	// FIELD: WORKING
-	public boolean isWorking() { return this.working != null; }
-	public void setWorking(boolean working)
-	{
-		// Clean input
-		Boolean target = working;
-		if (target == false) target = null;
-		
-		// Detect Nochange
-		if (MUtil.equals(this.working, target)) return;
-		
-		// Apply
-		this.working = target;
-		
-		// Mark as changed
-		this.changed();
-	}
 	
 	// FIELD: MESSAGE
 	public String getMessage() { return this.message; }
@@ -157,6 +140,24 @@ public class MPlayer extends SenderEntity<MPlayer>
 		
 		// Apply
 		this.moderatorId = target;
+		
+		// Mark as changed
+		this.changed();
+	}
+	
+	// FIELD: WORKING
+	public boolean isWorking() { return this.working != null; }
+	public void setWorking(boolean working)
+	{
+		// Clean input
+		Boolean target = working;
+		if (target == false) target = null;
+		
+		// Detect Nochange
+		if (MUtil.equals(this.working, target)) return;
+		
+		// Apply
+		this.working = target;
 		
 		// Mark as changed
 		this.changed();
@@ -298,6 +299,61 @@ public class MPlayer extends SenderEntity<MPlayer>
 		}
 		
 		return ret;
+	}
+	
+	// -------------------------------------------- //
+	// MARK AS DONE
+	// -------------------------------------------- //
+	// The cause is the player closing the ticket. Null means logout is the cause.
+	
+	public void markAsDone(MPlayer cause)
+	{
+		// What was done-marked and why? Dat inform!
+		if (cause == null)
+		{
+			MassiveTickets.alertMsg("<white>%s<pink>'s ticket done-marked on logout:", this.getDisplayName());
+		}
+		else if (cause == this)
+		{
+			MassiveTickets.alertMsg("<white>%s<pink> done-marked their own ticket:", cause.getDisplayName());
+			MassiveTickets.alertMsg(cause.getId(), "Thank you for marking your own ticket as done.");
+			MassiveTickets.alertMsg(cause.getId(), "Have a nice day!");
+		}
+		else
+		{
+			MassiveTickets.alertMsg("<white>%s<pink> done-marked <white>%s<pink>'s ticket:", cause.getDisplayName(), this.getDisplayName());
+			MassiveTickets.alertMsg(cause.getId(), "<white>%s<pink> marked your ticket as done.", cause.getDisplayName());
+			MassiveTickets.alertMsg(cause.getId(), "Have a nice day!");
+		}
+		
+		// Inform on what the message was
+		MassiveTickets.alertMessage(this.getMessage());
+		
+		// So who should receive the point?
+		// probably the moderator
+		MPlayer receiver = this.getModerator();
+		// but the cause if there were no moderator
+		if (receiver == null) receiver = cause;
+		// however the reward can never go to the ticket creator itself
+		if (this == receiver) receiver = null;
+		
+		// Modify Highscore
+		if (receiver != null)
+		{
+			MassiveTickets.alertMsg("<white>%s<pink> got a point.", receiver.getDisplayName());
+			
+			int year = MassiveTickets.getCurrentYear();
+			int week = MassiveTickets.getCurrentWeek();
+			
+			int count = this.getCount(year, week);
+			count++;
+			this.setCount(year, week, count);
+		}
+		
+		// Apply
+		this.setMessage(null);
+		this.setMillis(null);
+		this.setModeratorId(null);
 	}
 	
 }

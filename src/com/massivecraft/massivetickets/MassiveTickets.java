@@ -2,6 +2,7 @@ package com.massivecraft.massivetickets;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
@@ -132,6 +133,20 @@ public class MassiveTickets extends MPlugin
 		BumpTask.get().schedule(this);
 		
 		postEnable();
+	}
+	
+	// -------------------------------------------- //
+	// CURRENT TIME
+	// -------------------------------------------- //
+	
+	public static int getCurrentYear()
+	{
+		return Calendar.getInstance().get(Calendar.YEAR);
+	}
+	
+	public static int getCurrentWeek()
+	{
+		return Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
 	}
 	
 	// -------------------------------------------- //

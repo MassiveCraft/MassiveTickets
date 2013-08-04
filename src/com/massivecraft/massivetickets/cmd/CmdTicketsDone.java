@@ -3,6 +3,8 @@ package com.massivecraft.massivetickets.cmd;
 import java.util.List;
 
 import com.massivecraft.massivetickets.Perm;
+import com.massivecraft.massivetickets.entity.ARMPlayer;
+import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 
 public class CmdTicketsDone extends MassiveTicketsCommand
@@ -19,7 +21,23 @@ public class CmdTicketsDone extends MassiveTicketsCommand
 	@Override
 	public void perform()
 	{
-		// TODO
-		//Perm.DONE_OTHER
+		// Args
+		MPlayer ticket = this.arg(0, ARMPlayer.getStartOnline(), msender);
+		if (ticket == null) return;
+		
+		// Is there a ticket?
+		if (!ticket.hasMessage())
+		{
+			msg("<white>%s <b>has not created a ticket.", ticket.getDisplayName());
+			return;
+		}
+		
+		// Is this ticket created by me or someone else?
+		boolean other = (ticket != msender);
+		if (other && !Perm.DONE_OTHER.has(sender, true)) return;
+		
+		// Now mark it as done
+		ticket.markAsDone(msender);
+		
 	}
 }

@@ -10,6 +10,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
+import com.massivecraft.mcore.event.MCorePlayerLeaveEvent;
 import com.massivecraft.mcore.mixin.Mixin;
 
 
@@ -107,6 +108,19 @@ public class MainListener implements Listener
 	public void bumpOnJoinMonitor(PlayerJoinEvent event)
 	{
 		bumpOnJoin(event, EventPriority.MONITOR);
+	}
+	
+	// -------------------------------------------- //
+	// DONE-MARK ON LEAVE
+	// -------------------------------------------- //
+	
+	@EventHandler(priority = EventPriority.NORMAL)
+	public void doneMarkOnLeave(MCorePlayerLeaveEvent event)
+	{
+		final Player player = event.getPlayer();
+		final MPlayer mplayer = MPlayer.get(player);
+		if (!mplayer.hasMessage()) return;
+		mplayer.markAsDone(null);
 	}
 	
 }
