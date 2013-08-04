@@ -10,6 +10,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
+import com.massivecraft.massivetickets.predictate.IsModeratorPredictate;
 import com.massivecraft.mcore.event.MCorePlayerLeaveEvent;
 import com.massivecraft.mcore.mixin.Mixin;
 
@@ -61,17 +62,23 @@ public class MainListener implements Listener
 	
 	public static void bumpOnJoin(PlayerJoinEvent event, EventPriority priority)
 	{
+		// If a player is joining the server ...
+		final Player player = event.getPlayer();
+		
+		// ... and this player is a moderator ...
+		if (!IsModeratorPredictate.get().apply(player)) return;
+		
 		// If the bump on join is activated ...
 		if (!MConf.get().isBumpOnJoinActive()) return;
 		
 		// ... and this is the right priority ...
 		if (MConf.get().getBumpOnJoinPriority() != priority) return;
 		
-		// ... and this is an actuall join ...
+		// ... and this is an actual join ...
 		if (!Mixin.isActualJoin(event)) return;
 		
 		// ... then bump the player.
-		MassiveTickets.alertMessage(event.getPlayer(), MassiveTickets.createBumpMessage());
+		MassiveTickets.alertMessage(player, MassiveTickets.createBumpMessage());
 	}
 	
 	@EventHandler(priority = EventPriority.LOWEST)

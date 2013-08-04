@@ -59,8 +59,7 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 		MassiveTickets.alertMsg(ticket.getMessage());
 		
 		MassiveTickets.alertMsg(ticket.getId(), "<white>%s <pink>just picked your ticket.", msender.getDisplayName());
-		// TODO: How about some message here encouraging the player to do something.
-		
+		MassiveTickets.alertMsg(ticket.getId(), "Please go ahead and explain the situation.");
 	}
 	
 }
