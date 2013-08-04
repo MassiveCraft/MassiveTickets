@@ -25,6 +25,9 @@ public class CmdTicketsDone extends MassiveTicketsCommand
 		MPlayer ticket = this.arg(0, ARMPlayer.getStartOnline(), msender);
 		if (ticket == null) return;
 		
+		// Force Sync
+		ticket.sync();
+		
 		// Is there a ticket?
 		if (!ticket.hasMessage())
 		{

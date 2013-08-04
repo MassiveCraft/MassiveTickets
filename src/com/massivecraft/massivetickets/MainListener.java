@@ -119,7 +119,12 @@ public class MainListener implements Listener
 	{
 		final Player player = event.getPlayer();
 		final MPlayer mplayer = MPlayer.get(player);
+		
+		// Force Sync
+		mplayer.sync();
+		
 		if (!mplayer.hasMessage()) return;
+		
 		mplayer.markAsDone(null);
 	}
 	

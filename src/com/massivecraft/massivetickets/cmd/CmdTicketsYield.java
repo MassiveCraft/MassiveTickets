@@ -26,6 +26,9 @@ public class CmdTicketsYield extends MassiveTicketsCommand
 		MPlayer ticket = this.arg(0, ARMPlayer.getStartOnline());
 		if (ticket == null) return;
 		
+		// Force Sync
+		ticket.sync();
+		
 		// The person who picked this ticket is ...
 		MPlayer moderator = ticket.getModerator();
 		
