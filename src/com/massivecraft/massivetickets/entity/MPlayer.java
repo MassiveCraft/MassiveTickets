@@ -319,16 +319,16 @@ public class MPlayer extends SenderEntity<MPlayer>
 			MassiveTickets.alertModeratorsMsg("<white>%s<pink> done-marked their own ticket:", cause.getDisplayName());
 			MassiveTickets.alertModeratorsMessage(this.getMessage());
 			
-			MassiveTickets.alertOneMsg(cause.getId(), "Thank you for marking your own ticket as done.");
-			MassiveTickets.alertOneMsg(cause.getId(), "Have a nice day!");
+			MassiveTickets.alertOneMsg(this.getId(), "Thank you for marking your own ticket as done.");
+			MassiveTickets.alertOneMsg(this.getId(), "Have a nice day!");
 		}
 		else
 		{
 			MassiveTickets.alertModeratorsMsg("<white>%s<pink> done-marked <white>%s<pink>'s ticket:", cause.getDisplayName(), this.getDisplayName());
 			MassiveTickets.alertModeratorsMessage(this.getMessage());
 			
-			MassiveTickets.alertOneMsg(cause.getId(), "<white>%s<pink> marked your ticket as done.", cause.getDisplayName());
-			MassiveTickets.alertOneMsg(cause.getId(), "Have a nice day!");
+			MassiveTickets.alertOneMsg(this.getId(), "<white>%s<pink> marked your ticket as done.", cause.getDisplayName());
+			MassiveTickets.alertOneMsg(this.getId(), "Have a nice day!");
 		}
 		
 		// So who should receive the point?

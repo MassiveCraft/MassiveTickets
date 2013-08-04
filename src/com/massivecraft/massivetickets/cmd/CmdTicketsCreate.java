@@ -42,7 +42,7 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		MassiveTickets.alertModeratorsMsg("<white>%s <pink>%s ticket: %s", msender.getDisplayName(), verb, message);
 		
 		// Inform Creator
-		MassiveTickets.alertOneMsg(sender, "Your ticket was %s. We will help you asap.", verb);
+		MassiveTickets.alertOneMsg(sender, "Your ticket was %s. We will help you soon.", verb);
 		MassiveTickets.alertOneMsg(sender, "There is currently <aqua>%d <pink>working moderators.", MPlayerColl.get().getAllCurrentlyWorking().size());
 		
 		MCommand cmd = null;
