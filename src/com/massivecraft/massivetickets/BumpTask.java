@@ -40,7 +40,7 @@ public class BumpTask extends ModuloRepeatTask
 		for (Player player : Bukkit.getOnlinePlayers())
 		{
 			if (!IsModeratorPredictate.get().apply(player)) continue;
-			MassiveTickets.alertMessage(player, message);
+			MassiveTickets.alertOneMessage(player, message);
 		}
 	}
 	

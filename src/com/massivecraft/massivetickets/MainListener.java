@@ -78,7 +78,7 @@ public class MainListener implements Listener
 		if (!Mixin.isActualJoin(event)) return;
 		
 		// ... then bump the player.
-		MassiveTickets.alertMessage(player, MassiveTickets.createBumpMessage());
+		MassiveTickets.alertOneMessage(player, MassiveTickets.createBumpMessage());
 	}
 	
 	@EventHandler(priority = EventPriority.LOWEST)

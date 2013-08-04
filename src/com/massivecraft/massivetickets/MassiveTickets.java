@@ -163,15 +163,15 @@ public class MassiveTickets extends MPlugin
 	// -------------------------------------------- //
 	
 	// All Moderators
-	public static boolean alertMessage(String message)
+	public static boolean alertModeratorsMessage(String message)
 	{
-		return alertMessage(MUtil.list(message));
+		return alertModeratorsMessage(MUtil.list(message));
 	}
-	public static boolean alertMessage(String... messages)
+	public static boolean alertModeratorsMessage(String... messages)
 	{
-		return alertMessage(Arrays.asList(messages));
+		return alertModeratorsMessage(Arrays.asList(messages));
 	}
-	public static boolean alertMessage(Collection<String> messages)
+	public static boolean alertModeratorsMessage(Collection<String> messages)
 	{
 		List<String> target = new ArrayList<String>();
 		for (String message : messages)
@@ -182,15 +182,15 @@ public class MassiveTickets extends MPlugin
 	}
 	
 	// One
-	public static boolean alertMessage(CommandSender sender, String message)
+	public static boolean alertOneMessage(CommandSender sender, String message)
 	{
-		return alertMessage(sender, MUtil.list(message));
+		return alertOneMessage(sender, MUtil.list(message));
 	}
-	public static boolean alertMessage(CommandSender sender, String... messages)
+	public static boolean alertOneMessage(CommandSender sender, String... messages)
 	{
-		return alertMessage(sender, Arrays.asList(messages));
+		return alertOneMessage(sender, Arrays.asList(messages));
 	}
-	public static boolean alertMessage(CommandSender sender, Collection<String> messages)
+	public static boolean alertOneMessage(CommandSender sender, Collection<String> messages)
 	{
 		List<String> target = new ArrayList<String>();
 		for (String message : messages)
@@ -201,15 +201,15 @@ public class MassiveTickets extends MPlugin
 	}
 	
 	// One by id
-	public static boolean alertMessage(String senderId, String message)
+	public static boolean alertOneMessage(String senderId, String message)
 	{
-		return alertMessage(senderId, MUtil.list(message));
+		return alertOneMessage(senderId, MUtil.list(message));
 	}
-	public static boolean alertMessage(String senderId, String... messages)
+	public static boolean alertOneMessage(String senderId, String... messages)
 	{
-		return alertMessage(senderId, Arrays.asList(messages));
+		return alertOneMessage(senderId, Arrays.asList(messages));
 	}
-	public static boolean alertMessage(String senderId, Collection<String> messages)
+	public static boolean alertOneMessage(String senderId, Collection<String> messages)
 	{
 		List<String> target = new ArrayList<String>();
 		for (String message : messages)
@@ -220,15 +220,15 @@ public class MassiveTickets extends MPlugin
 	}
 
 	// All Moderators
-	public static boolean alertMsg(String msg)
+	public static boolean alertModeratorsMsg(String msg) // WORKS
 	{
 		return Mixin.msg(IsModeratorPredictate.get(), MConf.get().getPrefix() + msg);
 	}
-	public static boolean alertMsg(String msg, Object... args)
+	public static boolean alertModeratorsMsg(String msg, Object... args)
 	{
 		return Mixin.msg(IsModeratorPredictate.get(), MConf.get().getPrefix() + msg, args);
 	}
-	public static boolean alertMsg(Collection<String> msgs)
+	public static boolean alertModeratorsMsg(Collection<String> msgs)
 	{
 		List<String> target = new ArrayList<String>();
 		for (String msg : msgs)
@@ -239,15 +239,15 @@ public class MassiveTickets extends MPlugin
 	}
 	
 	// One
-	public static boolean alertMsg(CommandSender sender, String msg)
+	public static boolean alertOneMsg(CommandSender sender, String msg)
 	{
 		return Mixin.msg(sender, MConf.get().getPrefix() + msg);
 	}
-	public static boolean alertMsg(CommandSender sender, String msg, Object... args)
+	public static boolean alertOneMsg(CommandSender sender, String msg, Object... args)
 	{
 		return Mixin.msg(sender, MConf.get().getPrefix() + msg, args);
 	}
-	public static boolean alertMsg(CommandSender sender, Collection<String> msgs)
+	public static boolean alertOneMsg(CommandSender sender, Collection<String> msgs)
 	{
 		List<String> target = new ArrayList<String>();
 		for (String msg : msgs)
@@ -258,15 +258,15 @@ public class MassiveTickets extends MPlugin
 	}
 	
 	// One by id
-	public static boolean alertMsg(String senderId, String msg)
+	public static boolean alertOneMsg(String senderId, String msg)
 	{
 		return Mixin.msg(senderId, MConf.get().getPrefix() + msg);
 	}
-	public static boolean alertMsg(String senderId, String msg, Object... args)
+	public static boolean alertOneMsg(String senderId, String msg, Object... args)
 	{
 		return Mixin.msg(senderId, MConf.get().getPrefix() + msg, args);
 	}
-	public static boolean alertMsg(String senderId, Collection<String> msgs)
+	public static boolean alertOneMsg(String senderId, Collection<String> msgs)
 	{
 		List<String> target = new ArrayList<String>();
 		for (String msg : msgs)

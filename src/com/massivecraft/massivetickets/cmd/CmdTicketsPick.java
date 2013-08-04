@@ -55,11 +55,11 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 		ticket.setModerator(msender);
 		
 		// Inform
-		MassiveTickets.alertMsg("<white>%s <pink>picked <white>%s<pink>'s ticket:", msender.getDisplayName(), ticket.getDisplayName());
-		MassiveTickets.alertMsg(ticket.getMessage());
+		MassiveTickets.alertModeratorsMsg("<white>%s <pink>picked <white>%s<pink>'s ticket:", msender.getDisplayName(), ticket.getDisplayName());
+		MassiveTickets.alertModeratorsMsg(ticket.getMessage());
 		
-		MassiveTickets.alertMsg(ticket.getId(), "<white>%s <pink>just picked your ticket.", msender.getDisplayName());
-		MassiveTickets.alertMsg(ticket.getId(), "Please go ahead and explain the situation.");
+		MassiveTickets.alertOneMsg(ticket.getId(), "<white>%s <pink>just picked your ticket.", msender.getDisplayName());
+		MassiveTickets.alertOneMsg(ticket.getId(), "Please go ahead and explain the situation.");
 	}
 	
 }

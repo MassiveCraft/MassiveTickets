@@ -311,23 +311,23 @@ public class MPlayer extends SenderEntity<MPlayer>
 		// What was done-marked and why? Dat inform!
 		if (cause == null)
 		{
-			MassiveTickets.alertMsg("<white>%s<pink>'s ticket done-marked on logout:", this.getDisplayName());
+			MassiveTickets.alertModeratorsMsg("<white>%s<pink>'s ticket done-marked on logout:", this.getDisplayName());
 		}
 		else if (cause == this)
 		{
-			MassiveTickets.alertMsg("<white>%s<pink> done-marked their own ticket:", cause.getDisplayName());
-			MassiveTickets.alertMsg(cause.getId(), "Thank you for marking your own ticket as done.");
-			MassiveTickets.alertMsg(cause.getId(), "Have a nice day!");
+			MassiveTickets.alertModeratorsMsg("<white>%s<pink> done-marked their own ticket:", cause.getDisplayName());
+			MassiveTickets.alertOneMsg(cause.getId(), "Thank you for marking your own ticket as done.");
+			MassiveTickets.alertOneMsg(cause.getId(), "Have a nice day!");
 		}
 		else
 		{
-			MassiveTickets.alertMsg("<white>%s<pink> done-marked <white>%s<pink>'s ticket:", cause.getDisplayName(), this.getDisplayName());
-			MassiveTickets.alertMsg(cause.getId(), "<white>%s<pink> marked your ticket as done.", cause.getDisplayName());
-			MassiveTickets.alertMsg(cause.getId(), "Have a nice day!");
+			MassiveTickets.alertModeratorsMsg("<white>%s<pink> done-marked <white>%s<pink>'s ticket:", cause.getDisplayName(), this.getDisplayName());
+			MassiveTickets.alertOneMsg(cause.getId(), "<white>%s<pink> marked your ticket as done.", cause.getDisplayName());
+			MassiveTickets.alertOneMsg(cause.getId(), "Have a nice day!");
 		}
 		
 		// Inform on what the message was
-		MassiveTickets.alertMessage(this.getMessage());
+		MassiveTickets.alertModeratorsMessage(this.getMessage());
 		
 		// So who should receive the point?
 		// probably the moderator
@@ -340,7 +340,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 		// Modify Highscore
 		if (receiver != null)
 		{
-			MassiveTickets.alertMsg("<white>%s<pink> got a point.", receiver.getDisplayName());
+			MassiveTickets.alertModeratorsMsg("<white>%s<pink> got a point.", receiver.getDisplayName());
 			
 			int year = MassiveTickets.getCurrentYear();
 			int week = MassiveTickets.getCurrentWeek();

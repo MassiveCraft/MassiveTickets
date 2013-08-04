@@ -47,11 +47,11 @@ public class CmdTicketsYield extends MassiveTicketsCommand
 		ticket.setModeratorId(null);
 		
 		// Inform
-		MassiveTickets.alertMsg("<white>%s <pink>yielded <white>%s<pink>'s ticket:", msender.getDisplayName(), ticket.getDisplayName());
-		MassiveTickets.alertMsg(ticket.getMessage());
+		MassiveTickets.alertModeratorsMsg("<white>%s <pink>yielded <white>%s<pink>'s ticket:", msender.getDisplayName(), ticket.getDisplayName());
+		MassiveTickets.alertModeratorsMsg(ticket.getMessage());
 		
-		MassiveTickets.alertMsg(ticket.getId(), "<white>%s <pink>has yielded your ticket.", msender.getDisplayName());
-		MassiveTickets.alertMsg(ticket.getId(), "It is now placed back in the ticket list. ");
+		MassiveTickets.alertOneMsg(ticket.getId(), "<white>%s <pink>has yielded your ticket.", msender.getDisplayName());
+		MassiveTickets.alertOneMsg(ticket.getId(), "It is now placed back in the ticket list. ");
 	}
 	
 }

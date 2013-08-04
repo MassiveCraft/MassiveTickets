@@ -38,24 +38,26 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		msender.setMessage(message);
 		if (!update) msender.setMillis(System.currentTimeMillis());
 		
-		// Inform
-		MassiveTickets.alertMsg("<white>%s <pink>%s ticket: %s", msender.getDisplayName(), verb, message);
-		MassiveTickets.alertMsg(sender, "Your ticket was %s. We will help you asap.", verb);
-		MassiveTickets.alertMsg(sender, "There is currently <aqua>%d <pink>working moderators.", MPlayerColl.get().getAllCurrentlyWorking().size());
+		// Inform Moderators
+		MassiveTickets.alertModeratorsMsg("<white>%s <pink>%s ticket: %s", msender.getDisplayName(), verb, message);
+		
+		// Inform Creator
+		MassiveTickets.alertOneMsg(sender, "Your ticket was %s. We will help you asap.", verb);
+		MassiveTickets.alertOneMsg(sender, "There is currently <aqua>%d <pink>working moderators.", MPlayerColl.get().getAllCurrentlyWorking().size());
 		
 		MCommand cmd = null;
 		
 		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow;
-		MassiveTickets.alertMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to show your ticket");
+		MassiveTickets.alertOneMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to show your ticket");
 		
 		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsDone;
-		MassiveTickets.alertMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to mark it as done");
+		MassiveTickets.alertOneMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to mark it as done");
 		
 		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsModlist;
-		MassiveTickets.alertMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to list the moderators");
+		MassiveTickets.alertOneMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to list the moderators");
 		
 		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsCreate;
-		MassiveTickets.alertMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to update the message");
+		MassiveTickets.alertOneMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to update the message");
 	}
 	
 }
