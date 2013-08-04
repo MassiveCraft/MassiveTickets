@@ -55,7 +55,7 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		MassiveTickets.alertMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to list the moderators");
 		
 		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsCreate;
-		MassiveTickets.alertMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to update your current ticket message");
+		MassiveTickets.alertMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to update the message");
 	}
 	
 }
