@@ -312,22 +312,24 @@ public class MPlayer extends SenderEntity<MPlayer>
 		if (cause == null)
 		{
 			MassiveTickets.alertModeratorsMsg("<white>%s<pink>'s ticket done-marked on logout:", this.getDisplayName());
+			MassiveTickets.alertModeratorsMessage(this.getMessage());
 		}
 		else if (cause == this)
 		{
 			MassiveTickets.alertModeratorsMsg("<white>%s<pink> done-marked their own ticket:", cause.getDisplayName());
+			MassiveTickets.alertModeratorsMessage(this.getMessage());
+			
 			MassiveTickets.alertOneMsg(cause.getId(), "Thank you for marking your own ticket as done.");
 			MassiveTickets.alertOneMsg(cause.getId(), "Have a nice day!");
 		}
 		else
 		{
 			MassiveTickets.alertModeratorsMsg("<white>%s<pink> done-marked <white>%s<pink>'s ticket:", cause.getDisplayName(), this.getDisplayName());
+			MassiveTickets.alertModeratorsMessage(this.getMessage());
+			
 			MassiveTickets.alertOneMsg(cause.getId(), "<white>%s<pink> marked your ticket as done.", cause.getDisplayName());
 			MassiveTickets.alertOneMsg(cause.getId(), "Have a nice day!");
 		}
-		
-		// Inform on what the message was
-		MassiveTickets.alertModeratorsMessage(this.getMessage());
 		
 		// So who should receive the point?
 		// probably the moderator
@@ -345,9 +347,9 @@ public class MPlayer extends SenderEntity<MPlayer>
 			int year = MassiveTickets.getCurrentYear();
 			int week = MassiveTickets.getCurrentWeek();
 			
-			int count = this.getCount(year, week);
+			int count = receiver.getCount(year, week);
 			count++;
-			this.setCount(year, week, count);
+			receiver.setCount(year, week, count);
 		}
 		
 		// Apply
