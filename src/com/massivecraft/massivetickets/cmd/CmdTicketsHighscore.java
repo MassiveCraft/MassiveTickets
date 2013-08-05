@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.massivecraft.massivetickets.Level;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
+import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
 import com.massivecraft.mcore.cmd.arg.ARInteger;
@@ -55,8 +57,10 @@ public class CmdTicketsHighscore extends MassiveTicketsCommand
 			{
 				MPlayer mplayer = entry.getKey();
 				Integer count = entry.getValue();
-				
-				msg("<white>%s <pink>%d", mplayer.getDisplayName(), count);
+				Level level = MConf.get().getLevelForCount(count);
+				String levelDesc = "";
+				if (level != null) levelDesc = level.getName();
+				msg("<pink>%d <white>%s <pink><em>%s", count, mplayer.getDisplayName(), levelDesc);
 			}
 		}
 		else

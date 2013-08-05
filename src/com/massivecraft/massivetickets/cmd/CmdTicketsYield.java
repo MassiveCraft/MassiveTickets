@@ -5,6 +5,7 @@ import java.util.List;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.ARMPlayer;
+import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 
@@ -47,11 +48,14 @@ public class CmdTicketsYield extends MassiveTicketsCommand
 		ticket.setModeratorId(null);
 		
 		// Inform
-		MassiveTickets.alertModeratorsMsg("<white>%s <pink>yielded <white>%s<pink>'s ticket:", msender.getDisplayName(), ticket.getDisplayName());
+		MassiveTickets.alertModeratorsMsg("<white>%s <pink>yielded <white>%s<pink>'s ticket.", msender.getDisplayName(), ticket.getDisplayName());
 		MassiveTickets.alertModeratorsMsg(ticket.getMessage());
 		
 		MassiveTickets.alertOneMsg(ticket.getId(), "<white>%s <pink>has yielded your ticket.", msender.getDisplayName());
 		MassiveTickets.alertOneMsg(ticket.getId(), "It is now placed back in the ticket list. ");
+		
+		// React
+		MConf.get().getYieldReaction().run(moderator.getId(), ticket.getId());
 	}
 	
 }

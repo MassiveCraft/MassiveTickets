@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
-import com.massivecraft.massivetickets.entity.MPlayerColl;
+import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.mcore.cmd.arg.ARBoolean;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 
@@ -46,8 +46,18 @@ public class CmdTicketsWorking extends MassiveTicketsCommand
 		
 		// Inform
 		String verb = target ? "started" : "stopped"; 
-		MassiveTickets.alertModeratorsMsg("<white>%s <pink>%s twerking.", msender.getDisplayName(), verb);
-		MassiveTickets.alertModeratorsMsg("There's now <aqua>%d <pink>moderators.", MPlayerColl.get().getAllCurrentlyWorking().size());
+		MassiveTickets.alertOneMsg(msender.getId(), "You %s twerking!", verb);
+		MassiveTickets.alertOneMessage(msender.getId(), MassiveTickets.createBumpMessage());
+		
+		// React
+		if (target)
+		{
+			MConf.get().getWorkingOnReaction().run(msender.getId(), null);
+		}
+		else
+		{
+			MConf.get().getWorkingOffReaction().run(msender.getId(), null);
+		}
 		
 	}
 	

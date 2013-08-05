@@ -4,10 +4,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
+import com.massivecraft.massivetickets.Level;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.mcore.store.SenderEntity;
 import com.massivecraft.mcore.util.MUtil;
@@ -308,29 +311,6 @@ public class MPlayer extends SenderEntity<MPlayer>
 	
 	public void markAsDone(MPlayer cause)
 	{
-		// What was done-marked and why? Dat inform!
-		if (cause == null)
-		{
-			MassiveTickets.alertModeratorsMsg("<white>%s<pink>'s ticket done-marked on logout:", this.getDisplayName());
-			MassiveTickets.alertModeratorsMessage(this.getMessage());
-		}
-		else if (cause == this)
-		{
-			MassiveTickets.alertModeratorsMsg("<white>%s<pink> done-marked their own ticket:", cause.getDisplayName());
-			MassiveTickets.alertModeratorsMessage(this.getMessage());
-			
-			MassiveTickets.alertOneMsg(this.getId(), "Thank you for marking your own ticket as done.");
-			MassiveTickets.alertOneMsg(this.getId(), "Have a nice day!");
-		}
-		else
-		{
-			MassiveTickets.alertModeratorsMsg("<white>%s<pink> done-marked <white>%s<pink>'s ticket:", cause.getDisplayName(), this.getDisplayName());
-			MassiveTickets.alertModeratorsMessage(this.getMessage());
-			
-			MassiveTickets.alertOneMsg(this.getId(), "<white>%s<pink> marked your ticket as done.", cause.getDisplayName());
-			MassiveTickets.alertOneMsg(this.getId(), "Have a nice day!");
-		}
-		
 		// So who should receive the point?
 		// probably the moderator
 		MPlayer receiver = this.getModerator();
@@ -339,17 +319,75 @@ public class MPlayer extends SenderEntity<MPlayer>
 		// however the reward can never go to the ticket creator itself
 		if (this == receiver) receiver = null;
 		
-		// Modify Highscore
+		// Done Inform!
+		Set<String> moderatorAlerteeIds = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
 		if (receiver != null)
 		{
-			MassiveTickets.alertModeratorsMsg("<white>%s<pink> got a point.", receiver.getDisplayName());
+			moderatorAlerteeIds.add(receiver.getId());
+		}
+		if (cause != null)
+		{
+			moderatorAlerteeIds.add(cause.getId());
+		}
+		moderatorAlerteeIds.remove(this.getId());
+		
+		if (cause == null)
+		{
+			for (String moderatorAlerteeId : moderatorAlerteeIds)
+			{
+				MassiveTickets.alertOneMsg(moderatorAlerteeId, "<white>%s<pink>'s ticket done-marked on logout.", this.getDisplayName());
+			}
+		}
+		else if (cause == this)
+		{
+			for (String moderatorAlerteeId : moderatorAlerteeIds)
+			{
+				MassiveTickets.alertOneMsg(moderatorAlerteeId, "<white>%s<pink> done-marked their own ticket.", cause.getDisplayName());
+			}
 			
+			MassiveTickets.alertOneMsg(this.getId(), "Thank you for marking your own ticket as done.");
+			MassiveTickets.alertOneMsg(this.getId(), "Have a nice day!");
+		}
+		else
+		{
+			for (String moderatorAlerteeId : moderatorAlerteeIds)
+			{
+				MassiveTickets.alertOneMsg(moderatorAlerteeId, "<white>%s<pink> done-marked <white>%s<pink>'s ticket.", cause.getDisplayName(), this.getDisplayName());
+			}
+			
+			MassiveTickets.alertOneMsg(this.getId(), "<white>%s<pink> marked your ticket as done.", cause.getDisplayName());
+			MassiveTickets.alertOneMsg(this.getId(), "Have a nice day!");
+		}
+		
+		// Highscore, Point and Level time! \:3/ LEL
+		if (receiver != null)
+		{
 			int year = MassiveTickets.getCurrentYear();
 			int week = MassiveTickets.getCurrentWeek();
 			
-			int count = receiver.getCount(year, week);
-			count++;
-			receiver.setCount(year, week, count);
+			int countBefore = receiver.getCount(year, week);
+			int countAfter = countBefore + 1;
+			receiver.setCount(year, week, countAfter);
+			
+			// Let there be party if the level changed
+			Level levelBefore = MConf.get().getLevelForCount(countBefore);
+			Level levelAfter = MConf.get().getLevelForCount(countAfter);
+			boolean party = (!levelAfter.equals(levelBefore));
+			
+			if (party)
+			{
+				MassiveTickets.alertModeratorsMsg("<white>%s<pink> has done <aqua>%d <pink>tickets this week!", receiver.getDisplayName(), countAfter);
+				MassiveTickets.alertModeratorsMsg("<bold><em>%s", levelAfter.getName());
+				
+				levelAfter.getReaction().run(receiver.getId(), this.getId());
+				
+				// TODO: Play party sound
+			}
+			else
+			{
+				
+				// TODO: Play non-party sound
+			}
 		}
 		
 		// Apply

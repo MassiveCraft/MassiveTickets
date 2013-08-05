@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.ARMPlayer;
+import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 import com.massivecraft.mcore.util.TimeDiffUtil;
@@ -49,6 +50,9 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		}
 		
 		msg("<k>Picked By: <v>%s", pickedByDesc);
+		
+		// React
+		MConf.get().getShowReaction().run(msender.getId(), mplayer.getId());
 	}
 	
 }

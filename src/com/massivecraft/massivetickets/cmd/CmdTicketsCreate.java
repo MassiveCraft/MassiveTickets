@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
+import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
 import com.massivecraft.mcore.cmd.MCommand;
 import com.massivecraft.mcore.cmd.arg.ARString;
@@ -39,7 +40,14 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		if (!update) msender.setMillis(System.currentTimeMillis());
 		
 		// Inform Moderators
-		MassiveTickets.alertModeratorsMsg("<white>%s <pink>%s ticket: %s", msender.getDisplayName(), verb, message);
+		if (msender.hasModeratorId())
+		{
+			MassiveTickets.alertOneMsg(msender.getModeratorId(), "<white>%s <pink>%s ticket: %s", msender.getDisplayName(), verb, message);
+		}
+		else
+		{
+			MassiveTickets.alertModeratorsMsg("<white>%s <pink>%s ticket: %s", msender.getDisplayName(), verb, message);
+		}
 		
 		// Inform Creator
 		MassiveTickets.alertOneMsg(sender, "Your ticket was %s. We will help you soon.", verb);
@@ -58,6 +66,17 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		
 		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsCreate;
 		MassiveTickets.alertOneMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to update the message");
+		
+		// React
+		if (update)
+		{
+			MConf.get().getUpdateReaction().run(msender.getModeratorId(), msender.getId());
+		}
+		else
+		{
+			MConf.get().getCreateReaction().run(msender.getModeratorId(), msender.getId());
+		}
+				
 	}
 	
 }

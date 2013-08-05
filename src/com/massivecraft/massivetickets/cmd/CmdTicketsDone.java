@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.ARMPlayer;
+import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 
@@ -42,5 +43,7 @@ public class CmdTicketsDone extends MassiveTicketsCommand
 		// Now mark it as done
 		ticket.markAsDone(msender);
 		
+		// React
+		MConf.get().getDoneReaction().run(ticket.getModeratorId(), ticket.getId());
 	}
 }
