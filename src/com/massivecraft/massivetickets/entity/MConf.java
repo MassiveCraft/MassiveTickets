@@ -58,6 +58,26 @@ public class MConf extends Entity<MConf>
 	public Reaction getDoneReaction() { return this.doneReaction; }
 	public void setDoneReaction(Reaction doneReaction) { this.doneReaction = doneReaction; this.changed(); }
 	
+	private Reaction doneReactionNormal = Reaction.valueOf(
+		MUtil.list(
+			"ticket hearsound ORB_PICKUP,0.8,0.7 LEVEL_UP,1.0,1.0"
+		),
+		null,
+		null
+	);
+	public Reaction getDoneReactionNormal() { return this.doneReactionNormal; }
+	public void setDoneReactionNormal(Reaction doneReactionNormal) { this.doneReactionNormal = doneReactionNormal; this.changed(); }
+	
+	private Reaction doneReactionLevel = Reaction.valueOf(
+		MUtil.list(
+			"ticket hearsound WITHER_SPAWN,0.5,1.4 ORB_PICKUP,0.8,0.7 LEVEL_UP,1.0,1.0"
+		),
+		null,
+		null
+	);
+	public Reaction getDoneReactionLevel() { return this.doneReactionLevel; }
+	public void setDoneReactionLevel(Reaction doneReactionLevel) { this.doneReactionLevel = doneReactionLevel; this.changed(); }
+	
 	private Reaction pickReaction = Reaction.valueOf(
 		MUtil.list(
 			"msg {p}"

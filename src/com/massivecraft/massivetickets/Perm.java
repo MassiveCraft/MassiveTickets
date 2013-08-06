@@ -24,6 +24,7 @@ public enum Perm
 	MODLIST("modlist"),
 	WORKING("working"),
 	CHEAT("cheat"),
+	HEARSOUND("hearsound"),
 	VERSION("version"),
 	
 	// END OF LIST

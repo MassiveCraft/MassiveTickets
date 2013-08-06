@@ -23,6 +23,7 @@ permissions:
   massivetickets.modlist: {description: list working moderators, default: false}
   massivetickets.working: {description: set if you are working, default: false}
   massivetickets.cheat: {description: give a point 4NORaisins, default: false}
+  massivetickets.hearsound: {description: hear a sound, default: false}
   massivetickets.version: {description: show plugin version, default: false}
 # -------------------------------------------- #
 # STAR NOTATION
@@ -43,6 +44,7 @@ permissions:
       massivetickets.modlist: true
       massivetickets.working: true
       massivetickets.cheat: true
+      massivetickets.hearsound: true
       massivetickets.version: true
 # -------------------------------------------- #
 # KITS
@@ -78,6 +80,7 @@ permissions:
       massivetickets.create: true
       massivetickets.done: true
       massivetickets.modlist: true
+      massivetickets.hearsound: true
       massivetickets.version: true
   massivetickets.kit.default:
     default: true

@@ -12,6 +12,7 @@ import com.massivecraft.massivetickets.cmd.CmdTickets;
 import com.massivecraft.massivetickets.cmd.CmdTicketsCheat;
 import com.massivecraft.massivetickets.cmd.CmdTicketsCreate;
 import com.massivecraft.massivetickets.cmd.CmdTicketsDone;
+import com.massivecraft.massivetickets.cmd.CmdTicketsHearsound;
 import com.massivecraft.massivetickets.cmd.CmdTicketsHighscore;
 import com.massivecraft.massivetickets.cmd.CmdTicketsList;
 import com.massivecraft.massivetickets.cmd.CmdTicketsModlist;
@@ -77,6 +78,9 @@ public class MassiveTickets extends MPlugin
 	private CmdTicketsCheat outerCmdTicketsCheat;
 	public CmdTicketsCheat getOuterCmdTicketsCheat() { return this.outerCmdTicketsCheat; }
 	
+	private CmdTicketsHearsound outerCmdTicketsHearsound;
+	public CmdTicketsHearsound getOuterCmdTicketsHearsound() { return this.outerCmdTicketsHearsound; }
+	
 	private VersionCommand outerCmdTicketsVersion;
 	public VersionCommand getOuterCmdTicketsVersion() { return this.outerCmdTicketsVersion; }
 
@@ -129,6 +133,9 @@ public class MassiveTickets extends MPlugin
 		
 		this.outerCmdTicketsCheat = new CmdTicketsCheat(ConfServer.aliasesOuterTicketsCheat);
 		this.outerCmdTicketsCheat.register(this);
+		
+		this.outerCmdTicketsHearsound = new CmdTicketsHearsound(ConfServer.aliasesOuterTicketsHearsound);
+		this.outerCmdTicketsHearsound.register(this);
 		
 		this.outerCmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node, ConfServer.aliasesOuterTicketsVersion);
 		this.outerCmdTicketsVersion.register(this);

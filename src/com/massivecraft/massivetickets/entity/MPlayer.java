@@ -387,21 +387,20 @@ public class MPlayer extends SenderEntity<MPlayer>
 		// Let there be party if the level changed
 		Level levelBefore = MConf.get().getLevelForCount(countBefore);
 		Level levelAfter = MConf.get().getLevelForCount(countAfter);
-		boolean party = (!levelAfter.equals(levelBefore));
+		boolean levelUp = (!levelAfter.equals(levelBefore));
 		
-		if (party)
+		if (levelUp)
 		{
 			MassiveTickets.alertModeratorsMsg("<white>%s<pink> has done <aqua>%d <pink>tickets this week!", this.getDisplayName(), countAfter);
 			MassiveTickets.alertModeratorsMsg("<bold><em>%s", levelAfter.getName());
 			
 			levelAfter.getReaction().run(this.getId(), playerId);
 			
-			// TODO: Play party sound
+			MConf.get().getDoneReactionLevel().run(this.getId(), playerId);
 		}
 		else
 		{
-			
-			// TODO: Play non-party sound
+			MConf.get().getDoneReactionNormal().run(this.getId(), playerId);
 		}
 	}
 	
