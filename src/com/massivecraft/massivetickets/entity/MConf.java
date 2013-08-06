@@ -171,7 +171,7 @@ public class MConf extends Entity<MConf>
 				null,
 				null,
 				MUtil.list(
-					"give {m} 349 1 name:{m}"
+					"give {m} 349 1 name:{m}_the_Fish lore:You_are_holding_{m}_in_your_hand.|{m}_brings_fortune! fortune:3"
 				)
 			)
 		),
@@ -181,7 +181,7 @@ public class MConf extends Entity<MConf>
 				null,
 				null,
 				MUtil.list(
-					"give {m} 347 1 name:Honorable_Helper_{y}_{w}",
+					"give {m} 347 1 name:Honorable_Helper_{m}_{y}_{w} lore:{m}_did_50_tickets_Year_{y}_Week_{w}.|For_this_we_grant_the_Honorable_Helper_Award.|So_Hysterically_Honorable!",
 					"give {m} 280 1 name:Pathetic_Pokingstick unbreaking:3 knockback:1 lore:What_an_outrageously_pathetic_poking_device!",
 					"money give {m} 20"
 				)
@@ -233,7 +233,7 @@ public class MConf extends Entity<MConf>
 				null,
 				null,
 				MUtil.list(
-					"give {m} 391 1 name:No_Cigarr!"
+					"give {m} 391 1 name:No_Cigarr! lore:So_you_thought_this_was_a_cigarr?|You're_wearing_that_trendy_headband_aren't_you? BaneofArthropods:3"
 				)
 			)
 		),
@@ -243,9 +243,9 @@ public class MConf extends Entity<MConf>
 				null,
 				null,
 				MUtil.list(
-					"give {m} 399 1 name:Magnificent_Moderator_{y}_{w}",
+					"give {m} 399 1 name:Magnificent_Moderator_{m}_{y}_{w} lore:{m}_did_100_tickets_Year_{y}_Week_{w}.|For_this_we_grant_the_Magnificent_Moderator_Award.|So_Marvelously_Magnificent!",
 					"give {m} 369 1 name:Powerful_Pokingstick unbreaking:3 knockback:3 lore:Quite_a_powerful_poking_device!",
-					"give {m} 400 1 name:Pie_of_Prosperity",
+					"give {m} 400 1 name:Pie_of_Prosperity lore:This_pie_is_so_hard_it's_almost_inedible.|Could_rather_be_used_to_bash_heads_in. looting:3",
 					"money give {m} 50"
 				)
 			)
@@ -256,7 +256,7 @@ public class MConf extends Entity<MConf>
 				null,
 				null,
 				MUtil.list(
-					"give {m} 282 10 name:Ticket_Fondue"
+					"give {m} 282 10 name:Ticket_Fondue lore:It's_a_FONDUE_just_for_YOU!|Be_warned,_this_food_is_hot. FireAspect:1"
 				)
 			)
 		),
@@ -266,7 +266,7 @@ public class MConf extends Entity<MConf>
 				null,
 				null,
 				MUtil.list(
-					"give {m} 392 15 name:Party_Potatoe"
+					"give {m} 392 15 name:Party_Potato lore:Bring_ze_party_on!|No_party_poopers!|Only_potatoes_allowed! unbreaking:1"
 				)
 			)
 		),
@@ -276,7 +276,7 @@ public class MConf extends Entity<MConf>
 				null,
 				null,
 				MUtil.list(
-					"give {m} 1 15 name:Yes_Cigarr!"
+					"give {m} 396 1 name:Yes_Cigarr!"
 				)
 			)
 		),
