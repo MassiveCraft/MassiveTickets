@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.bukkit.Bukkit;
-
 import com.massivecraft.mcore.mixin.Mixin;
+import com.massivecraft.mcore.util.SenderUtil;
 import com.massivecraft.mcore.util.Txt;
 
 public final class Reaction
@@ -80,7 +79,7 @@ public final class Reaction
 		
 		for (String cmd : prepareCmds(this.getConsoleCommands(), moderatorId, playerId))
 		{
-			Mixin.dispatchCommand(Bukkit.getConsoleSender(), cmd);
+			Mixin.dispatchCommand(moderatorId, SenderUtil.ID_CONSOLE, cmd);
 		}
 	}
 	
