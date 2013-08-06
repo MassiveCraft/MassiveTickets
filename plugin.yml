@@ -22,6 +22,7 @@ permissions:
   massivetickets.highscore: {description: show highscore, default: false}
   massivetickets.modlist: {description: list working moderators, default: false}
   massivetickets.working: {description: set if you are working, default: false}
+  massivetickets.cheat: {description: give a point 4NORaisins, default: false}
   massivetickets.version: {description: show plugin version, default: false}
 # -------------------------------------------- #
 # STAR NOTATION
@@ -41,6 +42,7 @@ permissions:
       massivetickets.highscore: true
       massivetickets.modlist: true
       massivetickets.working: true
+      massivetickets.cheat: true
       massivetickets.version: true
 # -------------------------------------------- #
 # KITS

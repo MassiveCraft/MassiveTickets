@@ -9,6 +9,7 @@ import java.util.List;
 import org.bukkit.command.CommandSender;
 
 import com.massivecraft.massivetickets.cmd.CmdTickets;
+import com.massivecraft.massivetickets.cmd.CmdTicketsCheat;
 import com.massivecraft.massivetickets.cmd.CmdTicketsCreate;
 import com.massivecraft.massivetickets.cmd.CmdTicketsDone;
 import com.massivecraft.massivetickets.cmd.CmdTicketsHighscore;
@@ -73,6 +74,9 @@ public class MassiveTickets extends MPlugin
 	private CmdTicketsWorking outerCmdTicketsWorking;
 	public CmdTicketsWorking getOuterCmdTicketsWorking() { return this.outerCmdTicketsWorking; }
 	
+	private CmdTicketsCheat outerCmdTicketsCheat;
+	public CmdTicketsCheat getOuterCmdTicketsCheat() { return this.outerCmdTicketsCheat; }
+	
 	private VersionCommand outerCmdTicketsVersion;
 	public VersionCommand getOuterCmdTicketsVersion() { return this.outerCmdTicketsVersion; }
 
@@ -122,6 +126,9 @@ public class MassiveTickets extends MPlugin
 		
 		this.outerCmdTicketsWorking = new CmdTicketsWorking(ConfServer.aliasesOuterTicketsWorking);
 		this.outerCmdTicketsWorking.register(this);
+		
+		this.outerCmdTicketsCheat = new CmdTicketsCheat(ConfServer.aliasesOuterTicketsCheat);
+		this.outerCmdTicketsCheat.register(this);
 		
 		this.outerCmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node, ConfServer.aliasesOuterTicketsVersion);
 		this.outerCmdTicketsVersion.register(this);

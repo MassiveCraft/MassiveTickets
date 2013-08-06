@@ -50,6 +50,9 @@ public class ConfServer extends SimpleConfig
 	public static List<String> aliasesInnerTicketsWorking = MUtil.list("w", "working");
 	public static List<String> aliasesOuterTicketsWorking = new ArrayList<String>();
 	
+	public static List<String> aliasesInnerTicketsCheat = MUtil.list("cheat");
+	public static List<String> aliasesOuterTicketsCheat = new ArrayList<String>();
+	
 	public static List<String> aliasesInnerTicketsVersion = MUtil.list("v", "version");
 	public static List<String> aliasesOuterTicketsVersion = new ArrayList<String>();
 	

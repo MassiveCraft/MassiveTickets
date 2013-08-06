@@ -362,38 +362,47 @@ public class MPlayer extends SenderEntity<MPlayer>
 		// Highscore, Point and Level time! \:3/ LEL
 		if (receiver != null)
 		{
-			int year = MassiveTickets.getCurrentYear();
-			int week = MassiveTickets.getCurrentWeek();
-			
-			int countBefore = receiver.getCount(year, week);
-			int countAfter = countBefore + 1;
-			receiver.setCount(year, week, countAfter);
-			
-			// Let there be party if the level changed
-			Level levelBefore = MConf.get().getLevelForCount(countBefore);
-			Level levelAfter = MConf.get().getLevelForCount(countAfter);
-			boolean party = (!levelAfter.equals(levelBefore));
-			
-			if (party)
-			{
-				MassiveTickets.alertModeratorsMsg("<white>%s<pink> has done <aqua>%d <pink>tickets this week!", receiver.getDisplayName(), countAfter);
-				MassiveTickets.alertModeratorsMsg("<bold><em>%s", levelAfter.getName());
-				
-				levelAfter.getReaction().run(receiver.getId(), this.getId());
-				
-				// TODO: Play party sound
-			}
-			else
-			{
-				
-				// TODO: Play non-party sound
-			}
+			receiver.givePoint(this.getId());
 		}
 		
 		// Apply
 		this.setMessage(null);
 		this.setMillis(null);
 		this.setModeratorId(null);
+	}
+	
+	// -------------------------------------------- //
+	// GIVE POINT
+	// -------------------------------------------- //
+	
+	public void givePoint(String playerId)
+	{
+		int year = MassiveTickets.getCurrentYear();
+		int week = MassiveTickets.getCurrentWeek();
+		
+		int countBefore = this.getCount(year, week);
+		int countAfter = countBefore + 1;
+		this.setCount(year, week, countAfter);
+		
+		// Let there be party if the level changed
+		Level levelBefore = MConf.get().getLevelForCount(countBefore);
+		Level levelAfter = MConf.get().getLevelForCount(countAfter);
+		boolean party = (!levelAfter.equals(levelBefore));
+		
+		if (party)
+		{
+			MassiveTickets.alertModeratorsMsg("<white>%s<pink> has done <aqua>%d <pink>tickets this week!", this.getDisplayName(), countAfter);
+			MassiveTickets.alertModeratorsMsg("<bold><em>%s", levelAfter.getName());
+			
+			levelAfter.getReaction().run(this.getId(), playerId);
+			
+			// TODO: Play party sound
+		}
+		else
+		{
+			
+			// TODO: Play non-party sound
+		}
 	}
 	
 }

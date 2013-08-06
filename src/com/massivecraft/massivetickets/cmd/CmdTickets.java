@@ -20,6 +20,7 @@ public class CmdTickets extends MassiveTicketsCommand
 	public CmdTicketsHighscore cmdTicketsHighscore = new CmdTicketsHighscore(ConfServer.aliasesInnerTicketsHighscore);
 	public CmdTicketsModlist cmdTicketsModlist = new CmdTicketsModlist(ConfServer.aliasesInnerTicketsModlist);
 	public CmdTicketsWorking cmdTicketsWorking = new CmdTicketsWorking(ConfServer.aliasesInnerTicketsWorking);
+	public CmdTicketsCheat cmdTicketsCheat = new CmdTicketsCheat(ConfServer.aliasesInnerTicketsCheat);
 	public VersionCommand cmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node, ConfServer.aliasesInnerTicketsVersion);
 	
 	public CmdTickets(List<String> aliases)
@@ -37,6 +38,7 @@ public class CmdTickets extends MassiveTicketsCommand
 		this.addSubCommand(this.cmdTicketsHighscore);
 		this.addSubCommand(this.cmdTicketsModlist);
 		this.addSubCommand(this.cmdTicketsWorking);
+		this.addSubCommand(this.cmdTicketsCheat);
 		this.addSubCommand(this.cmdTicketsVersion);
 		
 		this.addRequirements(ReqHasPerm.get(Perm.BASECOMMAND.node));

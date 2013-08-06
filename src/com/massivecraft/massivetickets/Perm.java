@@ -23,6 +23,7 @@ public enum Perm
 	HIGHSCORE("highscore"),
 	MODLIST("modlist"),
 	WORKING("working"),
+	CHEAT("cheat"),
 	VERSION("version"),
 	
 	// END OF LIST
