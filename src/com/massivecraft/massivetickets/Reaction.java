@@ -93,14 +93,12 @@ public final class Reaction
 		
 		if (moderatorId != null)
 		{
-			cmd = cmd.replace("{m}", moderatorId);
+			cmd = cmd.replace("{m}", Mixin.tryFix(moderatorId));
 		}
 		if (playerId != null)
 		{
-			cmd = cmd.replace("{p}", playerId);
+			cmd = cmd.replace("{p}", Mixin.tryFix(playerId));
 		}
-		
-		
 		
 		return cmd;
 	}
