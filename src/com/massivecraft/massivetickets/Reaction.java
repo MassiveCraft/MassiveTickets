@@ -88,6 +88,9 @@ public final class Reaction
 	{
 		cmd = Txt.removeLeadingCommandDust(cmd);
 		
+		cmd = cmd.replace("{w}", String.valueOf(MassiveTickets.getCurrentWeek()));
+		cmd = cmd.replace("{y}", String.valueOf(MassiveTickets.getCurrentYear()));
+		
 		if (moderatorId != null)
 		{
 			cmd = cmd.replace("{m}", moderatorId);
@@ -96,6 +99,8 @@ public final class Reaction
 		{
 			cmd = cmd.replace("{p}", playerId);
 		}
+		
+		
 		
 		return cmd;
 	}
