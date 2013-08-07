@@ -248,12 +248,12 @@ public class MConf extends Entity<MConf>
 			)
 		),
 		99, Level.valueOf(
-			"Close but no Cigarr",
+			"Close but no Cigar",
 			Reaction.valueOf(
 				null,
 				null,
 				MUtil.list(
-					"give {m} 391 1 name:No_Cigarr! lore:So_you_thought_this_was_a_cigarr?|You're_wearing_that_trendy_headband_aren't_you? BaneofArthropods:3"
+					"give {m} 391 1 name:No_Cigar! lore:So_you_thought_this_was_a_cigar?|You're_wearing_that_trendy_headband_aren't_you? BaneofArthropods:3"
 				)
 			)
 		),
@@ -291,12 +291,12 @@ public class MConf extends Entity<MConf>
 			)
 		),
 		199, Level.valueOf(
-			"Yes Cigarr!",
+			"Yes Cigar!",
 			Reaction.valueOf(
 				null,
 				null,
 				MUtil.list(
-					"give {m} 396 1 name:Yes_Cigarr!"
+					"give {m} 396 1 name:Yes_Cigar!"
 				)
 			)
 		),
