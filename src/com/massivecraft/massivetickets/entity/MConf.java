@@ -201,7 +201,7 @@ public class MConf extends Entity<MConf>
 				null,
 				null,
 				MUtil.list(
-					"give {m} 347 1 name:Honorable_Helper_{m}_{y}_{w} lore:{m}_did_50_tickets_Year_{y}_Week_{w}.|For_this_we_grant_the_Honorable_Helper_Award.|So_Hysterically_Honorable!",
+					"give {m} 347 1 name:Honorable_Helper_{m}_{y}_{w} lore:{m}_did_50_tickets_Year_{y}_Week_{w}.|For_this_we_grant_the_Honorable_Helper_Award.|So_Hysterically_Honorable! unbreaking:3",
 					"give {m} 280 1 name:Pathetic_Pokingstick unbreaking:3 knockback:1 lore:What_an_outrageously_pathetic_poking_device!",
 					"money give {m} 20"
 				)
@@ -263,7 +263,7 @@ public class MConf extends Entity<MConf>
 				null,
 				null,
 				MUtil.list(
-					"give {m} 399 1 name:Magnificent_Moderator_{m}_{y}_{w} lore:{m}_did_100_tickets_Year_{y}_Week_{w}.|For_this_we_grant_the_Magnificent_Moderator_Award.|So_Marvelously_Magnificent!",
+					"give {m} 396 1 name:Magnificent_Moderator_{m}_{y}_{w} lore:{m}_did_100_tickets_Year_{y}_Week_{w}.|For_this_we_grant_the_Magnificent_Moderator_Award.|So_Marvelously_Magnificent! unbreaking:3",
 					"give {m} 369 1 name:Powerful_Pokingstick unbreaking:3 knockback:3 lore:Quite_a_powerful_poking_device!",
 					"give {m} 400 1 name:Pie_of_Prosperity lore:This_pie_is_so_hard_it's_almost_inedible.|Could_rather_be_used_to_bash_heads_in. looting:3",
 					"money give {m} 50"
