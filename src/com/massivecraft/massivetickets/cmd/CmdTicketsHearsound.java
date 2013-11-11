@@ -11,10 +11,8 @@ import com.massivecraft.mcore.cmd.req.ReqIsPlayer;
 
 public class CmdTicketsHearsound extends MassiveTicketsCommand
 {
-	public CmdTicketsHearsound(List<String> aliases)
+	public CmdTicketsHearsound()
 	{
-		super(aliases);
-		
 		this.addRequiredArg("sound(s)");
 		
 		this.setErrorOnToManyArgs(false);

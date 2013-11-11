@@ -1,37 +1,38 @@
 package com.massivecraft.massivetickets;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.Plugin;
 
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.massivetickets.predictate.IsModeratorPredictate;
+import com.massivecraft.mcore.EngineAbstract;
 import com.massivecraft.mcore.event.MCorePlayerLeaveEvent;
 import com.massivecraft.mcore.mixin.Mixin;
 
 
-public class MainListener implements Listener
+public class EngineMain extends EngineAbstract
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static MainListener i = new MainListener();
-	public static MainListener get() { return i; }
-	public MainListener() {}
+	private static EngineMain i = new EngineMain();
+	public static EngineMain get() { return i; }
+	public EngineMain() {}
 	
 	// -------------------------------------------- //
-	// SETUP
+	// OVERRIDE
 	// -------------------------------------------- //
 	
-	public void setup()
+	@Override
+	public Plugin getPlugin()
 	{
-		Bukkit.getPluginManager().registerEvents(this, MassiveTickets.get());
+		return MassiveTickets.get();
 	}
 	
 	// -------------------------------------------- //

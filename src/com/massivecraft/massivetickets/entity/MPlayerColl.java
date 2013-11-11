@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.massivecraft.massivetickets.ConfServer;
 import com.massivecraft.massivetickets.Const;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.predictate.IsCurrentlyWorkingPredictate;
@@ -22,7 +21,7 @@ public class MPlayerColl extends SenderColl<MPlayer>
 	public static MPlayerColl get() { return i; }
 	private MPlayerColl()
 	{
-		super(Const.COLLECTION_BASENAME_MPLAYER, MPlayer.class, MStore.getDb(ConfServer.dburi), MassiveTickets.get());
+		super(Const.COLLECTION_BASENAME_MPLAYER, MPlayer.class, MStore.getDb(), MassiveTickets.get());
 	}
 	
 	// -------------------------------------------- //

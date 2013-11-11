@@ -1,5 +1,7 @@
 package com.massivecraft.massivetickets.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
@@ -23,6 +25,46 @@ public class MConf extends Entity<MConf>
 	// -------------------------------------------- //
 	// FIELDS
 	// -------------------------------------------- //
+	
+	// Command Aliases
+	
+	public List<String> aliasesOuterTickets = MUtil.list("t", "tickets", "ticket");
+	
+	public List<String> aliasesInnerTicketsList = MUtil.list("l", "list");
+	public List<String> aliasesOuterTicketsList = new ArrayList<String>();
+	
+	public List<String> aliasesInnerTicketsShow = MUtil.list("s", "show");
+	public List<String> aliasesOuterTicketsShow = new ArrayList<String>();
+	
+	public List<String> aliasesInnerTicketsCreate = MUtil.list("c", "create");
+	public List<String> aliasesOuterTicketsCreate = MUtil.list("helpop", "modreq");
+	
+	public List<String> aliasesInnerTicketsDone = MUtil.list("d", "done");
+	public List<String> aliasesOuterTicketsDone = new ArrayList<String>();
+	
+	public List<String> aliasesInnerTicketsPick = MUtil.list("p", "pick");
+	public List<String> aliasesOuterTicketsPick = new ArrayList<String>();
+	
+	public List<String> aliasesInnerTicketsYield = MUtil.list("y", "yield");
+	public List<String> aliasesOuterTicketsYield = new ArrayList<String>();
+	
+	public List<String> aliasesInnerTicketsHighscore = MUtil.list("hs", "highscore");
+	public List<String> aliasesOuterTicketsHighscore = new ArrayList<String>();
+	
+	public List<String> aliasesInnerTicketsModlist = MUtil.list("m", "modlist");
+	public List<String> aliasesOuterTicketsModlist = MUtil.list("modlist");
+	
+	public List<String> aliasesInnerTicketsWorking = MUtil.list("w", "working");
+	public List<String> aliasesOuterTicketsWorking = new ArrayList<String>();
+	
+	public List<String> aliasesInnerTicketsCheat = MUtil.list("cheat");
+	public List<String> aliasesOuterTicketsCheat = new ArrayList<String>();
+	
+	public List<String> aliasesInnerTicketsHearsound = MUtil.list("hearsound");
+	public List<String> aliasesOuterTicketsHearsound = new ArrayList<String>();
+	
+	public List<String> aliasesInnerTicketsVersion = MUtil.list("v", "version");
+	public List<String> aliasesOuterTicketsVersion = new ArrayList<String>();
 	
 	// Format
 	

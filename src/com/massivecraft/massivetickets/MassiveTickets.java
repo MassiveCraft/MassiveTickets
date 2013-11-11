@@ -93,55 +93,52 @@ public class MassiveTickets extends MPlugin
 	{
 		if ( ! preEnable()) return;
 		
-		// Load Server Config
-		ConfServer.get().load();
-		
 		// Initialize Database
 		MConfColl.get().init();
 		MPlayerColl.get().init();
 		
 		// Commands
-		this.outerCmdTickets = new CmdTickets(ConfServer.aliasesOuterTickets);
-		this.outerCmdTickets.register(this);
+		this.outerCmdTickets = new CmdTickets() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTickets; } };
+		this.outerCmdTickets.register();
 		
-		this.outerCmdTicketsList = new CmdTicketsList(ConfServer.aliasesOuterTicketsList);
-		this.outerCmdTicketsList.register(this);
+		this.outerCmdTicketsList = new CmdTicketsList() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsList; } };
+		this.outerCmdTicketsList.register();
 		
-		this.outerCmdTicketsShow = new CmdTicketsShow(ConfServer.aliasesOuterTicketsShow);
-		this.outerCmdTicketsShow.register(this);
+		this.outerCmdTicketsShow = new CmdTicketsShow() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsShow; } };
+		this.outerCmdTicketsShow.register();
 		
-		this.outerCmdTicketsCreate = new CmdTicketsCreate(ConfServer.aliasesOuterTicketsCreate);
-		this.outerCmdTicketsCreate.register(this);
+		this.outerCmdTicketsCreate = new CmdTicketsCreate() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsCreate; } };
+		this.outerCmdTicketsCreate.register();
 		
-		this.outerCmdTicketsDone = new CmdTicketsDone(ConfServer.aliasesOuterTicketsDone);
-		this.outerCmdTicketsDone.register(this);
+		this.outerCmdTicketsDone = new CmdTicketsDone() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsDone; } };
+		this.outerCmdTicketsDone.register();
 		
-		this.outerCmdTicketsPick = new CmdTicketsPick(ConfServer.aliasesOuterTicketsPick);
-		this.outerCmdTicketsPick.register(this);
+		this.outerCmdTicketsPick = new CmdTicketsPick() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsPick; } };
+		this.outerCmdTicketsPick.register();
 		
-		this.outerCmdTicketsYield = new CmdTicketsYield(ConfServer.aliasesOuterTicketsYield);
-		this.outerCmdTicketsYield.register(this);
+		this.outerCmdTicketsYield = new CmdTicketsYield() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsYield; } };
+		this.outerCmdTicketsYield.register();
 		
-		this.outerCmdTicketsHighscore = new CmdTicketsHighscore(ConfServer.aliasesOuterTicketsHighscore);
-		this.outerCmdTicketsHighscore.register(this);
+		this.outerCmdTicketsHighscore = new CmdTicketsHighscore() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsHighscore; } };
+		this.outerCmdTicketsHighscore.register();
 		
-		this.outerCmdTicketsModlist = new CmdTicketsModlist(ConfServer.aliasesOuterTicketsModlist);
-		this.outerCmdTicketsModlist.register(this);
+		this.outerCmdTicketsModlist = new CmdTicketsModlist() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsModlist; } };
+		this.outerCmdTicketsModlist.register();
 		
-		this.outerCmdTicketsWorking = new CmdTicketsWorking(ConfServer.aliasesOuterTicketsWorking);
-		this.outerCmdTicketsWorking.register(this);
+		this.outerCmdTicketsWorking = new CmdTicketsWorking() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsWorking; } };
+		this.outerCmdTicketsWorking.register();
 		
-		this.outerCmdTicketsCheat = new CmdTicketsCheat(ConfServer.aliasesOuterTicketsCheat);
-		this.outerCmdTicketsCheat.register(this);
+		this.outerCmdTicketsCheat = new CmdTicketsCheat() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsCheat; } };
+		this.outerCmdTicketsCheat.register();
 		
-		this.outerCmdTicketsHearsound = new CmdTicketsHearsound(ConfServer.aliasesOuterTicketsHearsound);
-		this.outerCmdTicketsHearsound.register(this);
+		this.outerCmdTicketsHearsound = new CmdTicketsHearsound() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsHearsound; } };
+		this.outerCmdTicketsHearsound.register();
 		
-		this.outerCmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node, ConfServer.aliasesOuterTicketsVersion);
-		this.outerCmdTicketsVersion.register(this);
+		this.outerCmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node) { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsVersion; } };
+		this.outerCmdTicketsVersion.register();
 
-		// Setup Listeners
-		MainListener.get().setup();
+		// Engines
+		EngineMain.get().activate();
 		
 		// Schedule recurring non-tps-dependent tasks
 		BumpTask.get().schedule(this);

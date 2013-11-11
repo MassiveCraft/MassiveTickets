@@ -10,10 +10,8 @@ import com.massivecraft.mcore.util.Txt;
 
 public class CmdTicketsList extends MassiveTicketsCommand
 {
-	public CmdTicketsList(List<String> aliases)
+	public CmdTicketsList()
 	{
-		super(aliases);
-		
 		this.addOptionalArg("page", "1");
 		
 		this.addRequirements(ReqHasPerm.get(Perm.LIST.node));

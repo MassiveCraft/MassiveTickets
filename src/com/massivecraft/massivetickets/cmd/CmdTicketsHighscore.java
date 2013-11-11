@@ -1,7 +1,6 @@
 package com.massivecraft.massivetickets.cmd;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -18,10 +17,8 @@ import com.massivecraft.mcore.util.Txt;
 
 public class CmdTicketsHighscore extends MassiveTicketsCommand
 {
-	public CmdTicketsHighscore(List<String> aliases)
+	public CmdTicketsHighscore()
 	{
-		super(aliases);
-		
 		this.addOptionalArg("week", "now");
 		
 		this.addOptionalArg("year", "now");

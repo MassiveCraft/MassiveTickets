@@ -1,7 +1,6 @@
 package com.massivecraft.massivetickets.cmd;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.ARMPlayer;
@@ -14,10 +13,8 @@ import com.massivecraft.mcore.util.Txt;
 
 public class CmdTicketsShow extends MassiveTicketsCommand
 {
-	public CmdTicketsShow(List<String> aliases)
+	public CmdTicketsShow()
 	{
-		super(aliases);
-		
 		this.addOptionalArg("player", "you");
 		
 		this.addRequirements(ReqHasPerm.get(Perm.SHOW.node));

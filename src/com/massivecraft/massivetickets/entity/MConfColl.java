@@ -1,6 +1,5 @@
 package com.massivecraft.massivetickets.entity;
 
-import com.massivecraft.massivetickets.ConfServer;
 import com.massivecraft.massivetickets.Const;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.mcore.MCore;
@@ -17,7 +16,7 @@ public class MConfColl extends Coll<MConf>
 	public static MConfColl get() { return i; }
 	private MConfColl()
 	{
-		super(Const.COLLECTION_BASENAME_MCONF, MConf.class, MStore.getDb(ConfServer.dburi), MassiveTickets.get());
+		super(Const.COLLECTION_BASENAME_MCONF, MConf.class, MStore.getDb(), MassiveTickets.get());
 	}
 	
 	// -------------------------------------------- //

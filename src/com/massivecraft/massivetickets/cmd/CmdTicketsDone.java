@@ -1,7 +1,5 @@
 package com.massivecraft.massivetickets.cmd;
 
-import java.util.List;
-
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.ARMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
@@ -10,10 +8,8 @@ import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 
 public class CmdTicketsDone extends MassiveTicketsCommand
 {
-	public CmdTicketsDone(List<String> aliases)
+	public CmdTicketsDone()
 	{
-		super(aliases);
-		
 		this.addOptionalArg("player", "you");
 		
 		this.addRequirements(ReqHasPerm.get(Perm.DONE.node));

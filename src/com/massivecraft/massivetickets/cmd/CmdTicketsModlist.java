@@ -11,10 +11,8 @@ import com.massivecraft.mcore.util.Txt;
 
 public class CmdTicketsModlist extends MassiveTicketsCommand
 {
-	public CmdTicketsModlist(List<String> aliases)
+	public CmdTicketsModlist()
 	{
-		super(aliases);
-		
 		this.addRequirements(ReqHasPerm.get(Perm.MODLIST.node));
 	}
 	

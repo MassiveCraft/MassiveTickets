@@ -1,7 +1,5 @@
 package com.massivecraft.massivetickets.cmd;
 
-import java.util.List;
-
 import org.bukkit.ChatColor;
 
 import com.massivecraft.massivetickets.MassiveTickets;
@@ -14,10 +12,8 @@ import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 
 public class CmdTicketsCreate extends MassiveTicketsCommand
 {
-	public CmdTicketsCreate(List<String> aliases)
+	public CmdTicketsCreate()
 	{
-		super(aliases);
-		
 		this.addRequiredArg("message");
 		this.setErrorOnToManyArgs(false);
 		
