@@ -1,7 +1,6 @@
 package com.massivecraft.massivetickets.entity;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -261,6 +260,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 	// FIELDS: HIGH
 	// -------------------------------------------- //
 	
+	
 	/**
 	 * @return The oneliner to be used in the ticket list
 	 */
@@ -284,7 +284,13 @@ public class MPlayer extends SenderEntity<MPlayer>
 		if (this.hasMessage())
 		{
 			builder.append(Txt.parse(" <pink>"));
-			builder.append(this.getMessage());
+			
+			String message = this.getMessage();
+			if (message.length() > MConf.get().getExcerptLength())
+			{
+				message = message.substring(0, MConf.get().getExcerptLength());
+			}
+			builder.append(message);
 		}
 		else
 		{
@@ -292,14 +298,6 @@ public class MPlayer extends SenderEntity<MPlayer>
 		}
 		
 		String ret = builder.toString();
-		
-		// Avoid line wraps!
-		List<String> wrapped = Txt.wrap(ret);
-		if (wrapped.size() > 1)
-		{
-			ret = ret.substring(0, ret.length()-3);
-			ret += Txt.parse("<silver>...");
-		}
 		
 		return ret;
 	}

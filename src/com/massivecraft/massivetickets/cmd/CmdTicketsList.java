@@ -20,13 +20,12 @@ public class CmdTicketsList extends MassiveTicketsCommand
 	@Override
 	public void perform()
 	{
-		// Parse parameters
+		// Args
 		Integer pageHumanBased = this.arg(0, ARInteger.get(), 1);
 		if (pageHumanBased == null) return;
 		
 		// Create Lines
 		List<String> lines = MPlayerColl.get().getAllTicketListLines();
-		lines = Txt.parseWrap(lines);
 		
 		// Send them
 		this.sendMessage(Txt.getPage(lines, pageHumanBased, "Ticket List", sender));		

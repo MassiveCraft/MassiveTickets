@@ -72,6 +72,10 @@ public class MConf extends Entity<MConf>
 	public String getPrefix() { return this.prefix; }
 	public void setPrefix(String prefix) { this.prefix = prefix; this.changed(); }
 	
+	private int excerptLength = 10;
+	public int getExcerptLength() { return this.excerptLength; }
+	public void setExcerptLength(int excerptLength) { this.excerptLength = excerptLength; this.changed(); }
+	
 	// Bump
 	
 	private boolean bumpOnJoinActive = true;
