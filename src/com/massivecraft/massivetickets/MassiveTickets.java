@@ -2,8 +2,8 @@ package com.massivecraft.massivetickets;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.bukkit.command.CommandSender;
@@ -152,12 +152,12 @@ public class MassiveTickets extends MPlugin
 	
 	public static int getCurrentYear()
 	{
-		return Calendar.getInstance().get(Calendar.YEAR);
+		return GregorianCalendar.getInstance().getWeekYear();
 	}
 	
 	public static int getCurrentWeek()
 	{
-		return Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
+		return GregorianCalendar.getInstance().get(GregorianCalendar.WEEK_OF_YEAR);
 	}
 	
 	// -------------------------------------------- //
