@@ -138,6 +138,7 @@ public class MassiveTickets extends MPlugin
 		this.outerCmdTicketsVersion.register();
 
 		// Engines
+		EngineIdUpdate.get().activate();
 		EngineMain.get().activate();
 		
 		// Schedule recurring non-tps-dependent tasks
@@ -189,7 +190,7 @@ public class MassiveTickets extends MPlugin
 		{
 			target.add(Txt.parse(MConf.get().getPrefix()) + message);
 		}
-		return Mixin.message(IsModeratorPredictate.get(), target);
+		return Mixin.messagePredictate(IsModeratorPredictate.get(), target);
 	}
 	
 	// One
@@ -208,7 +209,7 @@ public class MassiveTickets extends MPlugin
 		{
 			target.add(Txt.parse(MConf.get().getPrefix()) + message);
 		}
-		return Mixin.message(sender, target);
+		return Mixin.messageOne(sender, target);
 	}
 	
 	// One by id
@@ -227,17 +228,17 @@ public class MassiveTickets extends MPlugin
 		{
 			target.add(Txt.parse(MConf.get().getPrefix()) + message);
 		}
-		return Mixin.message(senderId, target);
+		return Mixin.messageOne(senderId, target);
 	}
 
 	// All Moderators
 	public static boolean alertModeratorsMsg(String msg) // WORKS
 	{
-		return Mixin.msg(IsModeratorPredictate.get(), MConf.get().getPrefix() + msg);
+		return Mixin.msgPredictate(IsModeratorPredictate.get(), MConf.get().getPrefix() + msg);
 	}
 	public static boolean alertModeratorsMsg(String msg, Object... args)
 	{
-		return Mixin.msg(IsModeratorPredictate.get(), MConf.get().getPrefix() + msg, args);
+		return Mixin.msgPredictate(IsModeratorPredictate.get(), MConf.get().getPrefix() + msg, args);
 	}
 	public static boolean alertModeratorsMsg(Collection<String> msgs)
 	{
@@ -246,17 +247,17 @@ public class MassiveTickets extends MPlugin
 		{
 			target.add(MConf.get().getPrefix() + msg);
 		}
-		return Mixin.msg(IsModeratorPredictate.get(), target);
+		return Mixin.msgPredictate(IsModeratorPredictate.get(), target);
 	}
 	
 	// One
 	public static boolean alertOneMsg(CommandSender sender, String msg)
 	{
-		return Mixin.msg(sender, MConf.get().getPrefix() + msg);
+		return Mixin.msgOne(sender, MConf.get().getPrefix() + msg);
 	}
 	public static boolean alertOneMsg(CommandSender sender, String msg, Object... args)
 	{
-		return Mixin.msg(sender, MConf.get().getPrefix() + msg, args);
+		return Mixin.msgOne(sender, MConf.get().getPrefix() + msg, args);
 	}
 	public static boolean alertOneMsg(CommandSender sender, Collection<String> msgs)
 	{
@@ -265,17 +266,17 @@ public class MassiveTickets extends MPlugin
 		{
 			target.add(MConf.get().getPrefix() + msg);
 		}
-		return Mixin.msg(sender, target);
+		return Mixin.msgOne(sender, target);
 	}
 	
 	// One by id
 	public static boolean alertOneMsg(String senderId, String msg)
 	{
-		return Mixin.msg(senderId, MConf.get().getPrefix() + msg);
+		return Mixin.msgOne(senderId, MConf.get().getPrefix() + msg);
 	}
 	public static boolean alertOneMsg(String senderId, String msg, Object... args)
 	{
-		return Mixin.msg(senderId, MConf.get().getPrefix() + msg, args);
+		return Mixin.msgOne(senderId, MConf.get().getPrefix() + msg, args);
 	}
 	public static boolean alertOneMsg(String senderId, Collection<String> msgs)
 	{
@@ -284,7 +285,7 @@ public class MassiveTickets extends MPlugin
 		{
 			target.add(MConf.get().getPrefix() + msg);
 		}
-		return Mixin.msg(senderId, target);
+		return Mixin.msgOne(senderId, target);
 	}
 	
 }

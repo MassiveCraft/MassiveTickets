@@ -12,8 +12,8 @@ import org.bukkit.command.CommandSender;
 import com.massivecraft.massivetickets.Level;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.mcore.store.SenderEntity;
+import com.massivecraft.mcore.util.IdUtil;
 import com.massivecraft.mcore.util.MUtil;
-import com.massivecraft.mcore.util.SenderUtil;
 import com.massivecraft.mcore.util.Txt;
 
 public class MPlayer extends SenderEntity<MPlayer>
@@ -226,7 +226,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 	}
 	public void setModerator(CommandSender moderator)
 	{
-		this.setModeratorId(SenderUtil.getSenderId(moderator));
+		this.setModeratorId(IdUtil.getId(moderator));
 	}
 	
 	// FIELD: COUNT
