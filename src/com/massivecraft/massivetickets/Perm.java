@@ -2,7 +2,7 @@ package com.massivecraft.massivetickets;
 
 import org.bukkit.permissions.Permissible;
 
-import com.massivecraft.mcore.util.PermUtil;
+import com.massivecraft.massivecore.util.PermUtil;
 
 public enum Perm
 {
@@ -24,7 +24,6 @@ public enum Perm
 	MODLIST("modlist"),
 	WORKING("working"),
 	CHEAT("cheat"),
-	HEARSOUND("hearsound"),
 	VERSION("version"),
 	
 	// END OF LIST

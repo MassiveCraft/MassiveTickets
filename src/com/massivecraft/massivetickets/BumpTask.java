@@ -3,11 +3,11 @@ package com.massivecraft.massivetickets;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import com.massivecraft.massivecore.ModuloRepeatTask;
+import com.massivecraft.massivecore.util.TimeUnit;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
 import com.massivecraft.massivetickets.predictate.IsModeratorPredictate;
-import com.massivecraft.mcore.ModuloRepeatTask;
-import com.massivecraft.mcore.util.TimeUnit;
 
 public class BumpTask extends ModuloRepeatTask
 {

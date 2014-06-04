@@ -1,9 +1,9 @@
 package com.massivecraft.massivetickets.cmd;
 
+import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.ARMPlayer;
 import com.massivecraft.massivetickets.entity.MPlayer;
-import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 
 public class CmdTicketsCheat extends MassiveTicketsCommand
 {

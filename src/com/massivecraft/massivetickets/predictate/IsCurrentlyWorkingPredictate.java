@@ -2,8 +2,8 @@ package com.massivecraft.massivetickets.predictate;
 
 import java.io.Serializable;
 
+import com.massivecraft.massivecore.Predictate;
 import com.massivecraft.massivetickets.entity.MPlayer;
-import com.massivecraft.mcore.Predictate;
 
 public class IsCurrentlyWorkingPredictate implements Predictate<MPlayer>, Serializable
 {

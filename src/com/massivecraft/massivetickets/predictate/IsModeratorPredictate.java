@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 import org.bukkit.command.CommandSender;
 
+import com.massivecraft.massivecore.Predictate;
 import com.massivecraft.massivetickets.Perm;
-import com.massivecraft.mcore.Predictate;
 
 public class IsModeratorPredictate implements Predictate<CommandSender>, Serializable
 {

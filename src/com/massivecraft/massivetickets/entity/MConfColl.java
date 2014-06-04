@@ -1,10 +1,10 @@
 package com.massivecraft.massivetickets.entity;
 
+import com.massivecraft.massivecore.MassiveCore;
+import com.massivecraft.massivecore.store.Coll;
+import com.massivecraft.massivecore.store.MStore;
 import com.massivecraft.massivetickets.Const;
 import com.massivecraft.massivetickets.MassiveTickets;
-import com.massivecraft.mcore.MCore;
-import com.massivecraft.mcore.store.Coll;
-import com.massivecraft.mcore.store.MStore;
 
 public class MConfColl extends Coll<MConf>
 {
@@ -28,7 +28,7 @@ public class MConfColl extends Coll<MConf>
 	{
 		super.init();
 		
-		MConf.i = this.get(MCore.INSTANCE, true);
+		MConf.i = this.get(MassiveCore.INSTANCE, true);
 	}
 	
 }

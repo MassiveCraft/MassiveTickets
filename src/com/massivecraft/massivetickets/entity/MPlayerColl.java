@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.massivecraft.massivecore.store.MStore;
+import com.massivecraft.massivecore.store.SenderColl;
 import com.massivecraft.massivetickets.Const;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.predictate.IsCurrentlyWorkingPredictate;
 import com.massivecraft.massivetickets.predictate.IsTicketPredictate;
-import com.massivecraft.mcore.store.MStore;
-import com.massivecraft.mcore.store.SenderColl;
 
 public class MPlayerColl extends SenderColl<MPlayer>
 {

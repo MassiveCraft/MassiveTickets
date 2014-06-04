@@ -1,7 +1,7 @@
 package com.massivecraft.massivetickets.entity;
 
-import com.massivecraft.mcore.cmd.arg.ARSenderEntity;
-import com.massivecraft.mcore.cmd.arg.ArgReader;
+import com.massivecraft.massivecore.cmd.arg.ARSenderEntity;
+import com.massivecraft.massivecore.cmd.arg.ArgReader;
 
 public class ARMPlayer
 {

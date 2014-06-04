@@ -1,10 +1,10 @@
 package com.massivecraft.massivetickets.cmd;
 
+import com.massivecraft.massivecore.cmd.MassiveCommand;
+import com.massivecraft.massivecore.cmd.VisibilityMode;
 import com.massivecraft.massivetickets.entity.MPlayer;
-import com.massivecraft.mcore.cmd.MCommand;
-import com.massivecraft.mcore.cmd.VisibilityMode;
 
-public abstract class MassiveTicketsCommand extends MCommand
+public abstract class MassiveTicketsCommand extends MassiveCommand
 {
 	public MPlayer msender;
 	

@@ -8,10 +8,10 @@ import java.util.TreeMap;
 
 import org.bukkit.event.EventPriority;
 
+import com.massivecraft.massivecore.store.Entity;
+import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivetickets.Level;
 import com.massivecraft.massivetickets.Reaction;
-import com.massivecraft.mcore.store.Entity;
-import com.massivecraft.mcore.util.MUtil;
 
 public class MConf extends Entity<MConf>
 {
@@ -28,7 +28,7 @@ public class MConf extends Entity<MConf>
 	
 	// Command Aliases
 	
-	public List<String> aliasesOuterTickets = MUtil.list("t", "tickets", "ticket");
+	public List<String> aliasesOuterTickets = MUtil.list("t", "ti", "ticket", "tickets", "massiveticket", "massivetickets", "mt");
 	
 	public List<String> aliasesInnerTicketsList = MUtil.list("l", "list");
 	public List<String> aliasesOuterTicketsList = new ArrayList<String>();
@@ -59,9 +59,6 @@ public class MConf extends Entity<MConf>
 	
 	public List<String> aliasesInnerTicketsCheat = MUtil.list("cheat");
 	public List<String> aliasesOuterTicketsCheat = new ArrayList<String>();
-	
-	public List<String> aliasesInnerTicketsHearsound = MUtil.list("hearsound");
-	public List<String> aliasesOuterTicketsHearsound = new ArrayList<String>();
 	
 	public List<String> aliasesInnerTicketsVersion = MUtil.list("v", "version");
 	public List<String> aliasesOuterTicketsVersion = new ArrayList<String>();
@@ -106,7 +103,7 @@ public class MConf extends Entity<MConf>
 	
 	private Reaction doneReactionNormal = Reaction.valueOf(
 		MUtil.list(
-			"ticket hearsound ORB_PICKUP,0.8,0.7 LEVEL_UP,1.0,1.0"
+			"massivecore hearsound ORB_PICKUP,0.8,0.7 LEVEL_UP,1.0,1.0"
 		),
 		null,
 		null
@@ -116,7 +113,7 @@ public class MConf extends Entity<MConf>
 	
 	private Reaction doneReactionLevel = Reaction.valueOf(
 		MUtil.list(
-			"ticket hearsound WITHER_SPAWN,0.5,1.4 ORB_PICKUP,0.8,0.7 LEVEL_UP,1.0,1.0"
+			"massivecore hearsound WITHER_SPAWN,0.5,1.4 ORB_PICKUP,0.8,0.7 LEVEL_UP,1.0,1.0"
 		),
 		null,
 		null

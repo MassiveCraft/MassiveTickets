@@ -3,16 +3,15 @@ package com.massivecraft.massivetickets;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 
+import com.massivecraft.massivecore.EngineAbstract;
+import com.massivecraft.massivecore.event.EventMassiveCorePlayerLeave;
+import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.massivetickets.predictate.IsModeratorPredictate;
-import com.massivecraft.mcore.EngineAbstract;
-import com.massivecraft.mcore.event.MCorePlayerLeaveEvent;
-import com.massivecraft.mcore.mixin.Mixin;
 
 
 public class EngineMain extends EngineAbstract
@@ -123,7 +122,7 @@ public class EngineMain extends EngineAbstract
 	// -------------------------------------------- //
 	
 	@EventHandler(priority = EventPriority.NORMAL)
-	public void doneMarkOnLeave(MCorePlayerLeaveEvent event)
+	public void doneMarkOnLeave(EventMassiveCorePlayerLeave event)
 	{
 		// If a player is leaving the server ...
 		final Player player = event.getPlayer();

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.massivecraft.mcore.mixin.Mixin;
-import com.massivecraft.mcore.util.IdUtil;
-import com.massivecraft.mcore.util.Txt;
+import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.Txt;
 
 public final class Reaction
 {

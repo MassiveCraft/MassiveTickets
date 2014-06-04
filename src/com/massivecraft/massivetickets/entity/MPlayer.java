@@ -9,12 +9,12 @@ import java.util.TreeSet;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
+import com.massivecraft.massivecore.store.SenderEntity;
+import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.MUtil;
+import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.Level;
 import com.massivecraft.massivetickets.MassiveTickets;
-import com.massivecraft.mcore.store.SenderEntity;
-import com.massivecraft.mcore.util.IdUtil;
-import com.massivecraft.mcore.util.MUtil;
-import com.massivecraft.mcore.util.Txt;
 
 public class MPlayer extends SenderEntity<MPlayer>
 {

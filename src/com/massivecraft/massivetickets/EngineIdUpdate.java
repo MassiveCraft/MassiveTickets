@@ -4,10 +4,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.plugin.Plugin;
 
+import com.massivecraft.massivecore.EngineAbstract;
+import com.massivecraft.massivecore.event.EventMassiveCoreUuidUpdate;
+import com.massivecraft.massivecore.util.IdUpdateUtil;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
-import com.massivecraft.mcore.EngineAbstract;
-import com.massivecraft.mcore.event.MCoreUuidUpdateEvent;
-import com.massivecraft.mcore.util.IdUpdateUtil;
 
 public class EngineIdUpdate extends EngineAbstract
 {
@@ -33,7 +33,7 @@ public class EngineIdUpdate extends EngineAbstract
 	// -------------------------------------------- //
 
 	@EventHandler(priority = EventPriority.MONITOR)
-	public void onUuidUpdate(MCoreUuidUpdateEvent event)
+	public void onUuidUpdate(EventMassiveCoreUuidUpdate event)
 	{
 		IdUpdateUtil.update(MPlayerColl.get());
 	}

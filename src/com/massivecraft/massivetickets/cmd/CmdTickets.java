@@ -2,12 +2,12 @@ package com.massivecraft.massivetickets.cmd;
 
 import java.util.List;
 
+import com.massivecraft.massivecore.cmd.HelpCommand;
+import com.massivecraft.massivecore.cmd.VersionCommand;
+import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
-import com.massivecraft.mcore.cmd.HelpCommand;
-import com.massivecraft.mcore.cmd.VersionCommand;
-import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 
 public class CmdTickets extends MassiveTicketsCommand
 {
@@ -21,7 +21,6 @@ public class CmdTickets extends MassiveTicketsCommand
 	public CmdTicketsModlist cmdTicketsModlist = new CmdTicketsModlist() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsModlist; } };
 	public CmdTicketsWorking cmdTicketsWorking = new CmdTicketsWorking() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsWorking; } };
 	public CmdTicketsCheat cmdTicketsCheat = new CmdTicketsCheat() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsCheat; } };
-	public CmdTicketsHearsound cmdTicketsHearsound = new CmdTicketsHearsound() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsHearsound; } };
 	public VersionCommand cmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node) { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsVersion; } };
 	
 	public CmdTickets()
@@ -38,7 +37,6 @@ public class CmdTickets extends MassiveTicketsCommand
 		this.addSubCommand(this.cmdTicketsModlist);
 		this.addSubCommand(this.cmdTicketsWorking);
 		this.addSubCommand(this.cmdTicketsCheat);
-		this.addSubCommand(this.cmdTicketsHearsound);
 		this.addSubCommand(this.cmdTicketsVersion);
 		
 		// Requirements

@@ -8,11 +8,15 @@ import java.util.List;
 
 import org.bukkit.command.CommandSender;
 
+import com.massivecraft.massivecore.MassivePlugin;
+import com.massivecraft.massivecore.cmd.VersionCommand;
+import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.util.MUtil;
+import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.cmd.CmdTickets;
 import com.massivecraft.massivetickets.cmd.CmdTicketsCheat;
 import com.massivecraft.massivetickets.cmd.CmdTicketsCreate;
 import com.massivecraft.massivetickets.cmd.CmdTicketsDone;
-import com.massivecraft.massivetickets.cmd.CmdTicketsHearsound;
 import com.massivecraft.massivetickets.cmd.CmdTicketsHighscore;
 import com.massivecraft.massivetickets.cmd.CmdTicketsList;
 import com.massivecraft.massivetickets.cmd.CmdTicketsModlist;
@@ -24,13 +28,8 @@ import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MConfColl;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
 import com.massivecraft.massivetickets.predictate.IsModeratorPredictate;
-import com.massivecraft.mcore.MPlugin;
-import com.massivecraft.mcore.cmd.VersionCommand;
-import com.massivecraft.mcore.mixin.Mixin;
-import com.massivecraft.mcore.util.MUtil;
-import com.massivecraft.mcore.util.Txt;
 
-public class MassiveTickets extends MPlugin
+public class MassiveTickets extends MassivePlugin
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
@@ -77,9 +76,6 @@ public class MassiveTickets extends MPlugin
 	
 	private CmdTicketsCheat outerCmdTicketsCheat;
 	public CmdTicketsCheat getOuterCmdTicketsCheat() { return this.outerCmdTicketsCheat; }
-	
-	private CmdTicketsHearsound outerCmdTicketsHearsound;
-	public CmdTicketsHearsound getOuterCmdTicketsHearsound() { return this.outerCmdTicketsHearsound; }
 	
 	private VersionCommand outerCmdTicketsVersion;
 	public VersionCommand getOuterCmdTicketsVersion() { return this.outerCmdTicketsVersion; }
@@ -130,9 +126,6 @@ public class MassiveTickets extends MPlugin
 		
 		this.outerCmdTicketsCheat = new CmdTicketsCheat() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsCheat; } };
 		this.outerCmdTicketsCheat.register();
-		
-		this.outerCmdTicketsHearsound = new CmdTicketsHearsound() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsHearsound; } };
-		this.outerCmdTicketsHearsound.register();
 		
 		this.outerCmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node) { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsVersion; } };
 		this.outerCmdTicketsVersion.register();

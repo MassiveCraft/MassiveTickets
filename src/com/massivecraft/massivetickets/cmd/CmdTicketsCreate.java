@@ -2,13 +2,13 @@ package com.massivecraft.massivetickets.cmd;
 
 import org.bukkit.ChatColor;
 
+import com.massivecraft.massivecore.cmd.MassiveCommand;
+import com.massivecraft.massivecore.cmd.arg.ARString;
+import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
-import com.massivecraft.mcore.cmd.MCommand;
-import com.massivecraft.mcore.cmd.arg.ARString;
-import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 
 public class CmdTicketsCreate extends MassiveTicketsCommand
 {
@@ -49,7 +49,7 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		MassiveTickets.alertOneMsg(sender, "Your ticket was %s. We will help you soon.", verb);
 		MassiveTickets.alertOneMsg(sender, "There is currently <aqua>%d <pink>working moderators.", MPlayerColl.get().getAllCurrentlyWorking().size());
 		
-		MCommand cmd = null;
+		MassiveCommand cmd = null;
 		
 		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow;
 		MassiveTickets.alertOneMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to show your ticket");

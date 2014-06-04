@@ -1,10 +1,10 @@
 package com.massivecraft.massivetickets.cmd;
 
+import com.massivecraft.massivecore.cmd.arg.ARBoolean;
+import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
-import com.massivecraft.mcore.cmd.arg.ARBoolean;
-import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 
 public class CmdTicketsWorking extends MassiveTicketsCommand
 {
