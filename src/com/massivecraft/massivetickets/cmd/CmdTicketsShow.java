@@ -28,7 +28,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		if (mplayer == null) return;
 		
 		// Send them messages!
-		msg(Txt.titleize(mplayer.getDisplayName()+"<l>'s ticket"));
+		msg(Txt.titleize(mplayer.getDisplayName(sender)+"<l>'s ticket"));
 		if (!mplayer.hasMessage())
 		{
 			msg("<silver><em>has not created a ticket");
@@ -43,7 +43,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		String pickedByDesc = Txt.parse("<silver><em>noone yet");
 		if (mplayer.hasModeratorId())
 		{
-			pickedByDesc = mplayer.getModerator().getDisplayName();
+			pickedByDesc = mplayer.getModerator().getDisplayName(sender);
 		}
 		
 		msg("<k>Picked By: <v>%s", pickedByDesc);

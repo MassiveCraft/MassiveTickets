@@ -24,7 +24,7 @@ public class CmdTicketsModlist extends MassiveTicketsCommand
 		List<String> names = new ArrayList<String>();
 		for (MPlayer mplayer : MPlayerColl.get().getAllCurrentlyWorking())
 		{
-			names.add(mplayer.getDisplayName());
+			names.add(mplayer.getDisplayName(sender));
 		}
 		
 		if (names.size() > 0)

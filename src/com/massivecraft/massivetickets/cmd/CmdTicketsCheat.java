@@ -28,7 +28,7 @@ public class CmdTicketsCheat extends MassiveTicketsCommand
 		mplayer.givePoint(null);
 		
 		// Inform
-		msg("<g>You gave <white>%s <g>a point 4NORaisins!", mplayer.getDisplayName());
+		msg("<g>You gave <white>%s <g>a point 4NORaisins!", mplayer.getDisplayName(sender));
 	}
 	
 }

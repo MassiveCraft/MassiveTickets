@@ -264,7 +264,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 	/**
 	 * @return The oneliner to be used in the ticket list
 	 */
-	public String getListLine()
+	public String getListLine(Object watcherObject)
 	{
 		StringBuilder builder = new StringBuilder();
 		
@@ -279,7 +279,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 		
 		builder.append("# ");
 		
-		builder.append(this.getDisplayName());
+		builder.append(this.getDisplayName(watcherObject));
 		
 		if (this.hasMessage())
 		{
@@ -333,14 +333,14 @@ public class MPlayer extends SenderEntity<MPlayer>
 		{
 			for (String moderatorAlerteeId : moderatorAlerteeIds)
 			{
-				MassiveTickets.alertOneMsg(moderatorAlerteeId, "<white>%s<pink>'s ticket done-marked on logout.", this.getDisplayName());
+				MassiveTickets.alertOneMsg(moderatorAlerteeId, "<white>%s<pink>'s ticket done-marked on logout.", this.getDisplayName(moderatorAlerteeId));
 			}
 		}
 		else if (cause == this)
 		{
 			for (String moderatorAlerteeId : moderatorAlerteeIds)
 			{
-				MassiveTickets.alertOneMsg(moderatorAlerteeId, "<white>%s<pink> done-marked their own ticket.", cause.getDisplayName());
+				MassiveTickets.alertOneMsg(moderatorAlerteeId, "<white>%s<pink> done-marked their own ticket.", cause.getDisplayName(moderatorAlerteeId));
 			}
 			
 			MassiveTickets.alertOneMsg(this.getId(), "Thank you for marking your own ticket as done.");
@@ -350,10 +350,10 @@ public class MPlayer extends SenderEntity<MPlayer>
 		{
 			for (String moderatorAlerteeId : moderatorAlerteeIds)
 			{
-				MassiveTickets.alertOneMsg(moderatorAlerteeId, "<white>%s<pink> done-marked <white>%s<pink>'s ticket.", cause.getDisplayName(), this.getDisplayName());
+				MassiveTickets.alertOneMsg(moderatorAlerteeId, "<white>%s<pink> done-marked <white>%s<pink>'s ticket.", cause.getDisplayName(moderatorAlerteeId), this.getDisplayName(moderatorAlerteeId));
 			}
 			
-			MassiveTickets.alertOneMsg(this.getId(), "<white>%s<pink> marked your ticket as done.", cause.getDisplayName());
+			MassiveTickets.alertOneMsg(this.getId(), "<white>%s<pink> marked your ticket as done.", cause.getDisplayName(this.getId()));
 			MassiveTickets.alertOneMsg(this.getId(), "Have a nice day!");
 		}
 		

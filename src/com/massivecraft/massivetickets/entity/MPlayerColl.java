@@ -39,12 +39,12 @@ public class MPlayerColl extends SenderColl<MPlayer>
 	}
 	
 	// For the list command
-	public List<String> getAllTicketListLines()
+	public List<String> getAllTicketListLines(Object watcherObject)
 	{
 		List<String> ret = new ArrayList<String>();
 		for (MPlayer ticket : this.getAllTickets())
 		{
-			ret.add(ticket.getListLine());
+			ret.add(ticket.getListLine(watcherObject));
 		}
 		return ret;
 	}

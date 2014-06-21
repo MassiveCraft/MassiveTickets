@@ -38,7 +38,7 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		// Inform Moderators
 		if (msender.hasModeratorId())
 		{
-			MassiveTickets.alertOneMsg(msender.getModeratorId(), "<white>%s <pink>%s ticket: %s", msender.getDisplayName(), verb, message);
+			MassiveTickets.alertOneMsg(msender.getModeratorId(), "<white>%s <pink>%s ticket: %s", msender.getDisplayName(msender.getModeratorId()), verb, message);
 		}
 		else
 		{

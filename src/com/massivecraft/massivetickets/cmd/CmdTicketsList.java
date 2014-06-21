@@ -25,7 +25,7 @@ public class CmdTicketsList extends MassiveTicketsCommand
 		if (pageHumanBased == null) return;
 		
 		// Create Lines
-		List<String> lines = MPlayerColl.get().getAllTicketListLines();
+		List<String> lines = MPlayerColl.get().getAllTicketListLines(sender);
 		
 		// Send them
 		this.sendMessage(Txt.getPage(lines, pageHumanBased, "Ticket List", sender));		

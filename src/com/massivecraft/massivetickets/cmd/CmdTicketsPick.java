@@ -29,7 +29,7 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 		// Is there a ticket?
 		if (!ticket.hasMessage())
 		{
-			msg("<white>%s <b>has not created a ticket.", ticket.getDisplayName());
+			msg("<white>%s <b>has not created a ticket.", ticket.getDisplayName(sender));
 			return;
 		}
 		
@@ -43,7 +43,7 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 			}
 			else
 			{
-				msg("<white>%s <b>has already picked this ticket.", moderator.getDisplayName());
+				msg("<white>%s <b>has already picked this ticket.", moderator.getDisplayName(sender));
 			}
 			return;
 		}
