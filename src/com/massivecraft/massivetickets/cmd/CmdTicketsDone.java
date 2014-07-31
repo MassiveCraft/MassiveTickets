@@ -19,7 +19,7 @@ public class CmdTicketsDone extends MassiveTicketsCommand
 	public void perform()
 	{
 		// Args
-		MPlayer ticket = this.arg(0, ARMPlayer.getStartOnline(), msender);
+		MPlayer ticket = this.arg(0, ARMPlayer.getOnline(), msender);
 		if (ticket == null) return;
 		
 		// Force Sync

@@ -24,7 +24,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 	public void perform()
 	{
 		// Args
-		MPlayer mplayer = this.arg(0, ARMPlayer.getStartOnline(), msender);
+		MPlayer mplayer = this.arg(0, ARMPlayer.getOnline(), msender);
 		if (mplayer == null) return;
 		
 		// Send them messages!
