@@ -27,6 +27,9 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		MPlayer mplayer = this.arg(0, ARMPlayer.getOnline(), msender);
 		if (mplayer == null) return;
 		
+		// Other Perm?
+		if (mplayer != msender && !Perm.SHOW_OTHER.has(sender, true)) return;
+		
 		// Send them messages!
 		msg(Txt.titleize(mplayer.getDisplayName(sender)+"<l>'s ticket"));
 		if (!mplayer.hasMessage())
