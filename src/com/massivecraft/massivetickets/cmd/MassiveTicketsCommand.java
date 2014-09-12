@@ -14,6 +14,12 @@ public abstract class MassiveTicketsCommand extends MassiveCommand
 		this.msender = MPlayer.get(sender);
 	}
 	
+	@Override
+	public void unsetSenderVars()
+	{
+		this.msender = null;
+	}
+	
 	public MassiveTicketsCommand()
 	{
 		this.setVisibilityMode(VisibilityMode.SECRET);
