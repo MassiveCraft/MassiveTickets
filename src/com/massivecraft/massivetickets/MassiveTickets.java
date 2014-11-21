@@ -95,40 +95,40 @@ public class MassiveTickets extends MassivePlugin
 		
 		// Commands
 		this.outerCmdTickets = new CmdTickets() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTickets; } };
-		this.outerCmdTickets.register();
+		this.outerCmdTickets.register(this);
 		
 		this.outerCmdTicketsList = new CmdTicketsList() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsList; } };
-		this.outerCmdTicketsList.register();
+		this.outerCmdTicketsList.register(this);
 		
 		this.outerCmdTicketsShow = new CmdTicketsShow() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsShow; } };
-		this.outerCmdTicketsShow.register();
+		this.outerCmdTicketsShow.register(this);
 		
 		this.outerCmdTicketsCreate = new CmdTicketsCreate() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsCreate; } };
-		this.outerCmdTicketsCreate.register();
+		this.outerCmdTicketsCreate.register(this);
 		
 		this.outerCmdTicketsDone = new CmdTicketsDone() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsDone; } };
-		this.outerCmdTicketsDone.register();
+		this.outerCmdTicketsDone.register(this);
 		
 		this.outerCmdTicketsPick = new CmdTicketsPick() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsPick; } };
-		this.outerCmdTicketsPick.register();
+		this.outerCmdTicketsPick.register(this);
 		
 		this.outerCmdTicketsYield = new CmdTicketsYield() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsYield; } };
-		this.outerCmdTicketsYield.register();
+		this.outerCmdTicketsYield.register(this);
 		
 		this.outerCmdTicketsHighscore = new CmdTicketsHighscore() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsHighscore; } };
-		this.outerCmdTicketsHighscore.register();
+		this.outerCmdTicketsHighscore.register(this);
 		
 		this.outerCmdTicketsModlist = new CmdTicketsModlist() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsModlist; } };
-		this.outerCmdTicketsModlist.register();
+		this.outerCmdTicketsModlist.register(this);
 		
 		this.outerCmdTicketsWorking = new CmdTicketsWorking() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsWorking; } };
-		this.outerCmdTicketsWorking.register();
+		this.outerCmdTicketsWorking.register(this);
 		
 		this.outerCmdTicketsCheat = new CmdTicketsCheat() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsCheat; } };
-		this.outerCmdTicketsCheat.register();
+		this.outerCmdTicketsCheat.register(this);
 		
 		this.outerCmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node) { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsVersion; } };
-		this.outerCmdTicketsVersion.register();
+		this.outerCmdTicketsVersion.register(this);
 
 		// Engines
 		EngineIdUpdate.get().activate();
