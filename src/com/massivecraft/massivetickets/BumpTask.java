@@ -1,9 +1,9 @@
 package com.massivecraft.massivetickets;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.massivecraft.massivecore.ModuloRepeatTask;
+import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.TimeUnit;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
@@ -42,7 +42,7 @@ public class BumpTask extends ModuloRepeatTask
 		
 		// ... send message to people on this server.
 		String message = MassiveTickets.createBumpMessage();
-		for (Player player : Bukkit.getOnlinePlayers())
+		for (Player player : MUtil.getOnlinePlayers())
 		{
 			if (!IsModeratorPredictate.get().apply(player)) continue;
 			MassiveTickets.alertOneMessage(player, message);
