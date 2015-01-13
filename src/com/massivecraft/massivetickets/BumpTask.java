@@ -1,6 +1,7 @@
 package com.massivecraft.massivetickets;
 
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import com.massivecraft.massivecore.ModuloRepeatTask;
 import com.massivecraft.massivecore.util.MUtil;
@@ -21,6 +22,12 @@ public class BumpTask extends ModuloRepeatTask
 	// -------------------------------------------- //
 	// OVERRIDE: MODULO REPEAT TASK
 	// -------------------------------------------- //
+	
+	@Override
+	public Plugin getPlugin()
+	{
+		return MassiveTickets.get();
+	}
 	
 	@Override
 	public long getDelayMillis()

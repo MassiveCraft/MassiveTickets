@@ -135,7 +135,7 @@ public class MassiveTickets extends MassivePlugin
 		EngineMain.get().activate();
 		
 		// Schedule recurring non-tps-dependent tasks
-		BumpTask.get().activate(this);
+		BumpTask.get().activate();
 		
 		postEnable();
 	}
