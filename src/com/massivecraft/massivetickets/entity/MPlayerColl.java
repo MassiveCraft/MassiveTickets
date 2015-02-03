@@ -23,6 +23,16 @@ public class MPlayerColl extends SenderColl<MPlayer>
 	{
 		super(Const.COLLECTION_BASENAME_MPLAYER, MPlayer.class, MStore.getDb(), MassiveTickets.get());
 	}
+
+	// -------------------------------------------- //
+	// STACK TRACEABILITY
+	// -------------------------------------------- //
+	
+	@Override
+	public void onTick()
+	{
+		super.onTick();
+	}
 	
 	// -------------------------------------------- //
 	// EXTRAS
