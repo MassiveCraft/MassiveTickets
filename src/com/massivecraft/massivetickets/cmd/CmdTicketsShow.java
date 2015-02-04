@@ -2,6 +2,7 @@ package com.massivecraft.massivetickets.cmd;
 
 import java.util.LinkedHashMap;
 
+import com.massivecraft.massivecore.cmd.MassiveCommandException;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.util.TimeDiffUtil;
 import com.massivecraft.massivecore.util.TimeUnit;
@@ -21,11 +22,10 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 	}
 	
 	@Override
-	public void perform()
+	public void perform() throws MassiveCommandException
 	{
 		// Args
 		MPlayer mplayer = this.arg(0, ARMPlayer.getOnline(), msender);
-		if (mplayer == null) return;
 		
 		// Other Perm?
 		if (mplayer != msender && !Perm.SHOW_OTHER.has(sender, true)) return;

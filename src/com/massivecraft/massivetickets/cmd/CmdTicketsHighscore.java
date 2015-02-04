@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.massivecraft.massivecore.cmd.MassiveCommandException;
 import com.massivecraft.massivecore.cmd.arg.ARInteger;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.util.MUtil;
@@ -27,14 +28,11 @@ public class CmdTicketsHighscore extends MassiveTicketsCommand
 	}
 	
 	@Override
-	public void perform()
+	public void perform() throws MassiveCommandException
 	{
 		// Args
 		Integer week = this.arg(0, ARInteger.get(), MassiveTickets.getCurrentWeek());
-		if (week == null) return;
-		
 		Integer year = this.arg(1, ARInteger.get(), MassiveTickets.getCurrentYear());
-		if (year == null) return;
 		
 		// Compile highscore data
 		Map<MPlayer, Integer> mplayer2count = new HashMap<MPlayer, Integer>();

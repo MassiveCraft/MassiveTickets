@@ -1,5 +1,6 @@
 package com.massivecraft.massivetickets.cmd;
 
+import com.massivecraft.massivecore.cmd.MassiveCommandException;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
@@ -17,11 +18,10 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 	}
 	
 	@Override
-	public void perform()
+	public void perform() throws MassiveCommandException
 	{
 		// Args
-		MPlayer ticket = this.arg(0, ARMPlayer.getOnline());
-		if (ticket == null) return;
+		MPlayer ticket = this.arg(0, ARMPlayer.getOnline());		
 		
 		// Force Sync
 		ticket.sync();

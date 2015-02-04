@@ -2,6 +2,7 @@ package com.massivecraft.massivetickets.cmd;
 
 import java.util.List;
 
+import com.massivecraft.massivecore.cmd.MassiveCommandException;
 import com.massivecraft.massivecore.cmd.arg.ARInteger;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.util.Txt;
@@ -18,11 +19,10 @@ public class CmdTicketsList extends MassiveTicketsCommand
 	}
 	
 	@Override
-	public void perform()
+	public void perform() throws MassiveCommandException
 	{
 		// Args
 		Integer pageHumanBased = this.arg(0, ARInteger.get(), 1);
-		if (pageHumanBased == null) return;
 		
 		// Create Lines
 		List<String> lines = MPlayerColl.get().getAllTicketListLines(sender);

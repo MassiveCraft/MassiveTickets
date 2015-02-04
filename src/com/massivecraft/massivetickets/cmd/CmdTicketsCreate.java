@@ -3,6 +3,7 @@ package com.massivecraft.massivetickets.cmd;
 import org.bukkit.ChatColor;
 
 import com.massivecraft.massivecore.cmd.MassiveCommand;
+import com.massivecraft.massivecore.cmd.MassiveCommandException;
 import com.massivecraft.massivecore.cmd.arg.ARString;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivetickets.MassiveTickets;
@@ -21,11 +22,10 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 	}
 	
 	@Override
-	public void perform()
+	public void perform() throws MassiveCommandException
 	{
 		// Args
 		String message = this.argConcatFrom(0, ARString.get());
-		if (message == null) return;
 		message = ChatColor.stripColor(message);
 		
 		// Apply
