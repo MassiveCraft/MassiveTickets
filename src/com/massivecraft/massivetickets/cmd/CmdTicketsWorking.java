@@ -1,6 +1,6 @@
 package com.massivecraft.massivetickets.cmd;
 
-import com.massivecraft.massivecore.cmd.MassiveCommandException;
+import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.arg.ARBoolean;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivetickets.MassiveTickets;
@@ -17,7 +17,7 @@ public class CmdTicketsWorking extends MassiveTicketsCommand
 	}
 	
 	@Override
-	public void perform() throws MassiveCommandException
+	public void perform() throws MassiveException
 	{
 		// Args
 		boolean old = msender.isWorking();
