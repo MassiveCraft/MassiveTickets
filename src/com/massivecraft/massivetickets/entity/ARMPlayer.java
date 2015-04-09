@@ -1,6 +1,6 @@
 package com.massivecraft.massivetickets.entity;
 
-import com.massivecraft.massivecore.cmd.arg.ArgReader;
+import com.massivecraft.massivecore.cmd.arg.AR;
 
 public class ARMPlayer
 {
@@ -8,10 +8,10 @@ public class ARMPlayer
 	// INSTANCE
 	// -------------------------------------------- //
 	
-	private static ArgReader<MPlayer> any = MPlayerColl.get().getAREntity();
-	public static ArgReader<MPlayer> getAny() { return any; }
+	private static AR<MPlayer> any = MPlayerColl.get().getAREntity();
+	public static AR<MPlayer> getAny() { return any; }
 	
-	private static ArgReader<MPlayer> online = MPlayerColl.get().getAREntity(true);
-	public static ArgReader<MPlayer> getOnline() { return online; }
+	private static AR<MPlayer> online = MPlayerColl.get().getAREntity(true);
+	public static AR<MPlayer> getOnline() { return online; }
 	
 }
