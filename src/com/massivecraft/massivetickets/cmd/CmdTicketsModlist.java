@@ -11,10 +11,19 @@ import com.massivecraft.massivetickets.entity.MPlayerColl;
 
 public class CmdTicketsModlist extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdTicketsModlist()
 	{
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.MODLIST.node));
 	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
 	
 	@Override
 	public void perform()
@@ -37,4 +46,5 @@ public class CmdTicketsModlist extends MassiveTicketsCommand
 		}
 		
 	}
+	
 }

@@ -9,18 +9,28 @@ import com.massivecraft.massivetickets.entity.MPlayer;
 
 public class CmdTicketsDone extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdTicketsDone()
 	{
-		this.addOptionalArg("player", "you");
+		// Args
+		this.addArg(ARMPlayer.getOnline(), "player", "you");
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.DONE.node));
 	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
 	
 	@Override
 	public void perform() throws MassiveException
 	{
 		// Args
-		MPlayer ticket = this.arg(0, ARMPlayer.getOnline(), msender);
+		MPlayer ticket = this.readArg(msender);
 		
 		// Force Sync
 		ticket.sync();
@@ -28,7 +38,7 @@ public class CmdTicketsDone extends MassiveTicketsCommand
 		// Is there a ticket?
 		if (!ticket.hasMessage())
 		{
-			msg("<white>%s <b>has not created a ticket.", ticket.getDisplayName());
+			msg("<white>%s <b>has not created a ticket.", ticket.getDisplayName(null));
 			return;
 		}
 		
@@ -42,4 +52,5 @@ public class CmdTicketsDone extends MassiveTicketsCommand
 		// React
 		MConf.get().getDoneReaction().run(ticket.getModeratorId(), ticket.getId());
 	}
+	
 }

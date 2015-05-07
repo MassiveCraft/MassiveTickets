@@ -11,18 +11,28 @@ import com.massivecraft.massivetickets.entity.MPlayerColl;
 
 public class CmdTicketsList extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdTicketsList()
 	{
-		this.addOptionalArg("page", "1");
+		// Args
+		this.addArg(ARInteger.get(), "page", "1");
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.LIST.node));
 	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
 	
 	@Override
 	public void perform() throws MassiveException
 	{
 		// Args
-		Integer pageHumanBased = this.arg(0, ARInteger.get(), 1);
+		int pageHumanBased = this.readArg(1);
 		
 		// Create Lines
 		List<String> lines = MPlayerColl.get().getAllTicketListLines(sender);

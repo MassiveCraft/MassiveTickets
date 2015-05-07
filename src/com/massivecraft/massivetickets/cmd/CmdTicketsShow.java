@@ -14,18 +14,28 @@ import com.massivecraft.massivetickets.entity.MPlayer;
 
 public class CmdTicketsShow extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdTicketsShow()
 	{
-		this.addOptionalArg("player", "you");
+		// Args
+		this.addArg(ARMPlayer.getOnline(), "player", "you");
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.SHOW.node));
 	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
 	
 	@Override
 	public void perform() throws MassiveException
 	{
 		// Args
-		MPlayer mplayer = this.arg(0, ARMPlayer.getOnline(), msender);
+		MPlayer mplayer = this.readArg(msender);
 		
 		// Other Perm?
 		if (mplayer != msender && !Perm.SHOW_OTHER.has(sender, true)) return;

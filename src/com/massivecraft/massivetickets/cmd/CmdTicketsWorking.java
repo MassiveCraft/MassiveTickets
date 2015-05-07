@@ -9,24 +9,34 @@ import com.massivecraft.massivetickets.entity.MConf;
 
 public class CmdTicketsWorking extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdTicketsWorking()
 	{
-		this.addOptionalArg("yes/no", "*toggle*");
+		// Args
+		this.addArg(ARBoolean.get(), "yes/no", "*toggle*");
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.WORKING.node));
 	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
 	
 	@Override
 	public void perform() throws MassiveException
 	{
 		// Args
-		boolean old = msender.isWorking();
-		Boolean target = this.arg(0, ARBoolean.get(), !old);
+		boolean before = msender.isWorking();
+		boolean after = this.readArg(!before);
 		
 		// Detect Nochange
-		if (old == target)
+		if (before == after)
 		{
-			if (target)
+			if (after)
 			{
 				msg("<i>You are already working.");
 			}
@@ -38,15 +48,15 @@ public class CmdTicketsWorking extends MassiveTicketsCommand
 		}
 		
 		// Apply
-		msender.setWorking(target);
+		msender.setWorking(after);
 		
 		// Inform
-		String verb = target ? "started" : "stopped"; 
+		String verb = after ? "started" : "stopped"; 
 		MassiveTickets.alertOneMsg(msender.getId(), "You %s twerking!", verb);
 		MassiveTickets.alertOneMessage(msender.getId(), MassiveTickets.createBumpMessage());
 		
 		// React
-		if (target)
+		if (after)
 		{
 			MConf.get().getWorkingOnReaction().run(msender.getId(), null);
 		}

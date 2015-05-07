@@ -10,18 +10,28 @@ import com.massivecraft.massivetickets.entity.MPlayer;
 
 public class CmdTicketsPick extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdTicketsPick()
 	{
-		this.addRequiredArg("player");
+		// Args
+		this.addArg(ARMPlayer.getOnline(), "player");
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.PICK.node));
 	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
 	
 	@Override
 	public void perform() throws MassiveException
 	{
 		// Args
-		MPlayer ticket = this.arg(0, ARMPlayer.getOnline());		
+		MPlayer ticket = this.readArg();		
 		
 		// Force Sync
 		ticket.sync();
@@ -52,10 +62,10 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 		ticket.setModerator(msender);
 		
 		// Inform
-		MassiveTickets.alertModeratorsMsg("<white>%s <pink>picked <white>%s<pink>'s ticket.", msender.getDisplayName(), ticket.getDisplayName());
+		MassiveTickets.alertModeratorsMsg("<white>%s <pink>picked <white>%s<pink>'s ticket.", msender.getDisplayName(null), ticket.getDisplayName(null));
 		MassiveTickets.alertOneMsg(msender.getId(), ticket.getMessage());
 		
-		MassiveTickets.alertOneMsg(ticket.getId(), "<white>%s <pink>just picked your ticket.", msender.getDisplayName());
+		MassiveTickets.alertOneMsg(ticket.getId(), "<white>%s <pink>just picked your ticket.", msender.getDisplayName(ticket.getId()));
 		MassiveTickets.alertOneMsg(ticket.getId(), "Please go ahead and explain the situation.");
 		
 		// React

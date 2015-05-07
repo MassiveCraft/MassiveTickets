@@ -8,18 +8,28 @@ import com.massivecraft.massivetickets.entity.MPlayer;
 
 public class CmdTicketsCheat extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdTicketsCheat()
-	{	
-		this.addOptionalArg("player", "you");
+	{
+		// Args
+		this.addArg(ARMPlayer.getOnline(), "player", "you");
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.CHEAT.node));
 	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
 	
 	@Override
 	public void perform() throws MassiveException
 	{
 		// Args
-		MPlayer mplayer = this.arg(0, ARMPlayer.getOnline(), msender);
+		MPlayer mplayer = this.readArg(msender);
 		
 		// Force Sync
 		mplayer.sync();

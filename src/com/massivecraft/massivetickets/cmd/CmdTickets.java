@@ -11,6 +11,10 @@ import com.massivecraft.massivetickets.entity.MConf;
 
 public class CmdTickets extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// FIELDS
+	// -------------------------------------------- //
+	
 	public CmdTicketsList cmdTicketsList = new CmdTicketsList() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsList; } };
 	public CmdTicketsShow cmdTicketsShow = new CmdTicketsShow() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsShow; } };
 	public CmdTicketsCreate cmdTicketsCreate = new CmdTicketsCreate() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsCreate; } };
@@ -23,9 +27,13 @@ public class CmdTickets extends MassiveTicketsCommand
 	public CmdTicketsCheat cmdTicketsCheat = new CmdTicketsCheat() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsCheat; } };
 	public VersionCommand cmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node) { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsVersion; } };
 	
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdTickets()
 	{
-		// Add SubCommands
+		// SubCommands
 		this.addSubCommand(HelpCommand.get());
 		this.addSubCommand(this.cmdTicketsList);
 		this.addSubCommand(this.cmdTicketsShow);

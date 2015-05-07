@@ -389,7 +389,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 		
 		if (levelUp)
 		{
-			MassiveTickets.alertModeratorsMsg("<white>%s<pink> has done <aqua>%d <pink>tickets this week!", this.getDisplayName(), countAfter);
+			MassiveTickets.alertModeratorsMsg("<white>%s<pink> has done <aqua>%d <pink>tickets this week!", this.getDisplayName(null), countAfter);
 			MassiveTickets.alertModeratorsMsg("<bold><em>%s", levelAfter.getName());
 			
 			levelAfter.getReaction().run(this.getId(), playerId);

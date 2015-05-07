@@ -18,21 +18,30 @@ import com.massivecraft.massivetickets.entity.MPlayerColl;
 
 public class CmdTicketsHighscore extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdTicketsHighscore()
 	{
-		this.addOptionalArg("week", "now");
+		// Args
+		this.addArg(ARInteger.get(), "week", "now");
+		this.addArg(ARInteger.get(), "year", "now");
 		
-		this.addOptionalArg("year", "now");
-		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.HIGHSCORE.node));
 	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
 	
 	@Override
 	public void perform() throws MassiveException
 	{
 		// Args
-		Integer week = this.arg(0, ARInteger.get(), MassiveTickets.getCurrentWeek());
-		Integer year = this.arg(1, ARInteger.get(), MassiveTickets.getCurrentYear());
+		int week = this.readArg(MassiveTickets.getCurrentWeek());
+		int year = this.readArg(MassiveTickets.getCurrentYear());
 		
 		// Compile highscore data
 		Map<MPlayer, Integer> mplayer2count = new HashMap<MPlayer, Integer>();
@@ -55,7 +64,7 @@ public class CmdTicketsHighscore extends MassiveTicketsCommand
 				Level level = MConf.get().getLevelForCount(count);
 				String levelDesc = "";
 				if (level != null) levelDesc = level.getName();
-				msg("<pink>%d <white>%s <pink><em>%s", count, mplayer.getDisplayName(), levelDesc);
+				msg("<pink>%d <white>%s <pink><em>%s", count, mplayer.getDisplayName(sender), levelDesc);
 			}
 		}
 		else
@@ -64,4 +73,5 @@ public class CmdTicketsHighscore extends MassiveTicketsCommand
 		}
 		
 	}
+	
 }

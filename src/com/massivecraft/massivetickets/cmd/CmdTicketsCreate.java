@@ -13,19 +13,28 @@ import com.massivecraft.massivetickets.entity.MPlayerColl;
 
 public class CmdTicketsCreate extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdTicketsCreate()
 	{
-		this.addRequiredArg("message");
-		this.setErrorOnToManyArgs(false);
+		// Args
+		this.addArg(ARString.get(), "message", true);
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.CREATE.node));
 	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
 	
 	@Override
 	public void perform() throws MassiveException
 	{
 		// Args
-		String message = this.argConcatFrom(0, ARString.get());
+		String message = this.readArg();
 		message = ChatColor.stripColor(message);
 		
 		// Apply
@@ -42,7 +51,7 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		}
 		else
 		{
-			MassiveTickets.alertModeratorsMsg("<white>%s <pink>%s ticket: %s", msender.getDisplayName(), verb, message);
+			MassiveTickets.alertModeratorsMsg("<white>%s <pink>%s ticket: %s", msender.getDisplayName(null), verb, message);
 		}
 		
 		// Inform Creator
@@ -71,8 +80,7 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		else
 		{
 			MConf.get().getCreateReaction().run(msender.getModeratorId(), msender.getId());
-		}
-				
+		}	
 	}
 	
 }

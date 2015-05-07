@@ -10,18 +10,28 @@ import com.massivecraft.massivetickets.entity.MPlayer;
 
 public class CmdTicketsYield extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdTicketsYield()
 	{
-		this.addRequiredArg("player");
+		// Args
+		this.addArg(ARMPlayer.getOnline(), "player");
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.YIELD.node));
 	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
 	
 	@Override
 	public void perform() throws MassiveException
 	{
 		// Args
-		MPlayer ticket = this.arg(0, ARMPlayer.getOnline());
+		MPlayer ticket = this.readArg();
 		
 		// Force Sync
 		ticket.sync();
@@ -44,10 +54,10 @@ public class CmdTicketsYield extends MassiveTicketsCommand
 		ticket.setModeratorId(null);
 		
 		// Inform
-		MassiveTickets.alertModeratorsMsg("<white>%s <pink>yielded <white>%s<pink>'s ticket.", msender.getDisplayName(), ticket.getDisplayName());
+		MassiveTickets.alertModeratorsMsg("<white>%s <pink>yielded <white>%s<pink>'s ticket.", msender.getDisplayName(null), ticket.getDisplayName(null));
 		MassiveTickets.alertModeratorsMsg(ticket.getMessage());
 		
-		MassiveTickets.alertOneMsg(ticket.getId(), "<white>%s <pink>has yielded your ticket.", msender.getDisplayName());
+		MassiveTickets.alertOneMsg(ticket.getId(), "<white>%s <pink>has yielded your ticket.", msender.getDisplayName(ticket.getId()));
 		MassiveTickets.alertOneMsg(ticket.getId(), "It is now placed back in the ticket list. ");
 		
 		// React
