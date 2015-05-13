@@ -3,7 +3,7 @@ package com.massivecraft.massivetickets.cmd;
 import java.util.List;
 
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.arg.ARInteger;
+import com.massivecraft.massivecore.cmd.ArgSetting;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.Perm;
@@ -18,7 +18,7 @@ public class CmdTicketsList extends MassiveTicketsCommand
 	public CmdTicketsList()
 	{
 		// Args
-		this.addArg(ARInteger.get(), "page", "1");
+		this.addArg(ArgSetting.getPage());
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.LIST.node));
@@ -32,13 +32,13 @@ public class CmdTicketsList extends MassiveTicketsCommand
 	public void perform() throws MassiveException
 	{
 		// Args
-		int pageHumanBased = this.readArg(1);
+		int page = this.readArg();
 		
 		// Create Lines
 		List<String> lines = MPlayerColl.get().getAllTicketListLines(sender);
 		
 		// Send them
-		this.sendMessage(Txt.getPage(lines, pageHumanBased, "Ticket List", sender));		
+		this.sendMessage(Txt.getPage(lines, page, "Ticket List", sender));		
 	}
 	
 }
