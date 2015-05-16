@@ -9,6 +9,7 @@ import org.bukkit.plugin.Plugin;
 import com.massivecraft.massivecore.EngineAbstract;
 import com.massivecraft.massivecore.event.EventMassiveCorePlayerLeave;
 import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.massivetickets.predictate.IsModeratorPredictate;
@@ -44,6 +45,7 @@ public class EngineMain extends EngineAbstract
 	{
 		// If a player is joining this server ...
 		final Player player = event.getPlayer();
+		if (MUtil.isNpc(player)) return;
 		MPlayer mplayer = MPlayer.get(player);
 		
 		// ... and that player has "working" toggled on ...
@@ -126,6 +128,7 @@ public class EngineMain extends EngineAbstract
 	{
 		// If a player is leaving the server ...
 		final Player player = event.getPlayer();
+		if (MUtil.isNpc(player)) return;
 		final MPlayer mplayer = MPlayer.get(player);
 		
 		// ... and it's actually a leave ...

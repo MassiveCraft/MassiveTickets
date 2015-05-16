@@ -131,7 +131,6 @@ public class MassiveTickets extends MassivePlugin
 		this.outerCmdTicketsVersion.register(this);
 
 		// Engines
-		EngineIdUpdate.get().activate();
 		EngineMain.get().activate();
 		
 		// Schedule recurring non-tps-dependent tasks
