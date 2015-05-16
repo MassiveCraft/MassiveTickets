@@ -45,7 +45,7 @@ public class EngineMain extends EngineAbstract
 	{
 		// If a player is joining this server ...
 		final Player player = event.getPlayer();
-		if (MUtil.isNpc(player)) return;
+		if (MUtil.isntPlayer(player)) return;
 		MPlayer mplayer = MPlayer.get(player);
 		
 		// ... and that player has "working" toggled on ...
@@ -128,7 +128,7 @@ public class EngineMain extends EngineAbstract
 	{
 		// If a player is leaving the server ...
 		final Player player = event.getPlayer();
-		if (MUtil.isNpc(player)) return;
+		if (MUtil.isntPlayer(player)) return;
 		final MPlayer mplayer = MPlayer.get(player);
 		
 		// ... and it's actually a leave ...
