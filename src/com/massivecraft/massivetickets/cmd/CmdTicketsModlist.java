@@ -28,7 +28,7 @@ public class CmdTicketsModlist extends MassiveTicketsCommand
 	@Override
 	public void perform()
 	{
-		sendMessage(Txt.titleize("Moderators Working Right Now"));
+		message(Txt.titleize("Moderators Working Right Now"));
 		
 		List<String> names = new ArrayList<String>();
 		for (MPlayer mplayer : MPlayerColl.get().getAllCurrentlyWorking())
@@ -38,7 +38,7 @@ public class CmdTicketsModlist extends MassiveTicketsCommand
 		
 		if (names.size() > 0)
 		{
-			sendMessage(Txt.implodeCommaAndDot(names, Txt.parse("<i>")));
+			message(Txt.implodeCommaAndDot(names, Txt.parse("<i>")));
 		}
 		else
 		{

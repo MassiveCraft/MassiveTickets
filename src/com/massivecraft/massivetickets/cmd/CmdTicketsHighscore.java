@@ -53,7 +53,7 @@ public class CmdTicketsHighscore extends MassiveTicketsCommand
 		}
 		
 		// Send Message
-		sendMessage(Txt.titleize("Highscore Year " + year + " Week " + week));
+		message(Txt.titleize("Highscore Year " + year + " Week " + week));
 		
 		if (mplayer2count.size() > 0)
 		{
