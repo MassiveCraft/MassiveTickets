@@ -38,7 +38,7 @@ public class CmdTicketsList extends MassiveTicketsCommand
 		List<String> lines = MPlayerColl.get().getAllTicketListLines(sender);
 		
 		// Send them
-		this.message(Txt.getPage(lines, page, "Ticket List", sender));		
+		this.message(Txt.getPage(lines, page, "Ticket List", this));		
 	}
 	
 }
