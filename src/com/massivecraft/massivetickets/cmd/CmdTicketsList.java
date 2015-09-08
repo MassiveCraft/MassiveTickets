@@ -1,12 +1,16 @@
 package com.massivecraft.massivetickets.cmd;
 
-import java.util.List;
+import java.util.Collection;
+
+import org.bukkit.command.CommandSender;
 
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.ArgSetting;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
-import com.massivecraft.massivecore.util.Txt;
+import com.massivecraft.massivecore.pager.Pager;
+import com.massivecraft.massivecore.pager.Stringifier;
 import com.massivecraft.massivetickets.Perm;
+import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
 
 public class CmdTicketsList extends MassiveTicketsCommand
@@ -34,11 +38,19 @@ public class CmdTicketsList extends MassiveTicketsCommand
 		// Args
 		int page = this.readArg();
 		
-		// Create Lines
-		List<String> lines = MPlayerColl.get().getAllTicketListLines(sender);
+		// Pager Create
+		Collection<MPlayer> tickets = MPlayerColl.get().getAllTickets();
+		final CommandSender sender = this.sender;
+		final Pager<MPlayer> pager = new Pager<MPlayer>(this, "Tickets", page, tickets, new Stringifier<MPlayer>(){
+			@Override
+			public String toString(MPlayer ticket, int index)
+			{
+				return ticket.getListLine(sender);
+			}
+		});
 		
-		// Send them
-		this.message(Txt.getPage(lines, page, "Ticket List", this));		
+		// Pager Message
+		pager.message();
 	}
 	
 }
