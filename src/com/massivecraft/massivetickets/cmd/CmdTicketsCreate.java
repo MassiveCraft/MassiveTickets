@@ -6,6 +6,9 @@ import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.MassiveCommand;
 import com.massivecraft.massivecore.cmd.arg.ARString;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.mson.Mson;
+import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
@@ -61,16 +64,16 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		MassiveCommand cmd = null;
 		
 		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow;
-		MassiveTickets.alertOneMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to show your ticket");
+		Mixin.messageOne(sender, getUseCommand(cmd, " to show your ticket"));
 		
 		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsDone;
-		MassiveTickets.alertOneMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to mark it as done");
+		Mixin.messageOne(sender, getUseCommand(cmd, " to mark it as done"));
 		
 		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsModlist;
-		MassiveTickets.alertOneMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to list the moderators");
+		Mixin.messageOne(sender, getUseCommand(cmd, " to list the moderators"));
 		
 		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsCreate;
-		MassiveTickets.alertOneMsg(sender, "Use " + cmd.getUseageTemplate(cmd.getCommandChain(), false, true, sender) + " <pink>to update the message");
+		Mixin.messageOne(sender, getUseCommand(cmd, " to update the message"));
 		
 		// React
 		if (update)
@@ -81,6 +84,18 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		{
 			MConf.get().getCreateReaction().run(msender.getModeratorId(), msender.getId());
 		}	
+	}
+	
+	private Mson getUseCommand(MassiveCommand command, String message)
+	{
+		String commandString = command.getCommandLine();
+		String tooltip = Txt.parse("<g>Click to <c>%s<i>.", commandString);
+		
+		return Mson.mson(
+				"Use ",
+				command.getUseageTemplate(command.getCommandChain(), false, true, sender),
+				mson(message).color(ChatColor.LIGHT_PURPLE).tooltip(tooltip)
+		);
 	}
 	
 }
