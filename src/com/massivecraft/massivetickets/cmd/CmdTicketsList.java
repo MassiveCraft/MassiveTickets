@@ -7,8 +7,9 @@ import org.bukkit.command.CommandSender;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.ArgSetting;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.mson.Mson;
+import com.massivecraft.massivecore.pager.Msonifier;
 import com.massivecraft.massivecore.pager.Pager;
-import com.massivecraft.massivecore.pager.Stringifier;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
@@ -41,9 +42,9 @@ public class CmdTicketsList extends MassiveTicketsCommand
 		// Pager Create
 		Collection<MPlayer> tickets = MPlayerColl.get().getAllTickets();
 		final CommandSender sender = this.sender;
-		final Pager<MPlayer> pager = new Pager<MPlayer>(this, "Tickets", page, tickets, new Stringifier<MPlayer>(){
+		final Pager<MPlayer> pager = new Pager<MPlayer>(this, "Tickets", page, tickets, new Msonifier<MPlayer>(){
 			@Override
-			public String toString(MPlayer ticket, int index)
+			public Mson toMson(MPlayer ticket, int index)
 			{
 				return ticket.getListLine(sender);
 			}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.store.MStore;
 import com.massivecraft.massivecore.store.SenderColl;
 import com.massivecraft.massivetickets.Const;
@@ -49,9 +50,9 @@ public class MPlayerColl extends SenderColl<MPlayer>
 	}
 	
 	// For the list command
-	public List<String> getAllTicketListLines(Object watcherObject)
+	public List<Mson> getAllTicketListLines(Object watcherObject)
 	{
-		List<String> ret = new ArrayList<String>();
+		List<Mson> ret = new ArrayList<Mson>();
 		for (MPlayer ticket : this.getAllTickets())
 		{
 			ret.add(ticket.getListLine(watcherObject));

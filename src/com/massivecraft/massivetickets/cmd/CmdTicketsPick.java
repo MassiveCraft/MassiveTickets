@@ -1,7 +1,12 @@
 package com.massivecraft.massivetickets.cmd;
 
+import org.bukkit.ChatColor;
+
 import com.massivecraft.massivecore.MassiveException;
+import com.massivecraft.massivecore.cmd.MassiveCommand;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.mson.Mson;
+import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.ARMPlayer;
@@ -47,14 +52,31 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 		MPlayer moderator = ticket.getModerator();
 		if (moderator != null)
 		{
+			Mson message = null;
+			String commandLine = null;
+			MassiveCommand command = MassiveTickets.get().getOuterCmdTickets().cmdTicketsYield;
+			
 			if (moderator == msender)
 			{
-				msg("<i>You have already picked this ticket.");
+				message = mson("You have already picked this ticket.").color(ChatColor.YELLOW);
+				
+				if (Perm.YIELD.has(sender)) commandLine = command.getCommandLine(msender.getName());
 			}
 			else
 			{
-				msg("<white>%s <b>has already picked this ticket.", moderator.getDisplayName(sender));
+				message = mson(
+					ChatColor.stripColor(moderator.getDisplayName(sender)),
+					mson(" has already picked this ticket.").color(ChatColor.RED)
+				);
+				
+				if (Perm.YIELD_OTHER.has(sender)) commandLine = command.getCommandLine(moderator.getName());
 			}
+			
+			if (commandLine != null)
+			{
+				message = mson(message, Mson.SPACE, CmdTicketsShow.BUTTON_YIELD.command(commandLine).tooltip(Txt.parse("<i>Click to <c>%s<i>", commandLine)));
+			}
+			message(message);
 			return;
 		}
 		

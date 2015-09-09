@@ -1,8 +1,12 @@
 package com.massivecraft.massivetickets.cmd;
 
+import org.bukkit.ChatColor;
+
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.arg.ARBoolean;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.mson.Mson;
+import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
@@ -36,14 +40,29 @@ public class CmdTicketsWorking extends MassiveTicketsCommand
 		// Detect Nochange
 		if (before == after)
 		{
+			String message;
+			Mson button;
+			String commandLine;
+			
 			if (after)
 			{
-				msg("<i>You are already working.");
+				commandLine = this.getCommandLine("no");
+				message = "You are already working. ";
+				button = BUTTON_STOP;
 			}
 			else
 			{
-				msg("<i>You are already not working.");
+				commandLine = this.getCommandLine("yes");
+				message = "You are already not working. ";
+				button = BUTTON_START;
 			}
+			
+			Mson mson = mson(
+				message,
+				button.command(commandLine).tooltip(Txt.parse("<i>Click to <c>%s<i>", commandLine))
+			).color(ChatColor.YELLOW);
+			
+			message(mson);
 			return;
 		}
 		

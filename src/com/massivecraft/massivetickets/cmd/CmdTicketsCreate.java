@@ -91,11 +91,11 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		String commandString = command.getCommandLine();
 		String tooltip = Txt.parse("<g>Click to <c>%s<i>.", commandString);
 		
-		return Mson.mson(
-				"Use ",
-				command.getUseageTemplate(command.getCommandChain(), false, true, sender),
-				mson(message).color(ChatColor.LIGHT_PURPLE).tooltip(tooltip)
-		);
+		return mson(
+			"Use ",
+			command.getUseageTemplate(command.getCommandChain(), false, true, sender),
+			mson(message).tooltip(tooltip)
+		).color(ChatColor.LIGHT_PURPLE);
 	}
 	
 }

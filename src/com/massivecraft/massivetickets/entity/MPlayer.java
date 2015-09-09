@@ -1,5 +1,7 @@
 package com.massivecraft.massivetickets.entity;
 
+import static com.massivecraft.massivecore.mson.Mson.mson;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -9,6 +11,8 @@ import java.util.TreeSet;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
+import com.massivecraft.massivecore.cmd.MassiveCommand;
+import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.store.SenderEntity;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.MUtil;
@@ -260,46 +264,42 @@ public class MPlayer extends SenderEntity<MPlayer>
 	// FIELDS: HIGH
 	// -------------------------------------------- //
 	
-	
 	/**
 	 * @return The oneliner to be used in the ticket list
 	 */
-	public String getListLine(Object watcherObject)
+	public Mson getListLine(Object watcherObject)
 	{
-		StringBuilder builder = new StringBuilder();
+		Mson ret = Mson.fromParsedMessage("# " + this.getDisplayName(watcherObject));
 		
 		if (this.hasModeratorId())
 		{
-			builder.append(ChatColor.GREEN.toString());
+			ret = ret.color(ChatColor.GREEN);
 		}
 		else
 		{
-			builder.append(ChatColor.RED.toString());
+			ret = ret.color(ChatColor.RED);
 		}
 		
-		builder.append("# ");
-		
-		builder.append(this.getDisplayName(watcherObject));
-		
+		Mson mson = null;
 		if (this.hasMessage())
 		{
-			builder.append(Txt.parse(" <pink>"));
-			
 			String message = this.getMessage();
+			Mson messageTooltip = mson().tooltipParse("<pink>" + message);
 			if (message.length() > MConf.get().getExcerptLength())
 			{
 				message = message.substring(0, MConf.get().getExcerptLength());
 			}
-			builder.append(message);
+			
+			mson = mson(Mson.SPACE, messageTooltip.text(message).color(ChatColor.LIGHT_PURPLE));
 		}
 		else
 		{
-			builder.append(Txt.parse(" <silver><em>no message error"));
+			mson = mson(" no message error").italic(true).color(ChatColor.GRAY);
 		}
 		
-		String ret = builder.toString();
+		MassiveCommand command = MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow;
 		
-		return ret;
+		return mson(ret, mson).command(command).tooltip(Txt.parse("<i>Click to <c>%s<i>", command.getCommandLine()));
 	}
 	
 	// -------------------------------------------- //
