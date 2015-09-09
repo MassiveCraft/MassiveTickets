@@ -2,7 +2,6 @@ package com.massivecraft.massivetickets.cmd;
 
 import java.util.List;
 
-import com.massivecraft.massivecore.cmd.HelpCommand;
 import com.massivecraft.massivecore.cmd.VersionCommand;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivetickets.MassiveTickets;
@@ -34,7 +33,6 @@ public class CmdTickets extends MassiveTicketsCommand
 	public CmdTickets()
 	{
 		// SubCommands
-		this.addSubCommand(HelpCommand.get());
 		this.addSubCommand(this.cmdTicketsList);
 		this.addSubCommand(this.cmdTicketsShow);
 		this.addSubCommand(this.cmdTicketsCreate);
