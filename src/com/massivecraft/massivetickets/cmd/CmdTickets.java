@@ -23,6 +23,7 @@ public class CmdTickets extends MassiveTicketsCommand
 	public CmdTicketsHighscore cmdTicketsHighscore = new CmdTicketsHighscore() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsHighscore; } };
 	public CmdTicketsModlist cmdTicketsModlist = new CmdTicketsModlist() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsModlist; } };
 	public CmdTicketsWorking cmdTicketsWorking = new CmdTicketsWorking() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsWorking; } };
+	public CmdTicketsTeleport cmdTicketsTeleport = new CmdTicketsTeleport() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsTeleport; } };
 	public CmdTicketsCheat cmdTicketsCheat = new CmdTicketsCheat() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsCheat; } };
 	public VersionCommand cmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node) { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsVersion; } };
 	
@@ -42,6 +43,7 @@ public class CmdTickets extends MassiveTicketsCommand
 		this.addSubCommand(this.cmdTicketsHighscore);
 		this.addSubCommand(this.cmdTicketsModlist);
 		this.addSubCommand(this.cmdTicketsWorking);
+		this.addSubCommand(this.cmdTicketsTeleport);
 		this.addSubCommand(this.cmdTicketsCheat);
 		this.addSubCommand(this.cmdTicketsVersion);
 		

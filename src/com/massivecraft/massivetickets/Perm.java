@@ -25,6 +25,7 @@ public enum Perm
 	WORKING("working"),
 	CHEAT("cheat"),
 	VERSION("version"),
+	TELEPORT("teleport"),
 	
 	// END OF LIST
 	;

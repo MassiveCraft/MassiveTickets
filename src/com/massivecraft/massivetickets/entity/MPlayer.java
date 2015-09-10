@@ -298,8 +298,9 @@ public class MPlayer extends SenderEntity<MPlayer>
 		}
 		
 		MassiveCommand command = MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow;
+		String commandLine = command.getCommandLine(this.getName());
 		
-		return mson(ret, mson).command(command).tooltip(Txt.parse("<i>Click to <c>%s<i>", command.getCommandLine()));
+		return mson(ret, mson).command(commandLine).tooltip(Txt.parse("<i>Click to <c>%s<i>", commandLine));
 	}
 	
 	// -------------------------------------------- //

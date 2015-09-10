@@ -60,6 +60,9 @@ public class MConf extends Entity<MConf>
 	public List<String> aliasesInnerTicketsCheat = MUtil.list("cheat");
 	public List<String> aliasesOuterTicketsCheat = new ArrayList<String>();
 	
+	public List<String> aliasesInnerTicketsTeleport = MUtil.list("tp", "teleport");
+	public List<String> aliasesOuterTicketsTeleport = new ArrayList<String>();
+	
 	public List<String> aliasesInnerTicketsVersion = MUtil.list("v", "version");
 	public List<String> aliasesOuterTicketsVersion = new ArrayList<String>();
 	
@@ -354,6 +357,7 @@ public class MConf extends Entity<MConf>
 			)
 		)
 	);
+
 	public Map<Integer, Level> getCountToLevel()
 	{
 		return new TreeMap<Integer, Level>(this.countToLevel);

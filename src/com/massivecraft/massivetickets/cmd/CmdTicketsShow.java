@@ -65,7 +65,8 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		Mson buttonUpdate = mson();
 		Mson buttonPick = BUTTON_PICK;
 		Mson buttonDone = getButtonFunctional(BUTTON_DONE, Perm.DONE, Perm.DONE_OTHER, mplayer, MassiveTickets.get().getOuterCmdTickets().cmdTicketsDone, true, false);
-		Mson buttonYield = BUTTON_YIELD;
+		Mson buttonYield = getButtonFunctional(BUTTON_YIELD, Perm.YIELD, Perm.YIELD_OTHER, mplayer, MassiveTickets.get().getOuterCmdTickets().cmdTicketsYield, true, false);
+		Mson buttonTeleport = getButtonFunctional(BUTTON_TELEPORT, Perm.TELEPORT, null, mplayer, MassiveTickets.get().getOuterCmdTickets().cmdTicketsTeleport, true, false);
 		
 		// Check if moderated and change desc & buttons
 		String pickedByDesc = Txt.parse("<silver><em>noone yet");
@@ -73,12 +74,10 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		{
 			pickedByDesc = mplayer.getModerator().getDisplayName(sender);
 			buttonPick = buttonPick.color(ChatColor.GRAY).tooltipParse("<b>The ticket is already assigned.");
-			buttonYield = getButtonFunctional(buttonYield, Perm.YIELD, Perm.YIELD_OTHER, mplayer, MassiveTickets.get().getOuterCmdTickets().cmdTicketsYield, true, false);
 		}
 		else
 		{
 			buttonPick = getButtonFunctional(buttonPick, Perm.PICK, null, mplayer, MassiveTickets.get().getOuterCmdTickets().cmdTicketsPick, true, false);
-			buttonYield = buttonYield.color(ChatColor.GRAY).tooltipParse("<b>The ticket is not assigned yet.");
 		}
 		
 		if (msender == mplayer)
@@ -86,11 +85,13 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 			MassiveCommand command = MassiveTickets.get().getOuterCmdTickets().cmdTicketsCreate;
 			buttonUpdate = getButtonFunctional(BUTTON_UPDATE, Perm.CREATE, null, mplayer, command, false, true);
 			buttonUpdate = mson(buttonUpdate.suggest(command, msender.getMessage()), Mson.SPACE);
+			
+			buttonTeleport = buttonTeleport.color(ChatColor.GRAY).tooltipParse("<b>You cannot teleport to yourself.").clickEvent(null);
 		}
 		
 		// Send moderator info and buttons
 		msg("<k>Picked By: <v>%s", pickedByDesc);
-		message(mson(buttonUpdate, buttonPick, Mson.SPACE, buttonYield, Mson.SPACE, buttonDone));
+		message(mson(buttonUpdate, buttonPick, Mson.SPACE, buttonYield, Mson.SPACE, buttonDone, Mson.SPACE, buttonTeleport));
 		
 		// React
 		MConf.get().getShowReaction().run(msender.getId(), mplayer.getId());

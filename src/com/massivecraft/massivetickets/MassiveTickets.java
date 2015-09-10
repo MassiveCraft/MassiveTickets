@@ -22,6 +22,7 @@ import com.massivecraft.massivetickets.cmd.CmdTicketsList;
 import com.massivecraft.massivetickets.cmd.CmdTicketsModlist;
 import com.massivecraft.massivetickets.cmd.CmdTicketsPick;
 import com.massivecraft.massivetickets.cmd.CmdTicketsShow;
+import com.massivecraft.massivetickets.cmd.CmdTicketsTeleport;
 import com.massivecraft.massivetickets.cmd.CmdTicketsWorking;
 import com.massivecraft.massivetickets.cmd.CmdTicketsYield;
 import com.massivecraft.massivetickets.entity.MConf;
@@ -74,6 +75,9 @@ public class MassiveTickets extends MassivePlugin
 	private CmdTicketsWorking outerCmdTicketsWorking;
 	public CmdTicketsWorking getOuterCmdTicketsWorking() { return this.outerCmdTicketsWorking; }
 	
+	private CmdTicketsTeleport outerCmdTicketsTeleport;
+	public CmdTicketsTeleport getOuterCmdTicketsTeleport() { return this.outerCmdTicketsTeleport; }
+	
 	private CmdTicketsCheat outerCmdTicketsCheat;
 	public CmdTicketsCheat getOuterCmdTicketsCheat() { return this.outerCmdTicketsCheat; }
 	
@@ -123,6 +127,9 @@ public class MassiveTickets extends MassivePlugin
 		
 		this.outerCmdTicketsWorking = new CmdTicketsWorking() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsWorking; } };
 		this.outerCmdTicketsWorking.register(this);
+		
+		this.outerCmdTicketsTeleport = new CmdTicketsTeleport() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsTeleport; } };
+		this.outerCmdTicketsTeleport.register(this);
 		
 		this.outerCmdTicketsCheat = new CmdTicketsCheat() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsCheat; } };
 		this.outerCmdTicketsCheat.register(this);
