@@ -86,7 +86,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 			buttonUpdate = getButtonFunctional(BUTTON_UPDATE, Perm.CREATE, null, mplayer, command, false, true);
 			buttonUpdate = mson(buttonUpdate.suggest(command, msender.getMessage()), Mson.SPACE);
 			
-			buttonTeleport = buttonTeleport.color(ChatColor.GRAY).tooltipParse("<b>You cannot teleport to yourself.").clickEvent(null);
+			buttonTeleport = buttonTeleport.color(ChatColor.GRAY).tooltipParse("<b>You cannot teleport to yourself.");
 		}
 		
 		// Send moderator info and buttons

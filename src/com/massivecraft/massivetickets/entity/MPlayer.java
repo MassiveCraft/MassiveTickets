@@ -11,7 +11,6 @@ import java.util.TreeSet;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-import com.massivecraft.massivecore.cmd.MassiveCommand;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.store.SenderEntity;
 import com.massivecraft.massivecore.util.IdUtil;
@@ -269,38 +268,27 @@ public class MPlayer extends SenderEntity<MPlayer>
 	 */
 	public Mson getListLine(Object watcherObject)
 	{
-		Mson ret = Mson.fromParsedMessage("# " + this.getDisplayName(watcherObject));
-		
-		if (this.hasModeratorId())
+		return mson(
+			"#",
+			Mson.SPACE,
+			this.getDisplayNameMson(watcherObject),
+			Mson.SPACE,
+			this.getListLineExcerpt(watcherObject)
+		)
+		.command(MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow, this.getName())
+		.color(this.hasModeratorId() ? ChatColor.GREEN : ChatColor.RED);
+	}
+	
+	public Mson getListLineExcerpt(Object watcherObject)
+	{
+		String message = this.getMessage();
+		if (message == null) return mson("no message error").italic(true).color(ChatColor.GRAY);
+		String tooltip = Txt.parse("<pink>%s", message);
+		if (message.length() > MConf.get().getExcerptLength())
 		{
-			ret = ret.color(ChatColor.GREEN);
+			message = message.substring(0, MConf.get().getExcerptLength());
 		}
-		else
-		{
-			ret = ret.color(ChatColor.RED);
-		}
-		
-		Mson mson = null;
-		if (this.hasMessage())
-		{
-			String message = this.getMessage();
-			Mson messageTooltip = mson().tooltipParse("<pink>" + message);
-			if (message.length() > MConf.get().getExcerptLength())
-			{
-				message = message.substring(0, MConf.get().getExcerptLength());
-			}
-			
-			mson = mson(Mson.SPACE, messageTooltip.text(message).color(ChatColor.LIGHT_PURPLE));
-		}
-		else
-		{
-			mson = mson(" no message error").italic(true).color(ChatColor.GRAY);
-		}
-		
-		MassiveCommand command = MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow;
-		String commandLine = command.getCommandLine(this.getName());
-		
-		return mson(ret, mson).command(commandLine).tooltip(Txt.parse("<i>Click to <c>%s<i>", commandLine));
+		return mson(message).color(ChatColor.LIGHT_PURPLE).tooltip(tooltip);
 	}
 	
 	// -------------------------------------------- //
