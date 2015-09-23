@@ -8,6 +8,7 @@ import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.MassiveCommand;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.mson.Mson;
+import com.massivecraft.massivecore.mson.MsonEvent;
 import com.massivecraft.massivecore.util.PermUtil;
 import com.massivecraft.massivecore.util.TimeDiffUtil;
 import com.massivecraft.massivecore.util.TimeUnit;
@@ -86,7 +87,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 			buttonUpdate = getButtonFunctional(BUTTON_UPDATE, Perm.CREATE, null, mplayer, command, false, true);
 			buttonUpdate = mson(buttonUpdate.suggest(command, msender.getMessage()), Mson.SPACE);
 			
-			buttonTeleport = buttonTeleport.color(ChatColor.GRAY).tooltipParse("<b>You cannot teleport to yourself.");
+			buttonTeleport = buttonTeleport.color(ChatColor.GRAY).tooltipParse("<b>You cannot teleport to yourself.").event(false, MsonEvent.suggest(""));
 		}
 		
 		// Send moderator info and buttons
@@ -100,22 +101,18 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 	private Mson getButtonFunctional(Mson button, Perm perm, Perm permOther, MPlayer other, MassiveCommand command, boolean addName, boolean suggest)
 	{
 		// Handle Permissions
-		if (! perm.has(sender))
-		{
-			return button.color(ChatColor.GRAY).tooltip(PermUtil.getDeniedMessage(perm.node));
-		}
-
+		if (! perm.has(sender)) return getDenied(button, perm);
+		
 		// Handle Permissions other
-		if (permOther != null && sender == other && permOther.has(sender))
-		{
-			return button.color(ChatColor.GRAY).tooltip(PermUtil.getDeniedMessage(permOther.node));
-		}
+		if (permOther != null && sender == other && permOther.has(sender))  return getDenied(button, permOther);
 		
-		// Make Button functional
 		String commandLine = addName ? command.getCommandLine(other.getName()) : command.getCommandLine();
-		button = button.tooltip(Txt.parse("<i>Click to <c>%s<i>", commandLine));
-		
 		return suggest ? button.suggest(commandLine) : button.command(commandLine);
+	}
+	
+	private Mson getDenied(Mson mson, Perm perm)
+	{
+		return mson.color(ChatColor.GRAY).tooltip(PermUtil.getDeniedMessage(perm.node));
 	}
 	
 }

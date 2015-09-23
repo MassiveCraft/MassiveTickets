@@ -6,7 +6,6 @@ import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.arg.ARBoolean;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.mson.Mson;
-import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
@@ -59,7 +58,7 @@ public class CmdTicketsWorking extends MassiveTicketsCommand
 			
 			Mson mson = mson(
 				message,
-				button.command(commandLine).tooltip(Txt.parse("<i>Click to <c>%s<i>", commandLine))
+				button.command(commandLine)
 			).color(ChatColor.YELLOW);
 			
 			message(mson);

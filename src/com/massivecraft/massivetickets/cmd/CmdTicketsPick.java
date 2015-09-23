@@ -6,7 +6,6 @@ import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.MassiveCommand;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.mson.Mson;
-import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.ARMPlayer;
@@ -74,7 +73,7 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 			
 			if (commandLine != null)
 			{
-				message = mson(message, Mson.SPACE, CmdTicketsShow.BUTTON_YIELD.command(commandLine).tooltip(Txt.parse("<i>Click to <c>%s<i>", commandLine)));
+				message = mson(message, Mson.SPACE, CmdTicketsShow.BUTTON_YIELD.command(commandLine));
 			}
 			message(message);
 			return;
