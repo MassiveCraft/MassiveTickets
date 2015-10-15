@@ -9,10 +9,8 @@ import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.type.primitive.TypeInteger;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
-import com.massivecraft.massivetickets.Level;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
-import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
 
@@ -61,10 +59,7 @@ public class CmdTicketsHighscore extends MassiveTicketsCommand
 			{
 				MPlayer mplayer = entry.getKey();
 				Integer count = entry.getValue();
-				Level level = MConf.get().getLevelForCount(count);
-				String levelDesc = "";
-				if (level != null) levelDesc = level.getName();
-				msg("<pink>%d <white>%s <pink><em>%s", count, mplayer.getDisplayName(sender), levelDesc);
+				msg("<pink>%d <white>%s", count, mplayer.getDisplayName(sender));
 			}
 		}
 		else

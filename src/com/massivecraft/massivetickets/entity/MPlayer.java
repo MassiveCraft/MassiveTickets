@@ -16,7 +16,6 @@ import com.massivecraft.massivecore.store.SenderEntity;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
-import com.massivecraft.massivetickets.Level;
 import com.massivecraft.massivetickets.MassiveTickets;
 
 public class MPlayer extends SenderEntity<MPlayer>
@@ -91,6 +90,8 @@ public class MPlayer extends SenderEntity<MPlayer>
 	//     }
 	// }
 	private Map<Integer, Map<Integer, Integer>> count = null;
+
+	private int totalCount = 0;
 	
 	// -------------------------------------------- //
 	// FIELDS: LOW
@@ -258,6 +259,17 @@ public class MPlayer extends SenderEntity<MPlayer>
 		target.put(week, count);
 		this.setCount(year, target);
 	}
+
+	// FIELD: TOTALCOUNT
+	public int getTotalCount()
+	{
+		return this.totalCount;
+	}
+
+	public void setTotalCount(int totalCount)
+	{
+		this.totalCount = totalCount;
+	}
 	
 	// -------------------------------------------- //
 	// FIELDS: HIGH
@@ -367,26 +379,40 @@ public class MPlayer extends SenderEntity<MPlayer>
 		int year = MassiveTickets.getCurrentYear();
 		int week = MassiveTickets.getCurrentWeek();
 		
+		// Weekly count
 		int countBefore = this.getCount(year, week);
 		int countAfter = countBefore + 1;
 		this.setCount(year, week, countAfter);
 		
-		// Let there be party if the level changed
-		Level levelBefore = MConf.get().getLevelForCount(countBefore);
-		Level levelAfter = MConf.get().getLevelForCount(countAfter);
-		boolean levelUp = (!levelAfter.equals(levelBefore));
+		// Total count
+		int totalCountAfter = this.getTotalCount() + 1;
+		this.setTotalCount(totalCountAfter);
 		
-		if (levelUp)
+		// Calculate
+		int totalMax = MConf.get().ticketsPerReward;
+		int remainder = totalCountAfter % totalMax;
+		int leftOver = totalMax - remainder;
+		int percent = (int) MUtil.probabilityRound(((double)remainder/totalMax) * 100.0);
+		
+		String progress = "<h>%s<gray>/<h>%s <gray>(<lime>%s<gray>) | ";
+		
+		this.msg(Txt.titleize("MassiveTickets | Counter"));
+		
+		if (remainder == 0)
 		{
-			MassiveTickets.alertModeratorsMsg("<white>%s<pink> has done <aqua>%d <pink>tickets this week!", this.getDisplayName(null), countAfter);
-			MassiveTickets.alertModeratorsMsg("<bold><em>%s", levelAfter.getName());
+			this.msg(progress + "<g>You will receive a reward!", totalMax, totalMax, 100 + "%");
+			String name = MConf.get().getRandomReward();
+			MassiveTickets.alertModeratorsMsg("<white>%s<pink> has done <aqua>%d <pink>tickets!", this.getDisplayName(null), countAfter);
+			MassiveTickets.alertModeratorsMsg("<pink>Enjoy your <aqua>%s <white>%s<pink>!", name, this.getDisplayName(null));
 			
-			levelAfter.getReaction().run(this.getId(), playerId);
-			
+			MConf.get().getRewardReaction(name).run(this.getId(), playerId);
 			MConf.get().getDoneReactionLevel().run(this.getId(), playerId);
 		}
 		else
 		{
+			String pluralS = leftOver > 1 ? "s" : "";
+			this.msg(progress + "<i>Only %s ticket%s left till your next reward!", remainder, totalMax, percent + "%", leftOver, pluralS);
+			
 			MConf.get().getDoneReactionNormal().run(this.getId(), playerId);
 		}
 	}
