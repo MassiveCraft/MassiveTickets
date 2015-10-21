@@ -93,6 +93,9 @@ public class MassiveTickets extends MassivePlugin
 	{
 		if ( ! preEnable()) return;
 		
+		// Version Synchronized
+		this.setVersionSynchronized(true);
+		
 		// Initialize Database
 		MConfColl.get().init();
 		MPlayerColl.get().init();
