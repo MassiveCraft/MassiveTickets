@@ -1,13 +1,13 @@
-package com.massivecraft.massivetickets.predictate;
+package com.massivecraft.massivetickets.predicate;
 
 import java.io.Serializable;
 
 import org.bukkit.command.CommandSender;
 
-import com.massivecraft.massivecore.Predictate;
+import com.massivecraft.massivecore.Predicate;
 import com.massivecraft.massivetickets.Perm;
 
-public class IsModeratorPredictate implements Predictate<CommandSender>, Serializable
+public class IsModeratorPredicate implements Predicate<CommandSender>, Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -15,8 +15,8 @@ public class IsModeratorPredictate implements Predictate<CommandSender>, Seriali
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static IsModeratorPredictate i = new IsModeratorPredictate();
-	public static IsModeratorPredictate get() { return i; }
+	private static IsModeratorPredicate i = new IsModeratorPredicate();
+	public static IsModeratorPredicate get() { return i; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE

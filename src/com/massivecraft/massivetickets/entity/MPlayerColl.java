@@ -9,8 +9,8 @@ import com.massivecraft.massivecore.store.MStore;
 import com.massivecraft.massivecore.store.SenderColl;
 import com.massivecraft.massivetickets.Const;
 import com.massivecraft.massivetickets.MassiveTickets;
-import com.massivecraft.massivetickets.predictate.IsCurrentlyWorkingPredictate;
-import com.massivecraft.massivetickets.predictate.IsTicketPredictate;
+import com.massivecraft.massivetickets.predicate.PredicateIsCurrentlyWorking;
+import com.massivecraft.massivetickets.predicate.PredicateIsTicket;
 
 public class MPlayerColl extends SenderColl<MPlayer>
 {
@@ -41,12 +41,12 @@ public class MPlayerColl extends SenderColl<MPlayer>
 	
 	public Collection<MPlayer> getAllCurrentlyWorking()
 	{
-		return this.getAll(IsCurrentlyWorkingPredictate.get());
+		return this.getAll(PredicateIsCurrentlyWorking.get());
 	}
 	
 	public Collection<MPlayer> getAllTickets()
 	{
-		return this.getAll(IsTicketPredictate.get());
+		return this.getAll(PredicateIsTicket.get());
 	}
 	
 	// For the list command

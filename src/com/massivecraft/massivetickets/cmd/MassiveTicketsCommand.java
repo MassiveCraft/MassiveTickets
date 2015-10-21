@@ -3,7 +3,7 @@ package com.massivecraft.massivetickets.cmd;
 import org.bukkit.ChatColor;
 
 import com.massivecraft.massivecore.cmd.MassiveCommand;
-import com.massivecraft.massivecore.cmd.VisibilityMode;
+import com.massivecraft.massivecore.cmd.Visibility;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivetickets.entity.MPlayer;
 
@@ -35,20 +35,14 @@ public abstract class MassiveTicketsCommand extends MassiveCommand
 	// -------------------------------------------- //
 	
 	@Override
-	public void fixSenderVars()
+	public void senderFields(boolean set)
 	{
-		this.msender = MPlayer.get(sender);
-	}
-	
-	@Override
-	public void unsetSenderVars()
-	{
-		this.msender = null;
+		this.msender = set ? MPlayer.get(sender) : null;
 	}
 	
 	public MassiveTicketsCommand()
 	{
-		this.setVisibilityMode(VisibilityMode.SECRET);
+		this.setVisibility(Visibility.SECRET);
 	}
 	
 }

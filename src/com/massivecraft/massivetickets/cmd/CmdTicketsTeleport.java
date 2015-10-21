@@ -7,7 +7,7 @@ import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.mixin.TeleporterException;
 import com.massivecraft.massivecore.teleport.DestinationPlayer;
 import com.massivecraft.massivetickets.Perm;
-import com.massivecraft.massivetickets.entity.ARMPlayer;
+import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MPlayer;
 
 public class CmdTicketsTeleport extends MassiveTicketsCommand
@@ -18,8 +18,8 @@ public class CmdTicketsTeleport extends MassiveTicketsCommand
 	
 	public CmdTicketsTeleport()
 	{
-		// Args
-		this.addArg(ARMPlayer.getAny(), "player");
+		// Parameters
+		this.addParameter(TypeMPlayer.getAny(), "player");
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.TELEPORT.node));

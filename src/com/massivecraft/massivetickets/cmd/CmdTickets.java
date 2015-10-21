@@ -33,19 +33,19 @@ public class CmdTickets extends MassiveTicketsCommand
 	
 	public CmdTickets()
 	{
-		// SubCommands
-		this.addSubCommand(this.cmdTicketsList);
-		this.addSubCommand(this.cmdTicketsShow);
-		this.addSubCommand(this.cmdTicketsCreate);
-		this.addSubCommand(this.cmdTicketsDone);
-		this.addSubCommand(this.cmdTicketsPick);
-		this.addSubCommand(this.cmdTicketsYield);
-		this.addSubCommand(this.cmdTicketsHighscore);
-		this.addSubCommand(this.cmdTicketsModlist);
-		this.addSubCommand(this.cmdTicketsWorking);
-		this.addSubCommand(this.cmdTicketsTeleport);
-		this.addSubCommand(this.cmdTicketsCheat);
-		this.addSubCommand(this.cmdTicketsVersion);
+		// Children
+		this.addChild(this.cmdTicketsList);
+		this.addChild(this.cmdTicketsShow);
+		this.addChild(this.cmdTicketsCreate);
+		this.addChild(this.cmdTicketsDone);
+		this.addChild(this.cmdTicketsPick);
+		this.addChild(this.cmdTicketsYield);
+		this.addChild(this.cmdTicketsHighscore);
+		this.addChild(this.cmdTicketsModlist);
+		this.addChild(this.cmdTicketsWorking);
+		this.addChild(this.cmdTicketsTeleport);
+		this.addChild(this.cmdTicketsCheat);
+		this.addChild(this.cmdTicketsVersion);
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.BASECOMMAND.node));

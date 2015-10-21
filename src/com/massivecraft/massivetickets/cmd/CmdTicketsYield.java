@@ -4,7 +4,7 @@ import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
-import com.massivecraft.massivetickets.entity.ARMPlayer;
+import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 
@@ -16,8 +16,8 @@ public class CmdTicketsYield extends MassiveTicketsCommand
 	
 	public CmdTicketsYield()
 	{
-		// Args
-		this.addArg(ARMPlayer.getOnline(), "player");
+		// Parameters
+		this.addParameter(TypeMPlayer.getOnline(), "player");
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.YIELD.node));

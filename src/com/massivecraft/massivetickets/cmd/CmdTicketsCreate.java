@@ -4,8 +4,8 @@ import org.bukkit.ChatColor;
 
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.MassiveCommand;
-import com.massivecraft.massivecore.cmd.arg.ARString;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.cmd.type.TypeString;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.util.Txt;
@@ -22,8 +22,8 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 	
 	public CmdTicketsCreate()
 	{
-		// Args
-		this.addArg(ARString.get(), "message", true);
+		// Parameters
+		this.addParameter(TypeString.get(), "message", true);
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.CREATE.node));
@@ -93,7 +93,7 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		
 		return mson(
 			"Use ",
-			command.getUseageTemplate(command.getCommandChain(), false, true, sender),
+			command.getTemplate(command.getChain(), false, true, sender),
 			mson(message).tooltip(tooltip)
 		).color(ChatColor.LIGHT_PURPLE);
 	}

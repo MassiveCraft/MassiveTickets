@@ -8,7 +8,7 @@ import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
-import com.massivecraft.massivetickets.entity.ARMPlayer;
+import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 
@@ -20,8 +20,8 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 	
 	public CmdTicketsPick()
 	{
-		// Args
-		this.addArg(ARMPlayer.getOnline(), "player");
+		// Parameters
+		this.addParameter(TypeMPlayer.getOnline(), "player");
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.PICK.node));

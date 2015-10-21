@@ -1,11 +1,11 @@
-package com.massivecraft.massivetickets.predictate;
+package com.massivecraft.massivetickets.predicate;
 
 import java.io.Serializable;
 
-import com.massivecraft.massivecore.Predictate;
+import com.massivecraft.massivecore.Predicate;
 import com.massivecraft.massivetickets.entity.MPlayer;
 
-public class IsCurrentlyWorkingPredictate implements Predictate<MPlayer>, Serializable
+public class PredicateIsCurrentlyWorking implements Predicate<MPlayer>, Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -13,8 +13,8 @@ public class IsCurrentlyWorkingPredictate implements Predictate<MPlayer>, Serial
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 		
-	private static IsCurrentlyWorkingPredictate i = new IsCurrentlyWorkingPredictate();
-	public static IsCurrentlyWorkingPredictate get() { return i; }
+	private static PredicateIsCurrentlyWorking i = new PredicateIsCurrentlyWorking();
+	public static PredicateIsCurrentlyWorking get() { return i; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE

@@ -3,7 +3,7 @@ package com.massivecraft.massivetickets.cmd;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivetickets.Perm;
-import com.massivecraft.massivetickets.entity.ARMPlayer;
+import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 
@@ -15,8 +15,8 @@ public class CmdTicketsDone extends MassiveTicketsCommand
 	
 	public CmdTicketsDone()
 	{
-		// Args
-		this.addArg(ARMPlayer.getOnline(), "player", "you");
+		// Parameters
+		this.addParameter(TypeMPlayer.getOnline(), "player", "you");
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.DONE.node));

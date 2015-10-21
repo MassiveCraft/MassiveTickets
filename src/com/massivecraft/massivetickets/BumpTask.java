@@ -8,7 +8,7 @@ import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.TimeUnit;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
-import com.massivecraft.massivetickets.predictate.IsModeratorPredictate;
+import com.massivecraft.massivetickets.predicate.IsModeratorPredicate;
 
 public class BumpTask extends ModuloRepeatTask
 {
@@ -51,7 +51,7 @@ public class BumpTask extends ModuloRepeatTask
 		String message = MassiveTickets.createBumpMessage();
 		for (Player player : MUtil.getOnlinePlayers())
 		{
-			if (!IsModeratorPredictate.get().apply(player)) continue;
+			if (!IsModeratorPredicate.get().apply(player)) continue;
 			MassiveTickets.alertOneMessage(player, message);
 		}
 	}

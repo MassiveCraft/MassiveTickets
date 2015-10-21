@@ -15,7 +15,7 @@ import com.massivecraft.massivecore.util.TimeUnit;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
-import com.massivecraft.massivetickets.entity.ARMPlayer;
+import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 
@@ -27,8 +27,8 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 	
 	public CmdTicketsShow()
 	{
-		// Args
-		this.addArg(ARMPlayer.getOnline(), "player", "you");
+		// Parameters
+		this.addParameter(TypeMPlayer.getOnline(), "player", "you");
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.SHOW.node));

@@ -12,7 +12,7 @@ import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
-import com.massivecraft.massivetickets.predictate.IsModeratorPredictate;
+import com.massivecraft.massivetickets.predicate.IsModeratorPredicate;
 
 
 public class EngineMain extends EngineAbstract
@@ -68,7 +68,7 @@ public class EngineMain extends EngineAbstract
 		final Player player = event.getPlayer();
 		
 		// ... and this player is a moderator ...
-		if (!IsModeratorPredictate.get().apply(player)) return;
+		if (!IsModeratorPredicate.get().apply(player)) return;
 		
 		// If the bump on join is activated ...
 		if (!MConf.get().isBumpOnJoinActive()) return;
