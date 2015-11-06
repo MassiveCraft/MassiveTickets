@@ -3,8 +3,8 @@ package com.massivecraft.massivetickets.cmd;
 import org.bukkit.ChatColor;
 
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
-import com.massivecraft.massivecore.cmd.type.TypeBoolean;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
+import com.massivecraft.massivecore.command.type.primitive.TypeBoolean;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
@@ -19,10 +19,10 @@ public class CmdTicketsWorking extends MassiveTicketsCommand
 	public CmdTicketsWorking()
 	{
 		// Parameters
-		this.addParameter(TypeBoolean.get(), "yes/no", "*toggle*");
+		this.addParameter(TypeBoolean.getYes(), "yes/no", "*toggle*");
 		
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.WORKING.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.WORKING.node));
 	}
 	
 	// -------------------------------------------- //

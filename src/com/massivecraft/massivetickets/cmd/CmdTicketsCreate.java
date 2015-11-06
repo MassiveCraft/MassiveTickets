@@ -3,9 +3,9 @@ package com.massivecraft.massivetickets.cmd;
 import org.bukkit.ChatColor;
 
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.MassiveCommand;
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
-import com.massivecraft.massivecore.cmd.type.TypeString;
+import com.massivecraft.massivecore.command.MassiveCommand;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
+import com.massivecraft.massivecore.command.type.primitive.TypeString;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.util.Txt;
@@ -26,7 +26,7 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		this.addParameter(TypeString.get(), "message", true);
 		
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.CREATE.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.CREATE.node));
 	}
 	
 	// -------------------------------------------- //

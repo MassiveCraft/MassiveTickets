@@ -5,8 +5,8 @@ import java.util.Collection;
 import org.bukkit.command.CommandSender;
 
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.Parameter;
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.command.Parameter;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.pager.Msonifier;
 import com.massivecraft.massivecore.pager.Pager;
@@ -26,7 +26,7 @@ public class CmdTicketsList extends MassiveTicketsCommand
 		this.addParameter(Parameter.getPage());
 		
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.LIST.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.LIST.node));
 	}
 	
 	// -------------------------------------------- //

@@ -2,8 +2,8 @@ package com.massivecraft.massivetickets.cmd;
 
 import java.util.List;
 
-import com.massivecraft.massivecore.cmd.VersionCommand;
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.command.VersionCommand;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
@@ -48,7 +48,7 @@ public class CmdTickets extends MassiveTicketsCommand
 		this.addChild(this.cmdTicketsVersion);
 		
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.BASECOMMAND.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.BASECOMMAND.node));
 	}
 	
 }

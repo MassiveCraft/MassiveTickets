@@ -5,8 +5,8 @@ import java.util.LinkedHashMap;
 import org.bukkit.ChatColor;
 
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.MassiveCommand;
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.command.MassiveCommand;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.mson.MsonEvent;
 import com.massivecraft.massivecore.util.PermUtil;
@@ -31,7 +31,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		this.addParameter(TypeMPlayer.getOnline(), "player", "you");
 		
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.SHOW.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.SHOW.node));
 	}
 	
 	// -------------------------------------------- //

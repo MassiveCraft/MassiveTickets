@@ -9,7 +9,7 @@ import java.util.List;
 import org.bukkit.command.CommandSender;
 
 import com.massivecraft.massivecore.MassivePlugin;
-import com.massivecraft.massivecore.cmd.VersionCommand;
+import com.massivecraft.massivecore.command.VersionCommand;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;

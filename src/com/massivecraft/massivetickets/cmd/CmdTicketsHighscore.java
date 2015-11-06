@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
-import com.massivecraft.massivecore.cmd.type.TypeInteger;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
+import com.massivecraft.massivecore.command.type.primitive.TypeInteger;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.Level;
@@ -29,7 +29,7 @@ public class CmdTicketsHighscore extends MassiveTicketsCommand
 		this.addParameter(TypeInteger.get(), "year", "now");
 		
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.HIGHSCORE.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.HIGHSCORE.node));
 	}
 	
 	// -------------------------------------------- //

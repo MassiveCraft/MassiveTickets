@@ -1,8 +1,8 @@
 package com.massivecraft.massivetickets.cmd;
 
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
-import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
+import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.mixin.TeleporterException;
 import com.massivecraft.massivecore.teleport.DestinationPlayer;
@@ -22,8 +22,8 @@ public class CmdTicketsTeleport extends MassiveTicketsCommand
 		this.addParameter(TypeMPlayer.getAny(), "player");
 		
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.TELEPORT.node));
-		this.addRequirements(ReqIsPlayer.get());
+		this.addRequirements(RequirementHasPerm.get(Perm.TELEPORT.node));
+		this.addRequirements(RequirementIsPlayer.get());
 	}
 	
 	// -------------------------------------------- //

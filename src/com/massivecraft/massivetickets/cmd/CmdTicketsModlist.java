@@ -3,7 +3,7 @@ package com.massivecraft.massivetickets.cmd;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MPlayer;
@@ -18,7 +18,7 @@ public class CmdTicketsModlist extends MassiveTicketsCommand
 	public CmdTicketsModlist()
 	{
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.MODLIST.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.MODLIST.node));
 	}
 	
 	// -------------------------------------------- //
