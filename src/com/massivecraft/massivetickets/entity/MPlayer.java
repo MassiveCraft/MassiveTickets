@@ -41,6 +41,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 		this.setModeratorId(that.getModeratorId());
 		this.setWorking(that.isWorking());
 		this.setCount(that.getCount());
+		this.setTotalCount(that.getTotalCount());
 				
 		return this;
 	}
