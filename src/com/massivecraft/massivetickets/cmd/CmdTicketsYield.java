@@ -1,12 +1,15 @@
 package com.massivecraft.massivetickets.cmd;
 
+import org.bukkit.ChatColor;
+
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
+import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
-import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
+import com.massivecraft.massivetickets.entity.TypeMPlayer;
 
 public class CmdTicketsYield extends MassiveTicketsCommand
 {
@@ -54,7 +57,7 @@ public class CmdTicketsYield extends MassiveTicketsCommand
 		ticket.setModeratorId(null);
 		
 		// Inform
-		MassiveTickets.alertModeratorsMsg("<white>%s <pink>yielded <white>%s<pink>'s ticket.", msender.getDisplayName(null), ticket.getDisplayName(null));
+		MassiveTickets.alertModeratorsMessage(this.getYieldedMson(ticket));
 		MassiveTickets.alertModeratorsMsg(ticket.getMessage());
 		
 		MassiveTickets.alertOneMsg(ticket.getId(), "<white>%s <pink>has yielded your ticket.", msender.getDisplayName(ticket.getId()));
@@ -62,6 +65,22 @@ public class CmdTicketsYield extends MassiveTicketsCommand
 		
 		// React
 		MConf.get().getYieldReaction().run(moderator.getId(), ticket.getId());
+	}
+	
+	private static Mson YIELDED = Mson.SPACE.add(mson("yielded").color(ChatColor.LIGHT_PURPLE)).add(Mson.SPACE);
+	private static Mson TICKET = Mson.SPACE.add(mson("'s ticket.").color(ChatColor.LIGHT_PURPLE)).add(Mson.SPACE);
+	
+	private Mson getYieldedMson(MPlayer ticket)
+	{
+		Mson yielded = mson(
+			mson(msender.getDisplayName(null)).color(ChatColor.WHITE),
+			YIELDED,
+			mson(ticket.getDisplayName(null)).color(ChatColor.WHITE),
+			TICKET,
+			BUTTON_SHOW.command(MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow, ticket.getName())
+		);
+		
+		return yielded;
 	}
 	
 }

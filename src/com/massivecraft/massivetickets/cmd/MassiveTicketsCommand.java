@@ -19,6 +19,8 @@ public abstract class MassiveTicketsCommand extends MassiveCommand
 	public static final Mson BUTTON_YIELD = getButton("Yield");
 	public static final Mson BUTTON_DONE = getButton("Done");
 	public static final Mson BUTTON_START = getButton("Start");
+	public static final Mson BUTTON_SHOW = getButton("Show");
+	public static final Mson BUTTON_LIST = getButton("List");
 	public static final Mson BUTTON_STOP = getButton("Stop");
 	public static final Mson BUTTON_TELEPORT = getButton("Teleport");
 	

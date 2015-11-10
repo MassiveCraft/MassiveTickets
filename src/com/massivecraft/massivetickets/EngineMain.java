@@ -1,5 +1,6 @@
 package com.massivecraft.massivetickets;
 
+import com.massivecraft.massivetickets.entity.MPlayerColl;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -78,6 +79,9 @@ public class EngineMain extends EngineAbstract
 		
 		// ... and this is an actual join ...
 		if (!Mixin.isActualJoin(event)) return;
+		
+		// ... and if there are any tickets ...
+		if (MPlayerColl.get().getAllTickets().size() == 0) return;
 		
 		// ... then bump the player.
 		MassiveTickets.alertOneMessage(player, MassiveTickets.createBumpMessage());

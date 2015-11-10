@@ -1,16 +1,20 @@
 package com.massivecraft.massivetickets;
 
+import static com.massivecraft.massivecore.mson.Mson.mson;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import com.massivecraft.massivecore.MassivePlugin;
 import com.massivecraft.massivecore.command.VersionCommand;
 import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.cmd.CmdTickets;
@@ -25,6 +29,7 @@ import com.massivecraft.massivetickets.cmd.CmdTicketsShow;
 import com.massivecraft.massivetickets.cmd.CmdTicketsTeleport;
 import com.massivecraft.massivetickets.cmd.CmdTicketsWorking;
 import com.massivecraft.massivetickets.cmd.CmdTicketsYield;
+import com.massivecraft.massivetickets.cmd.MassiveTicketsCommand;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MConfColl;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
@@ -167,9 +172,22 @@ public class MassiveTickets extends MassivePlugin
 	// BUMP
 	// -------------------------------------------- //
 	
-	public static String createBumpMessage()
+	private static Mson TICKETS = Mson.SPACE.add(mson("tickets").color(ChatColor.LIGHT_PURPLE)).add(Mson.SPACE);
+	private static Mson MODERATORS = Mson.SPACE.add(mson("moderators").color(ChatColor.LIGHT_PURPLE)).add(Mson.SPACE);
+	private static Mson BUTTON_LIST = MassiveTicketsCommand.BUTTON_LIST.command(MassiveTickets.get().getOuterCmdTickets().cmdTicketsList);
+	
+	public static Mson createBumpMessage()
 	{
-		return Txt.parse("<aqua>%d <pink>tickets <aqua>%d <pink>moderators", MPlayerColl.get().getAllTickets().size(), MPlayerColl.get().getAllCurrentlyWorking().size());
+		int tickets = MPlayerColl.get().getAllTickets().size();
+		Mson bumpMson = mson(
+			mson(String.valueOf(tickets)).color(ChatColor.AQUA),
+			TICKETS,
+			mson(String.valueOf(MPlayerColl.get().getAllCurrentlyWorking().size())).color(ChatColor.AQUA),
+			MODERATORS,
+			BUTTON_LIST
+		);
+
+		return bumpMson;
 	}
 	
 	// -------------------------------------------- //
@@ -177,58 +195,58 @@ public class MassiveTickets extends MassivePlugin
 	// -------------------------------------------- //
 	
 	// All Moderators
-	public static boolean alertModeratorsMessage(String message)
+	public static boolean alertModeratorsMessage(Object message)
 	{
 		return alertModeratorsMessage(MUtil.list(message));
 	}
-	public static boolean alertModeratorsMessage(String... messages)
+	public static boolean alertModeratorsMessage(Object... messages)
 	{
 		return alertModeratorsMessage(Arrays.asList(messages));
 	}
-	public static boolean alertModeratorsMessage(Collection<String> messages)
+	public static boolean alertModeratorsMessage(Collection<Object> messages)
 	{
-		List<String> target = new ArrayList<String>();
-		for (String message : messages)
+		List<Mson> target = new ArrayList<Mson>();
+		for (Object message : messages)
 		{
-			target.add(Txt.parse(MConf.get().getPrefix()) + message);
+			target.add(getPrefix().add(message));
 		}
 		return Mixin.messagePredicate(IsModeratorPredicate.get(), target);
 	}
 	
 	// One
-	public static boolean alertOneMessage(CommandSender sender, String message)
+	public static boolean alertOneMessage(CommandSender sender, Object message)
 	{
 		return alertOneMessage(sender, MUtil.list(message));
 	}
-	public static boolean alertOneMessage(CommandSender sender, String... messages)
+	public static boolean alertOneMessage(CommandSender sender, Object... messages)
 	{
 		return alertOneMessage(sender, Arrays.asList(messages));
 	}
-	public static boolean alertOneMessage(CommandSender sender, Collection<String> messages)
+	public static boolean alertOneMessage(CommandSender sender, Collection<Object> messages)
 	{
-		List<String> target = new ArrayList<String>();
-		for (String message : messages)
+		List<Mson> target = new ArrayList<Mson>();
+		for (Object message : messages)
 		{
-			target.add(Txt.parse(MConf.get().getPrefix()) + message);
+			target.add(getPrefix().add(message));
 		}
 		return Mixin.messageOne(sender, target);
 	}
 	
 	// One by id
-	public static boolean alertOneMessage(String senderId, String message)
+	public static boolean alertOneMessage(String senderId, Object message)
 	{
 		return alertOneMessage(senderId, MUtil.list(message));
 	}
-	public static boolean alertOneMessage(String senderId, String... messages)
+	public static boolean alertOneMessage(String senderId, Object... messages)
 	{
 		return alertOneMessage(senderId, Arrays.asList(messages));
 	}
-	public static boolean alertOneMessage(String senderId, Collection<String> messages)
+	public static boolean alertOneMessage(String senderId, Collection<Object> messages)
 	{
-		List<String> target = new ArrayList<String>();
-		for (String message : messages)
+		List<Mson> target = new ArrayList<Mson>();
+		for (Object message : messages)
 		{
-			target.add(Txt.parse(MConf.get().getPrefix()) + message);
+			target.add(getPrefix().add(message));
 		}
 		return Mixin.messageOne(senderId, target);
 	}
@@ -288,6 +306,11 @@ public class MassiveTickets extends MassivePlugin
 			target.add(MConf.get().getPrefix() + msg);
 		}
 		return Mixin.msgOne(senderId, target);
+	}
+	
+	private static Mson getPrefix()
+	{
+		return Mson.fromParsedMessage(Txt.parse(MConf.get().getPrefix()));
 	}
 	
 }

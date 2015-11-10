@@ -1,5 +1,6 @@
 package com.massivecraft.massivetickets;
 
+import com.massivecraft.massivecore.mson.Mson;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -48,10 +49,10 @@ public class BumpTask extends ModuloRepeatTask
 		if (MPlayerColl.get().getAllTickets().size() == 0) return;
 		
 		// ... send message to people on this server.
-		String message = MassiveTickets.createBumpMessage();
+		Mson message = MassiveTickets.createBumpMessage();
 		for (Player player : MUtil.getOnlinePlayers())
 		{
-			if (!IsModeratorPredicate.get().apply(player)) continue;
+			if ( ! IsModeratorPredicate.get().apply(player)) continue;
 			MassiveTickets.alertOneMessage(player, message);
 		}
 	}

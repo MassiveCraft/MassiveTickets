@@ -1,5 +1,6 @@
 package com.massivecraft.massivetickets.cmd;
 
+import com.massivecraft.massivetickets.entity.MPlayer;
 import org.bukkit.ChatColor;
 
 import com.massivecraft.massivecore.MassiveException;
@@ -54,7 +55,7 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		}
 		else
 		{
-			MassiveTickets.alertModeratorsMsg("<white>%s <pink>%s ticket: %s", msender.getDisplayName(null), verb, message);
+			MassiveTickets.alertModeratorsMessage(this.getCreatedMson(msender, verb, message));
 		}
 		
 		// Inform Creator
@@ -96,6 +97,21 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 			command.getTemplate(command.getChain(), false, true, sender),
 			mson(message).tooltip(tooltip)
 		).color(ChatColor.LIGHT_PURPLE);
+	}
+	
+	private Mson getCreatedMson(MPlayer mplayer, String verb, String message)
+	{
+		Mson created = mson(
+			mson(mplayer.getDisplayName(null)).color(ChatColor.WHITE),
+			Mson.SPACE,
+			mson(verb).color(ChatColor.LIGHT_PURPLE),
+			Mson.SPACE,
+			mson("ticket: " + message).color(ChatColor.LIGHT_PURPLE),
+			Mson.SPACE,
+			BUTTON_SHOW.command(MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow, mplayer.getName())
+		);
+		
+		return created;
 	}
 	
 }
