@@ -174,7 +174,6 @@ public class MassiveTickets extends MassivePlugin
 	
 	private static Mson TICKETS = Mson.SPACE.add(mson("tickets").color(ChatColor.LIGHT_PURPLE)).add(Mson.SPACE);
 	private static Mson MODERATORS = Mson.SPACE.add(mson("moderators").color(ChatColor.LIGHT_PURPLE)).add(Mson.SPACE);
-	private static Mson BUTTON_LIST = MassiveTicketsCommand.BUTTON_LIST.command(MassiveTickets.get().getOuterCmdTickets().cmdTicketsList);
 	
 	public static Mson createBumpMessage()
 	{
@@ -184,7 +183,7 @@ public class MassiveTickets extends MassivePlugin
 			TICKETS,
 			mson(String.valueOf(MPlayerColl.get().getAllCurrentlyWorking().size())).color(ChatColor.AQUA),
 			MODERATORS,
-			BUTTON_LIST
+			MassiveTicketsCommand.BUTTON_LIST.command(MassiveTickets.get().getOuterCmdTickets().cmdTicketsList)
 		);
 
 		return bumpMson;
