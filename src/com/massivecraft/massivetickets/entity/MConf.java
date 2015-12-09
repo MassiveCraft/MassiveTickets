@@ -304,7 +304,7 @@ public class MConf extends Entity<MConf>
 		"Ticket Gloop", "give {m} 341 1 name:&aTicket_Gloop lore:&r&7Gross_III|The_stuff_that_oozes_out_your|ears_during_difficult_tickets. unbreaking:1 aquaaffinity:1",
 		"Bedazzling Bandana", "give {m} 298 1 name:&aBedazzling_Bandana color:120,245,230 lore:&r&7Dazzling_IV|Wrap_your_hair_up_in_this_stylish|blue_glittery_head_accessory! unbreaking:2 fortune:2 power:1",
 		"Bedazzling Breeches", "give {m} 300 1 name:&aBedazzling_Breeches color:120,245,230 lore:&r&7Dazzling_IV|Absolutely_fabulous_gems_are_sewn|directly_into_the_fabric._Lo|and_behold_the_glam_master! unbreaking:2 fortune:2 power:1",
-		"Bedazzling Boots", "give {m} 299 1 name:&aBedazzling_Boots color:120,245,230 lore:&r&7Dazzling_IV|These_boots_shine_like_no|others_with_their_sharp_design|and_brilliant_blue_gemstones! unbreaking:2 fortune:2 power:1",
+		"Bedazzling Boots", "give {m} 301 1 name:&aBedazzling_Boots color:120,245,230 lore:&r&7Dazzling_IV|These_boots_shine_like_no|others_with_their_sharp_design|and_brilliant_blue_gemstones! unbreaking:2 fortune:2 power:1",
 		"Eisel","give {m} 425:15 1 name:&aEisel lore:&r&7Artwork_III|A_drawing_board_with_white_canvas|stretched_across_the_frame.|The_art,_it_calls_to_thee! unbreaking:1 efficiency:1",
 		"Small_Music_Box", "give {m} 397:3 1 player:MHF_Chest name:&aSmall_Music_Box lore:&r&7Musical_IV|Tiny_mechanical_gears_turn|beneath_the_lid_to_play|surprisingly_non-classical_tunes. power:2 efficiency:3 unbreaking:1",
 		"Bow of the Trendy Twerker", "give {m} 261 1 name:&aBow_of_the_Trendy_Twerker lore:&r&7Funky_Fresh_II|Let_the_Twerking_Commence! unbreaking:3",
