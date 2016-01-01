@@ -70,7 +70,7 @@ public class CmdTicketsWorking extends MassiveTicketsCommand
 		
 		// Inform
 		String verb = after ? "started" : "stopped"; 
-		MassiveTickets.alertOneMsg(msender.getId(), "You %s twerking!", verb);
+		MassiveTickets.alertOneMsg(msender.getId(), "You %s working!", verb);
 		MassiveTickets.alertOneMessage(msender.getId(), MassiveTickets.createBumpMessage());
 		
 		// React
