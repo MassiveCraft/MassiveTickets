@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.bukkit.command.CommandSender;
 
-import com.massivecraft.massivecore.Predicate;
+import com.massivecraft.massivecore.predicate.Predicate;
 import com.massivecraft.massivetickets.Perm;
 
 public class IsModeratorPredicate implements Predicate<CommandSender>, Serializable
