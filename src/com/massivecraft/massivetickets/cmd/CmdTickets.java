@@ -2,30 +2,35 @@ package com.massivecraft.massivetickets.cmd;
 
 import java.util.List;
 
-import com.massivecraft.massivecore.command.VersionCommand;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
-import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
 
 public class CmdTickets extends MassiveTicketsCommand
 {
 	// -------------------------------------------- //
+	// INSTANCE
+	// -------------------------------------------- //
+	
+	private static CmdTickets i = new CmdTickets();
+	public static CmdTickets get() { return i; }
+	
+	// -------------------------------------------- //
 	// FIELDS
 	// -------------------------------------------- //
 	
-	public CmdTicketsList cmdTicketsList = new CmdTicketsList() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsList; } };
-	public CmdTicketsShow cmdTicketsShow = new CmdTicketsShow() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsShow; } };
-	public CmdTicketsCreate cmdTicketsCreate = new CmdTicketsCreate() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsCreate; } };
-	public CmdTicketsDone cmdTicketsDone = new CmdTicketsDone() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsDone; } };
-	public CmdTicketsPick cmdTicketsPick = new CmdTicketsPick() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsPick; } };
-	public CmdTicketsYield cmdTicketsYield = new CmdTicketsYield() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsYield; } };
-	public CmdTicketsHighscore cmdTicketsHighscore = new CmdTicketsHighscore() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsHighscore; } };
-	public CmdTicketsModlist cmdTicketsModlist = new CmdTicketsModlist() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsModlist; } };
-	public CmdTicketsWorking cmdTicketsWorking = new CmdTicketsWorking() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsWorking; } };
-	public CmdTicketsTeleport cmdTicketsTeleport = new CmdTicketsTeleport() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsTeleport; } };
-	public CmdTicketsCheat cmdTicketsCheat = new CmdTicketsCheat() { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsCheat; } };
-	public VersionCommand cmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node) { @Override public List<String> getAliases() { return MConf.get().aliasesInnerTicketsVersion; } };
+	public CmdTicketsList cmdTicketsList = new CmdTicketsList();
+	public CmdTicketsShow cmdTicketsShow = new CmdTicketsShow();
+	public CmdTicketsCreate cmdTicketsCreate = new CmdTicketsCreate();
+	public CmdTicketsDone cmdTicketsDone = new CmdTicketsDone();
+	public CmdTicketsPick cmdTicketsPick = new CmdTicketsPick();
+	public CmdTicketsYield cmdTicketsYield = new CmdTicketsYield();
+	public CmdTicketsHighscore cmdTicketsHighscore = new CmdTicketsHighscore();
+	public CmdTicketsModlist cmdTicketsModlist = new CmdTicketsModlist();
+	public CmdTicketsWorking cmdTicketsWorking = new CmdTicketsWorking();
+	public CmdTicketsTeleport cmdTicketsTeleport = new CmdTicketsTeleport();
+	public CmdTicketsCheat cmdTicketsCheat = new CmdTicketsCheat();
+	public CmdTicketsVersion cmdTicketsVersion = new CmdTicketsVersion();
 	
 	// -------------------------------------------- //
 	// CONSTRUCT
@@ -49,6 +54,16 @@ public class CmdTickets extends MassiveTicketsCommand
 		
 		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.BASECOMMAND.node));
+	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		 return MConf.get().aliasesOuterTickets;
 	}
 	
 }

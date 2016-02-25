@@ -1,5 +1,7 @@
 package com.massivecraft.massivetickets.cmd;
 
+import java.util.List;
+
 import org.bukkit.ChatColor;
 
 import com.massivecraft.massivecore.MassiveException;
@@ -13,6 +15,13 @@ import com.massivecraft.massivetickets.entity.TypeMPlayer;
 
 public class CmdTicketsYield extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// INSTANCE
+	// -------------------------------------------- //
+	
+	private static CmdTicketsYield i = new CmdTicketsYield() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsYield; } };
+	public static CmdTicketsYield get() { return i; }
+	
 	// -------------------------------------------- //
 	// CONSTRUCT
 	// -------------------------------------------- //
@@ -29,6 +38,12 @@ public class CmdTicketsYield extends MassiveTicketsCommand
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesInnerTicketsYield;
+	}
 	
 	@Override
 	public void perform() throws MassiveException
@@ -77,7 +92,7 @@ public class CmdTicketsYield extends MassiveTicketsCommand
 			YIELDED,
 			mson(ticket.getDisplayName(null)).color(ChatColor.WHITE),
 			TICKET,
-			BUTTON_SHOW.command(MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow, ticket.getName())
+			BUTTON_SHOW.command(CmdTickets.get().cmdTicketsShow, ticket.getName())
 		);
 		
 		return yielded;

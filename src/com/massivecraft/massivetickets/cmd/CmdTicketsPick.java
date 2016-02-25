@@ -1,5 +1,7 @@
 package com.massivecraft.massivetickets.cmd;
 
+import java.util.List;
+
 import org.bukkit.ChatColor;
 
 import com.massivecraft.massivecore.MassiveException;
@@ -14,6 +16,13 @@ import com.massivecraft.massivetickets.entity.MPlayer;
 
 public class CmdTicketsPick extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// INSTANCE
+	// -------------------------------------------- //
+	
+	private static CmdTicketsPick i = new CmdTicketsPick() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsPick; } };
+	public static CmdTicketsPick get() { return i; }
+	
 	// -------------------------------------------- //
 	// CONSTRUCT
 	// -------------------------------------------- //
@@ -30,6 +39,12 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesInnerTicketsPick;
+	}
 	
 	@Override
 	public void perform() throws MassiveException
@@ -53,7 +68,7 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 		{
 			Mson message = null;
 			String commandLine = null;
-			MassiveCommand command = MassiveTickets.get().getOuterCmdTickets().cmdTicketsYield;
+			MassiveCommand command = CmdTickets.get().cmdTicketsYield;
 			
 			if (moderator == msender)
 			{

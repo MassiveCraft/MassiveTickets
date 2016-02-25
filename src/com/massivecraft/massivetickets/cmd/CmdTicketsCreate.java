@@ -1,6 +1,9 @@
 package com.massivecraft.massivetickets.cmd;
 
 import com.massivecraft.massivetickets.entity.MPlayer;
+
+import java.util.List;
+
 import org.bukkit.ChatColor;
 
 import com.massivecraft.massivecore.MassiveException;
@@ -18,6 +21,13 @@ import com.massivecraft.massivetickets.entity.MPlayerColl;
 public class CmdTicketsCreate extends MassiveTicketsCommand
 {
 	// -------------------------------------------- //
+	// INSTANCE
+	// -------------------------------------------- //
+	
+	private static CmdTicketsCreate i = new CmdTicketsCreate() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsCreate; } };
+	public static CmdTicketsCreate get() { return i; }
+	
+	// -------------------------------------------- //
 	// CONSTRUCT
 	// -------------------------------------------- //
 	
@@ -33,6 +43,12 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesInnerTicketsCreate;
+	}
 	
 	@Override
 	public void perform() throws MassiveException
@@ -64,16 +80,16 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		
 		MassiveCommand cmd = null;
 		
-		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow;
+		cmd = CmdTickets.get().cmdTicketsShow;
 		Mixin.messageOne(sender, getUseCommand(cmd, " to show your ticket"));
 		
-		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsDone;
+		cmd = CmdTickets.get().cmdTicketsDone;
 		Mixin.messageOne(sender, getUseCommand(cmd, " to mark it as done"));
 		
-		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsModlist;
+		cmd = CmdTickets.get().cmdTicketsModlist;
 		Mixin.messageOne(sender, getUseCommand(cmd, " to list the moderators"));
 		
-		cmd = MassiveTickets.get().getOuterCmdTickets().cmdTicketsCreate;
+		cmd = CmdTickets.get().cmdTicketsCreate;
 		Mixin.messageOne(sender, getUseCommand(cmd, " to update the message"));
 		
 		// React
@@ -108,7 +124,7 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 			Mson.SPACE,
 			mson("ticket: " + message).color(ChatColor.LIGHT_PURPLE),
 			Mson.SPACE,
-			BUTTON_SHOW.command(MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow, mplayer.getName())
+			BUTTON_SHOW.command(CmdTickets.get().cmdTicketsShow, mplayer.getName())
 		);
 		
 		return created;

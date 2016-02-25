@@ -17,6 +17,7 @@ import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.MassiveTickets;
+import com.massivecraft.massivetickets.cmd.CmdTickets;
 
 public class MPlayer extends SenderEntity<MPlayer>
 {
@@ -291,7 +292,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 			Mson.SPACE,
 			this.getListLineExcerpt(watcherObject)
 		)
-		.command(MassiveTickets.get().getOuterCmdTickets().cmdTicketsShow, this.getName())
+		.command(CmdTickets.get().cmdTicketsShow, this.getName())
 		.color(this.hasModeratorId() ? ChatColor.GREEN : ChatColor.RED);
 	}
 	

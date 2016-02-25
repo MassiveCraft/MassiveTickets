@@ -1,5 +1,7 @@
 package com.massivecraft.massivetickets.cmd;
 
+import java.util.List;
+
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
@@ -8,10 +10,18 @@ import com.massivecraft.massivecore.mixin.TeleporterException;
 import com.massivecraft.massivecore.teleport.DestinationPlayer;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.TypeMPlayer;
+import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 
 public class CmdTicketsTeleport extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// INSTANCE
+	// -------------------------------------------- //
+	
+	private static CmdTicketsTeleport i = new CmdTicketsTeleport() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsTeleport; } };
+	public static CmdTicketsTeleport get() { return i; }
+	
 	// -------------------------------------------- //
 	// CONSTRUCT
 	// -------------------------------------------- //
@@ -29,6 +39,12 @@ public class CmdTicketsTeleport extends MassiveTicketsCommand
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesInnerTicketsTeleport;
+	}
 	
 	@Override
 	public void perform() throws MassiveException

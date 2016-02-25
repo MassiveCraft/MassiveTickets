@@ -1,6 +1,7 @@
 package com.massivecraft.massivetickets.cmd;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.bukkit.command.CommandSender;
 
@@ -11,11 +12,19 @@ import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.pager.Msonifier;
 import com.massivecraft.massivecore.pager.Pager;
 import com.massivecraft.massivetickets.Perm;
+import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
 
 public class CmdTicketsList extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// INSTANCE
+	// -------------------------------------------- //
+	
+	private static CmdTicketsList i = new CmdTicketsList() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsList; } };
+	public static CmdTicketsList get() { return i; }
+	
 	// -------------------------------------------- //
 	// CONSTRUCT
 	// -------------------------------------------- //
@@ -32,6 +41,12 @@ public class CmdTicketsList extends MassiveTicketsCommand
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesInnerTicketsList;
+	}
 	
 	@Override
 	public void perform() throws MassiveException

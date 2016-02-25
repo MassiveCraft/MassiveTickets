@@ -1,6 +1,7 @@
 package com.massivecraft.massivetickets.cmd;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import org.bukkit.ChatColor;
 
@@ -13,7 +14,6 @@ import com.massivecraft.massivecore.util.PermUtil;
 import com.massivecraft.massivecore.util.TimeDiffUtil;
 import com.massivecraft.massivecore.util.TimeUnit;
 import com.massivecraft.massivecore.util.Txt;
-import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
@@ -21,6 +21,13 @@ import com.massivecraft.massivetickets.entity.MPlayer;
 
 public class CmdTicketsShow extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// INSTANCE
+	// -------------------------------------------- //
+	
+	private static CmdTicketsShow i = new CmdTicketsShow() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsShow; } };
+	public static CmdTicketsShow get() { return i; }
+	
 	// -------------------------------------------- //
 	// CONSTRUCT
 	// -------------------------------------------- //
@@ -39,6 +46,12 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 	// -------------------------------------------- //
 	
 	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesInnerTicketsShow;
+	}
+	
+	@Override
 	public void perform() throws MassiveException
 	{
 		// Args
@@ -52,7 +65,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		if (!mplayer.hasMessage())
 		{
 			msg("<silver><em>has not created a ticket");
-			message(getButtonFunctional(BUTTON_CREATE, Perm.CREATE, null, mplayer, MassiveTickets.get().getOuterCmdTickets().cmdTicketsCreate, false, true));
+			message(getButtonFunctional(BUTTON_CREATE, Perm.CREATE, null, mplayer, CmdTickets.get().cmdTicketsCreate, false, true));
 	
 			return;
 		}
@@ -65,9 +78,9 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		// Create buttons
 		Mson buttonUpdate = mson();
 		Mson buttonPick = BUTTON_PICK;
-		Mson buttonDone = getButtonFunctional(BUTTON_DONE, Perm.DONE, Perm.DONE_OTHER, mplayer, MassiveTickets.get().getOuterCmdTickets().cmdTicketsDone, true, false);
-		Mson buttonYield = getButtonFunctional(BUTTON_YIELD, Perm.YIELD, Perm.YIELD_OTHER, mplayer, MassiveTickets.get().getOuterCmdTickets().cmdTicketsYield, true, false);
-		Mson buttonTeleport = getButtonFunctional(BUTTON_TELEPORT, Perm.TELEPORT, null, mplayer, MassiveTickets.get().getOuterCmdTickets().cmdTicketsTeleport, true, false);
+		Mson buttonDone = getButtonFunctional(BUTTON_DONE, Perm.DONE, Perm.DONE_OTHER, mplayer, CmdTickets.get().cmdTicketsDone, true, false);
+		Mson buttonYield = getButtonFunctional(BUTTON_YIELD, Perm.YIELD, Perm.YIELD_OTHER, mplayer, CmdTickets.get().cmdTicketsYield, true, false);
+		Mson buttonTeleport = getButtonFunctional(BUTTON_TELEPORT, Perm.TELEPORT, null, mplayer, CmdTickets.get().cmdTicketsTeleport, true, false);
 		
 		// Check if moderated and change desc & buttons
 		String pickedByDesc = Txt.parse("<silver><em>noone yet");
@@ -78,12 +91,12 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		}
 		else
 		{
-			buttonPick = getButtonFunctional(buttonPick, Perm.PICK, null, mplayer, MassiveTickets.get().getOuterCmdTickets().cmdTicketsPick, true, false);
+			buttonPick = getButtonFunctional(buttonPick, Perm.PICK, null, mplayer, CmdTickets.get().cmdTicketsPick, true, false);
 		}
 		
 		if (msender == mplayer)
 		{
-			MassiveCommand command = MassiveTickets.get().getOuterCmdTickets().cmdTicketsCreate;
+			MassiveCommand command = CmdTickets.get().cmdTicketsCreate;
 			buttonUpdate = getButtonFunctional(BUTTON_UPDATE, Perm.CREATE, null, mplayer, command, false, true);
 			buttonUpdate = mson(buttonUpdate.suggest(command, msender.getMessage()), Mson.SPACE);
 			

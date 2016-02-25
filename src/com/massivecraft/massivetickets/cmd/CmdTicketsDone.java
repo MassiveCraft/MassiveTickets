@@ -1,5 +1,7 @@
 package com.massivecraft.massivetickets.cmd;
 
+import java.util.List;
+
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivetickets.Perm;
@@ -9,6 +11,13 @@ import com.massivecraft.massivetickets.entity.MPlayer;
 
 public class CmdTicketsDone extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// INSTANCE
+	// -------------------------------------------- //
+	
+	private static CmdTicketsDone i = new CmdTicketsDone() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsDone; } };
+	public static CmdTicketsDone get() { return i; }
+	
 	// -------------------------------------------- //
 	// CONSTRUCT
 	// -------------------------------------------- //
@@ -25,6 +34,12 @@ public class CmdTicketsDone extends MassiveTicketsCommand
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesInnerTicketsDone;
+	}
 	
 	@Override
 	public void perform() throws MassiveException

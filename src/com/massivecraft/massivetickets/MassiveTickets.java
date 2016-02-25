@@ -12,7 +12,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import com.massivecraft.massivecore.MassivePlugin;
-import com.massivecraft.massivecore.command.VersionCommand;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.util.MUtil;
@@ -27,6 +26,7 @@ import com.massivecraft.massivetickets.cmd.CmdTicketsModlist;
 import com.massivecraft.massivetickets.cmd.CmdTicketsPick;
 import com.massivecraft.massivetickets.cmd.CmdTicketsShow;
 import com.massivecraft.massivetickets.cmd.CmdTicketsTeleport;
+import com.massivecraft.massivetickets.cmd.CmdTicketsVersion;
 import com.massivecraft.massivetickets.cmd.CmdTicketsWorking;
 import com.massivecraft.massivetickets.cmd.CmdTicketsYield;
 import com.massivecraft.massivetickets.cmd.MassiveTicketsCommand;
@@ -43,115 +43,49 @@ public class MassiveTickets extends MassivePlugin
 	
 	private static MassiveTickets i;
 	public static MassiveTickets get() { return i; }
-	public MassiveTickets() { MassiveTickets.i = this; }
+	public MassiveTickets()
+	{
+		MassiveTickets.i = this;
+		
+		// Version Synchronized
+		this.setVersionSynchronized(true);
+	}
 	
-	// -------------------------------------------- //
-	// FIELDS
-	// -------------------------------------------- //
-	
-	// Commands
-	private CmdTickets outerCmdTickets;
-	public CmdTickets getOuterCmdTickets() { return this.outerCmdTickets; }
-	
-	private CmdTicketsList outerCmdTicketsList;
-	public CmdTicketsList getOuterCmdTicketsList() { return this.outerCmdTicketsList; }
-	
-	private CmdTicketsShow outerCmdTicketsShow;
-	public CmdTicketsShow getOuterCmdTicketsShow() { return this.outerCmdTicketsShow; }
-	
-	private CmdTicketsCreate outerCmdTicketsCreate;
-	public CmdTicketsCreate getOuterCmdTicketsCreate() { return this.outerCmdTicketsCreate; }
-	
-	private CmdTicketsDone outerCmdTicketsDone;
-	public CmdTicketsDone getOuterCmdTicketsDone() { return this.outerCmdTicketsDone; }
-	
-	private CmdTicketsPick outerCmdTicketsPick;
-	public CmdTicketsPick getOuterCmdTicketsPick() { return this.outerCmdTicketsPick; }
-	
-	private CmdTicketsYield outerCmdTicketsYield;
-	public CmdTicketsYield getOuterCmdTicketsYield() { return this.outerCmdTicketsYield; }
-	
-	private CmdTicketsHighscore outerCmdTicketsHighscore;
-	public CmdTicketsHighscore getOuterCmdTicketsHighscore() { return this.outerCmdTicketsHighscore; }
-	
-	private CmdTicketsModlist outerCmdTicketsModlist;
-	public CmdTicketsModlist getOuterCmdTicketsModlist() { return this.outerCmdTicketsModlist; }
-	
-	private CmdTicketsWorking outerCmdTicketsWorking;
-	public CmdTicketsWorking getOuterCmdTicketsWorking() { return this.outerCmdTicketsWorking; }
-	
-	private CmdTicketsTeleport outerCmdTicketsTeleport;
-	public CmdTicketsTeleport getOuterCmdTicketsTeleport() { return this.outerCmdTicketsTeleport; }
-	
-	private CmdTicketsCheat outerCmdTicketsCheat;
-	public CmdTicketsCheat getOuterCmdTicketsCheat() { return this.outerCmdTicketsCheat; }
-	
-	private VersionCommand outerCmdTicketsVersion;
-	public VersionCommand getOuterCmdTicketsVersion() { return this.outerCmdTicketsVersion; }
-
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //
 	
 	@Override
-	public void onEnable()
+	public void onEnableInner()
 	{
-		if ( ! preEnable()) return;
-		
-		// Version Synchronized
-		this.setVersionSynchronized(true);
-		
-		// Initialize Database
-		MConfColl.get().init();
-		MPlayerColl.get().init();
-		
-		// Commands
-		this.outerCmdTickets = new CmdTickets() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTickets; } };
-		this.outerCmdTickets.register(this);
-		
-		this.outerCmdTicketsList = new CmdTicketsList() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsList; } };
-		this.outerCmdTicketsList.register(this);
-		
-		this.outerCmdTicketsShow = new CmdTicketsShow() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsShow; } };
-		this.outerCmdTicketsShow.register(this);
-		
-		this.outerCmdTicketsCreate = new CmdTicketsCreate() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsCreate; } };
-		this.outerCmdTicketsCreate.register(this);
-		
-		this.outerCmdTicketsDone = new CmdTicketsDone() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsDone; } };
-		this.outerCmdTicketsDone.register(this);
-		
-		this.outerCmdTicketsPick = new CmdTicketsPick() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsPick; } };
-		this.outerCmdTicketsPick.register(this);
-		
-		this.outerCmdTicketsYield = new CmdTicketsYield() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsYield; } };
-		this.outerCmdTicketsYield.register(this);
-		
-		this.outerCmdTicketsHighscore = new CmdTicketsHighscore() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsHighscore; } };
-		this.outerCmdTicketsHighscore.register(this);
-		
-		this.outerCmdTicketsModlist = new CmdTicketsModlist() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsModlist; } };
-		this.outerCmdTicketsModlist.register(this);
-		
-		this.outerCmdTicketsWorking = new CmdTicketsWorking() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsWorking; } };
-		this.outerCmdTicketsWorking.register(this);
-		
-		this.outerCmdTicketsTeleport = new CmdTicketsTeleport() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsTeleport; } };
-		this.outerCmdTicketsTeleport.register(this);
-		
-		this.outerCmdTicketsCheat = new CmdTicketsCheat() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsCheat; } };
-		this.outerCmdTicketsCheat.register(this);
-		
-		this.outerCmdTicketsVersion = new VersionCommand(MassiveTickets.get(), Perm.VERSION.node) { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsVersion; } };
-		this.outerCmdTicketsVersion.register(this);
-
-		// Engines
-		EngineMain.get().activate();
-		
-		// Schedule recurring non-tps-dependent tasks
-		BumpTask.get().activate();
-		
-		postEnable();
+		// Activate
+		this.activate(
+			// Coll
+			MConfColl.get(),
+			MPlayerColl.get(),
+				
+			// Engines
+			EngineMain.get(),
+			
+			// Schedule recurring non-tps-dependent tasks
+			BumpTask.get(),
+			
+			// Command
+			CmdTickets.get(),
+			CmdTicketsList.get(),
+			CmdTicketsShow.get(),
+			CmdTicketsCreate.get(),
+			CmdTicketsDone.get(),
+			CmdTicketsPick.get(),
+			CmdTicketsYield.get(),
+			CmdTicketsHighscore.get(),
+			CmdTicketsModlist.get(),
+			CmdTicketsWorking.get(),
+			CmdTicketsTeleport.get(),
+			CmdTicketsCheat.get(),
+			CmdTicketsVersion.get(),
+			CmdTicketsVersion.get()
+		);
 	}
 	
 	// -------------------------------------------- //
@@ -183,7 +117,7 @@ public class MassiveTickets extends MassivePlugin
 			TICKETS,
 			mson(String.valueOf(MPlayerColl.get().getAllCurrentlyWorking().size())).color(ChatColor.AQUA),
 			MODERATORS,
-			MassiveTicketsCommand.BUTTON_LIST.command(MassiveTickets.get().getOuterCmdTickets().cmdTicketsList)
+			MassiveTicketsCommand.BUTTON_LIST.command(CmdTickets.get().cmdTicketsList)
 		);
 
 		return bumpMson;

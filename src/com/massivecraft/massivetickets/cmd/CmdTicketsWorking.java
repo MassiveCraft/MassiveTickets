@@ -1,5 +1,7 @@
 package com.massivecraft.massivetickets.cmd;
 
+import java.util.List;
+
 import org.bukkit.ChatColor;
 
 import com.massivecraft.massivecore.MassiveException;
@@ -12,6 +14,13 @@ import com.massivecraft.massivetickets.entity.MConf;
 
 public class CmdTicketsWorking extends MassiveTicketsCommand
 {
+	// -------------------------------------------- //
+	// INSTANCE
+	// -------------------------------------------- //
+	
+	private static CmdTicketsWorking i = new CmdTicketsWorking() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsWorking; } };
+	public static CmdTicketsWorking get() { return i; }
+	
 	// -------------------------------------------- //
 	// CONSTRUCT
 	// -------------------------------------------- //
@@ -28,6 +37,12 @@ public class CmdTicketsWorking extends MassiveTicketsCommand
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesInnerTicketsWorking;
+	}
 	
 	@Override
 	public void perform() throws MassiveException

@@ -5,9 +5,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.plugin.Plugin;
 
-import com.massivecraft.massivecore.EngineAbstract;
+import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.event.EventMassiveCorePlayerLeave;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.util.MUtil;
@@ -16,7 +15,7 @@ import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.massivetickets.predicate.IsModeratorPredicate;
 
 
-public class EngineMain extends EngineAbstract
+public class EngineMain extends Engine
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
@@ -24,17 +23,6 @@ public class EngineMain extends EngineAbstract
 	
 	private static EngineMain i = new EngineMain();
 	public static EngineMain get() { return i; }
-	public EngineMain() {}
-	
-	// -------------------------------------------- //
-	// OVERRIDE
-	// -------------------------------------------- //
-	
-	@Override
-	public Plugin getPlugin()
-	{
-		return MassiveTickets.get();
-	}
 	
 	// -------------------------------------------- //
 	// VERIFY WORKING ON JOIN
