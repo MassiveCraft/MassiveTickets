@@ -2,12 +2,12 @@ package com.massivecraft.massivetickets.cmd;
 
 import java.util.List;
 
-import com.massivecraft.massivecore.command.VersionCommand;
+import com.massivecraft.massivecore.command.MassiveCommandVersion;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
 
-public class CmdTicketsVersion extends VersionCommand
+public class CmdTicketsVersion extends MassiveCommandVersion
 {
 	// -------------------------------------------- //
 	// INSTANCE
