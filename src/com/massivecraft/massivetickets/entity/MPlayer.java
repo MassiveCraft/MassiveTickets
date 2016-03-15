@@ -401,7 +401,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 		
 		String progress = "<h>%s<gray>/<h>%s <gray>(<lime>%s<gray>) | ";
 		
-		this.msg(Txt.titleize("MassiveTickets | Counter"));
+		this.message(Txt.titleize("MassiveTickets | Counter"));
 		
 		if (remainder == 0)
 		{
