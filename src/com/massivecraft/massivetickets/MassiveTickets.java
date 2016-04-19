@@ -61,30 +61,30 @@ public class MassiveTickets extends MassivePlugin
 		// Activate
 		this.activate(
 			// Coll
-			MConfColl.get(),
-			MPlayerColl.get(),
+			MConfColl.class,
+			MPlayerColl.class,
 				
 			// Engines
-			EngineMain.get(),
+			EngineMain.class,
 			
 			// Schedule recurring non-tps-dependent tasks
-			BumpTask.get(),
+			BumpTask.class,
 			
 			// Command
-			CmdTickets.get(),
-			CmdTicketsList.get(),
-			CmdTicketsShow.get(),
-			CmdTicketsCreate.get(),
-			CmdTicketsDone.get(),
-			CmdTicketsPick.get(),
-			CmdTicketsYield.get(),
-			CmdTicketsHighscore.get(),
-			CmdTicketsModlist.get(),
-			CmdTicketsWorking.get(),
-			CmdTicketsTeleport.get(),
-			CmdTicketsCheat.get(),
-			CmdTicketsVersion.get(),
-			CmdTicketsVersion.get()
+			CmdTickets.class,
+			CmdTicketsList.class,
+			CmdTicketsShow.class,
+			CmdTicketsCreate.class,
+			CmdTicketsDone.class,
+			CmdTicketsPick.class,
+			CmdTicketsYield.class,
+			CmdTicketsHighscore.class,
+			CmdTicketsModlist.class,
+			CmdTicketsWorking.class,
+			CmdTicketsTeleport.class,
+			CmdTicketsCheat.class,
+			CmdTicketsVersion.class,
+			CmdTicketsVersion.class
 		);
 	}
 	
