@@ -10,7 +10,7 @@ import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.MassiveCommand;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.type.primitive.TypeString;
-import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.mixin.MixinMessage;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.MassiveTickets;
@@ -81,16 +81,16 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		MassiveCommand cmd = null;
 		
 		cmd = CmdTickets.get().cmdTicketsShow;
-		Mixin.messageOne(sender, getUseCommand(cmd, " to show your ticket"));
+		MixinMessage.get().messageOne(sender, getUseCommand(cmd, " to show your ticket"));
 		
 		cmd = CmdTickets.get().cmdTicketsDone;
-		Mixin.messageOne(sender, getUseCommand(cmd, " to mark it as done"));
+		MixinMessage.get().messageOne(sender, getUseCommand(cmd, " to mark it as done"));
 		
 		cmd = CmdTickets.get().cmdTicketsModlist;
-		Mixin.messageOne(sender, getUseCommand(cmd, " to list the moderators"));
+		MixinMessage.get().messageOne(sender, getUseCommand(cmd, " to list the moderators"));
 		
 		cmd = CmdTickets.get().cmdTicketsCreate;
-		Mixin.messageOne(sender, getUseCommand(cmd, " to update the message"));
+		MixinMessage.get().messageOne(sender, getUseCommand(cmd, " to update the message"));
 		
 		// React
 		if (update)

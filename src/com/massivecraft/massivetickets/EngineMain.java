@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.event.EventMassiveCorePlayerLeave;
-import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.mixin.MixinActual;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
@@ -66,7 +66,7 @@ public class EngineMain extends Engine
 		if (MConf.get().getBumpOnJoinPriority() != priority) return;
 		
 		// ... and this is an actual join ...
-		if (!Mixin.isActualJoin(event)) return;
+		if ( ! MixinActual.get().isActualJoin(event)) return;
 		
 		// ... and if there are any tickets ...
 		if (MPlayerColl.get().getAllTickets().size() == 0) return;
@@ -124,7 +124,7 @@ public class EngineMain extends Engine
 		final MPlayer mplayer = MPlayer.get(player);
 		
 		// ... and it's actually a leave ...
-		if (!Mixin.isActualLeave(event)) return;
+		if ( ! MixinActual.get().isActualLeave(event)) return;
 		
 		// Force Sync
 		mplayer.sync();

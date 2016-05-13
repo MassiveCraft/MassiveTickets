@@ -12,7 +12,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import com.massivecraft.massivecore.MassivePlugin;
-import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.mixin.MixinMessage;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
@@ -143,7 +143,7 @@ public class MassiveTickets extends MassivePlugin
 		{
 			target.add(getPrefix().add(message));
 		}
-		return Mixin.messagePredicate(IsModeratorPredicate.get(), target);
+		return MixinMessage.get().messagePredicate(IsModeratorPredicate.get(), target);
 	}
 	
 	// One
@@ -162,7 +162,7 @@ public class MassiveTickets extends MassivePlugin
 		{
 			target.add(getPrefix().add(message));
 		}
-		return Mixin.messageOne(sender, target);
+		return MixinMessage.get().messageOne(sender, target);
 	}
 	
 	// One by id
@@ -181,17 +181,17 @@ public class MassiveTickets extends MassivePlugin
 		{
 			target.add(getPrefix().add(message));
 		}
-		return Mixin.messageOne(senderId, target);
+		return MixinMessage.get().messageOne(senderId, target);
 	}
 
 	// All Moderators
 	public static boolean alertModeratorsMsg(String msg) // WORKS
 	{
-		return Mixin.msgPredicate(IsModeratorPredicate.get(), MConf.get().getPrefix() + msg);
+		return MixinMessage.get().msgPredicate(IsModeratorPredicate.get(), MConf.get().getPrefix() + msg);
 	}
 	public static boolean alertModeratorsMsg(String msg, Object... args)
 	{
-		return Mixin.msgPredicate(IsModeratorPredicate.get(), MConf.get().getPrefix() + msg, args);
+		return MixinMessage.get().msgPredicate(IsModeratorPredicate.get(), MConf.get().getPrefix() + msg, args);
 	}
 	public static boolean alertModeratorsMsg(Collection<String> msgs)
 	{
@@ -200,17 +200,17 @@ public class MassiveTickets extends MassivePlugin
 		{
 			target.add(MConf.get().getPrefix() + msg);
 		}
-		return Mixin.msgPredicate(IsModeratorPredicate.get(), target);
+		return MixinMessage.get().msgPredicate(IsModeratorPredicate.get(), target);
 	}
 	
 	// One
 	public static boolean alertOneMsg(CommandSender sender, String msg)
 	{
-		return Mixin.msgOne(sender, MConf.get().getPrefix() + msg);
+		return MixinMessage.get().msgOne(sender, MConf.get().getPrefix() + msg);
 	}
 	public static boolean alertOneMsg(CommandSender sender, String msg, Object... args)
 	{
-		return Mixin.msgOne(sender, MConf.get().getPrefix() + msg, args);
+		return MixinMessage.get().msgOne(sender, MConf.get().getPrefix() + msg, args);
 	}
 	public static boolean alertOneMsg(CommandSender sender, Collection<String> msgs)
 	{
@@ -219,17 +219,17 @@ public class MassiveTickets extends MassivePlugin
 		{
 			target.add(MConf.get().getPrefix() + msg);
 		}
-		return Mixin.msgOne(sender, target);
+		return MixinMessage.get().msgOne(sender, target);
 	}
 	
 	// One by id
 	public static boolean alertOneMsg(String senderId, String msg)
 	{
-		return Mixin.msgOne(senderId, MConf.get().getPrefix() + msg);
+		return MixinMessage.get().msgOne(senderId, MConf.get().getPrefix() + msg);
 	}
 	public static boolean alertOneMsg(String senderId, String msg, Object... args)
 	{
-		return Mixin.msgOne(senderId, MConf.get().getPrefix() + msg, args);
+		return MixinMessage.get().msgOne(senderId, MConf.get().getPrefix() + msg, args);
 	}
 	public static boolean alertOneMsg(String senderId, Collection<String> msgs)
 	{
@@ -238,7 +238,7 @@ public class MassiveTickets extends MassivePlugin
 		{
 			target.add(MConf.get().getPrefix() + msg);
 		}
-		return Mixin.msgOne(senderId, target);
+		return MixinMessage.get().msgOne(senderId, target);
 	}
 	
 	private static Mson getPrefix()

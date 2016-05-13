@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.mixin.MixinCommand;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.Txt;
 
@@ -65,7 +65,7 @@ public final class Reaction
 		{
 			for (String cmd : prepareCmds(this.getModeratorCommands(), moderatorId, playerId))
 			{
-				Mixin.dispatchCommand(moderatorId, cmd);
+				MixinCommand.get().dispatchCommand(moderatorId, cmd);
 			}
 		}
 		
@@ -73,13 +73,13 @@ public final class Reaction
 		{
 			for (String cmd : prepareCmds(this.getPlayerCommands(), moderatorId, playerId))
 			{
-				Mixin.dispatchCommand(playerId, cmd);
+				MixinCommand.get().dispatchCommand(playerId, cmd);
 			}
 		}
 		
 		for (String cmd : prepareCmds(this.getConsoleCommands(), moderatorId, playerId))
 		{
-			Mixin.dispatchCommand(moderatorId, IdUtil.CONSOLE_ID, cmd);
+			MixinCommand.get().dispatchCommand(moderatorId, IdUtil.CONSOLE_ID, cmd);
 		}
 	}
 	

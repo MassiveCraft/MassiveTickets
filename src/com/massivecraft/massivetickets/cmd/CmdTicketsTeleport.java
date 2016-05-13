@@ -5,7 +5,7 @@ import java.util.List;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
-import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.mixin.MixinTeleport;
 import com.massivecraft.massivecore.mixin.TeleporterException;
 import com.massivecraft.massivecore.teleport.DestinationPlayer;
 import com.massivecraft.massivetickets.Perm;
@@ -58,7 +58,7 @@ public class CmdTicketsTeleport extends MassiveTicketsCommand
 		// Try teleport
 		try
 		{
-			Mixin.teleport(me, new DestinationPlayer(mplayer));
+			MixinTeleport.get().teleport(me, new DestinationPlayer(mplayer));
 		}
 		catch (TeleporterException e)
 		{
