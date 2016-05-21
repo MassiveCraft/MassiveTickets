@@ -10,7 +10,7 @@ import com.massivecraft.massivecore.command.MassiveCommand;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.mson.MsonEvent;
-import com.massivecraft.massivecore.util.PermUtil;
+import com.massivecraft.massivecore.util.PermissionUtil;
 import com.massivecraft.massivecore.util.TimeDiffUtil;
 import com.massivecraft.massivecore.util.TimeUnit;
 import com.massivecraft.massivecore.util.Txt;
@@ -125,7 +125,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 	
 	private Mson getDenied(Mson mson, Perm perm)
 	{
-		return mson.color(ChatColor.GRAY).tooltip(PermUtil.getDeniedMessage(perm.node));
+		return mson.color(ChatColor.GRAY).tooltip(PermissionUtil.getDeniedMessage(perm.node));
 	}
 	
 }
