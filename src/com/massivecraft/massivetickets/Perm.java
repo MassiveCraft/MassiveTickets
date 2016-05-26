@@ -2,30 +2,31 @@ package com.massivecraft.massivetickets;
 
 import org.bukkit.permissions.Permissible;
 
+import com.massivecraft.massivecore.Identified;
 import com.massivecraft.massivecore.util.PermissionUtil;
 
-public enum Perm
+public enum Perm implements Identified
 {
 	// -------------------------------------------- //
 	// ENUM
 	// -------------------------------------------- //
 	
-	BASECOMMAND("basecommand"),
-	LIST("list"),
-	SHOW("show"),
-	SHOW_OTHER("show.other"),
-	CREATE("create"),
-	DONE("done"),
-	DONE_OTHER("done.other"),
-	PICK("pick"),
-	YIELD("yield"),
-	YIELD_OTHER("yield.other"),
-	HIGHSCORE("highscore"),
-	MODLIST("modlist"),
-	WORKING("working"),
-	CHEAT("cheat"),
-	VERSION("version"),
-	TELEPORT("teleport"),
+	BASECOMMAND,
+	LIST,
+	SHOW,
+	SHOW_OTHER,
+	CREATE,
+	DONE,
+	DONE_OTHER,
+	PICK,
+	YIELD,
+	YIELD_OTHER,
+	HIGHSCORE,
+	MODLIST,
+	WORKING,
+	CHEAT,
+	VERSION,
+	TELEPORT,
 	
 	// END OF LIST
 	;
@@ -34,15 +35,16 @@ public enum Perm
 	// FIELDS
 	// -------------------------------------------- //
 	
-	public final String node;
+	private final String id;
+	@Override public String getId() { return this.id; }
 	
 	// -------------------------------------------- //
 	// CONSTRUCT
 	// -------------------------------------------- //
 	
-	Perm(final String node)
+	Perm()
 	{
-		this.node = "massivetickets."+node;
+		this.id = PermissionUtil.createPermissionId(MassiveTickets.get(), this);
 	}
 	
 	// -------------------------------------------- //
@@ -51,7 +53,7 @@ public enum Perm
 	
 	public boolean has(Permissible permissible, boolean informSenderIfNot)
 	{
-		return PermissionUtil.hasPermission(permissible, this.node, informSenderIfNot);
+		return PermissionUtil.hasPermission(permissible, this.id, informSenderIfNot);
 	}
 	
 	public boolean has(Permissible permissible)

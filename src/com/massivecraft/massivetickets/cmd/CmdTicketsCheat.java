@@ -28,7 +28,7 @@ public class CmdTicketsCheat extends MassiveTicketsCommand
 		this.addParameter(TypeMPlayer.getOnline(), "player", "you");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.CHEAT.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.CHEAT));
 	}
 	
 	// -------------------------------------------- //

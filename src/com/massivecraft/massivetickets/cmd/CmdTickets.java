@@ -53,7 +53,7 @@ public class CmdTickets extends MassiveTicketsCommand
 		this.addChild(this.cmdTicketsVersion);
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.BASECOMMAND.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.BASECOMMAND));
 	}
 	
 	// -------------------------------------------- //

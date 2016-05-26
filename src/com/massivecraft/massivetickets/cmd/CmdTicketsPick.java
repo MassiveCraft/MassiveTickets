@@ -33,7 +33,7 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 		this.addParameter(TypeMPlayer.getOnline(), "player");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.PICK.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.PICK));
 	}
 	
 	// -------------------------------------------- //

@@ -32,7 +32,7 @@ public class CmdTicketsTeleport extends MassiveTicketsCommand
 		this.addParameter(TypeMPlayer.getAny(), "player");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.TELEPORT.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.TELEPORT));
 		this.addRequirements(RequirementIsPlayer.get());
 	}
 	

@@ -36,7 +36,7 @@ public class CmdTicketsHighscore extends MassiveTicketsCommand
 		this.addParameter(TypeInteger.get(), "year", "now");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.HIGHSCORE.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.HIGHSCORE));
 	}
 	
 	// -------------------------------------------- //

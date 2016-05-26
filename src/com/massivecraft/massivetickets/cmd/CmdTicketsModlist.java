@@ -26,7 +26,7 @@ public class CmdTicketsModlist extends MassiveTicketsCommand
 	public CmdTicketsModlist()
 	{
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.MODLIST.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.MODLIST));
 	}
 	
 	// -------------------------------------------- //

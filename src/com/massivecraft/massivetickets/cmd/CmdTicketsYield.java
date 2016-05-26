@@ -32,7 +32,7 @@ public class CmdTicketsYield extends MassiveTicketsCommand
 		this.addParameter(TypeMPlayer.getOnline(), "player");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.YIELD.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.YIELD));
 	}
 	
 	// -------------------------------------------- //

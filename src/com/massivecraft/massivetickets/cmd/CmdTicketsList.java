@@ -35,7 +35,7 @@ public class CmdTicketsList extends MassiveTicketsCommand
 		this.addParameter(Parameter.getPage());
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.LIST.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.LIST));
 	}
 	
 	// -------------------------------------------- //

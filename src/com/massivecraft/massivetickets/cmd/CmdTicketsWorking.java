@@ -31,7 +31,7 @@ public class CmdTicketsWorking extends MassiveTicketsCommand
 		this.addParameter(TypeBoolean.getYes(), "yes/no", "*toggle*");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.WORKING.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.WORKING));
 	}
 	
 	// -------------------------------------------- //

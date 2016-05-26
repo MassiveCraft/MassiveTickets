@@ -37,7 +37,7 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		this.addParameter(TypeString.get(), "message", true);
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.CREATE.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.CREATE));
 	}
 	
 	// -------------------------------------------- //

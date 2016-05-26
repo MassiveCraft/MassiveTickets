@@ -38,7 +38,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		this.addParameter(TypeMPlayer.getOnline(), "player", "you");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.SHOW.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.SHOW));
 	}
 	
 	// -------------------------------------------- //
@@ -125,7 +125,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 	
 	private Mson getDenied(Mson mson, Perm perm)
 	{
-		return mson.color(ChatColor.GRAY).tooltip(PermissionUtil.getPermissionDeniedMessage(perm.node));
+		return mson.color(ChatColor.GRAY).tooltip(PermissionUtil.getPermissionDeniedMessage(perm.getId()));
 	}
 	
 }
