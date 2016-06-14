@@ -110,7 +110,7 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		
 		return mson(
 			"Use ",
-			command.getTemplate(command.getChain(), false, true, sender),
+			command.getTemplate(false, true, sender),
 			mson(message).tooltip(tooltip)
 		).color(ChatColor.LIGHT_PURPLE);
 	}
