@@ -125,7 +125,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 	
 	private Mson getDenied(Mson mson, Perm perm)
 	{
-		return mson.color(ChatColor.GRAY).tooltip(PermissionUtil.getPermissionDeniedMessage(perm.getId()));
+		return mson.color(ChatColor.GRAY).tooltip(PermissionUtil.getPermissionDeniedMessage(perm));
 	}
 	
 }
