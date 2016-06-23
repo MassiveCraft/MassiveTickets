@@ -5,10 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.massivecraft.massivecore.mson.Mson;
-import com.massivecraft.massivecore.store.MStore;
 import com.massivecraft.massivecore.store.SenderColl;
-import com.massivecraft.massivetickets.Const;
-import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.predicate.PredicateIsCurrentlyWorking;
 import com.massivecraft.massivetickets.predicate.PredicateIsTicket;
 
@@ -20,10 +17,6 @@ public class MPlayerColl extends SenderColl<MPlayer>
 	
 	private static MPlayerColl i = new MPlayerColl();
 	public static MPlayerColl get() { return i; }
-	private MPlayerColl()
-	{
-		super(Const.COLLECTION_BASENAME_MPLAYER, MPlayer.class, MStore.getDb(), MassiveTickets.get());
-	}
 
 	// -------------------------------------------- //
 	// STACK TRACEABILITY
