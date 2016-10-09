@@ -85,11 +85,11 @@ public class MPlayer extends SenderEntity<MPlayer>
 	// This ticket done count is used for the highscore.
 	// "year --> week --> count" like this example:
 	// "count": {
-	//     "2013": {
-	//         "32": 176,
-	//         "31": 30,
-	//         "29": 72
-	//     }
+	//	 "2013": {
+	//		 "32": 176,
+	//		 "31": 30,
+	//		 "29": 72
+	//	 }
 	// }
 	private Map<Integer, Map<Integer, Integer>> count = null;
 
