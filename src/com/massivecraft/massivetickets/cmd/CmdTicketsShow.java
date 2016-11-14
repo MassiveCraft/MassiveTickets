@@ -61,7 +61,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		if (mplayer != msender && !Perm.SHOW_OTHER.has(sender, true)) return;
 		
 		// Send them messages!
-		message(Txt.titleize(mplayer.getDisplayName(sender)+"<l>'s ticket"));
+		message(Txt.titleize(mplayer.getDisplayName(sender)+Txt.parse("'s <green>ticket")));
 		if (!mplayer.hasMessage())
 		{
 			msg("<silver><em>has not created a ticket");
