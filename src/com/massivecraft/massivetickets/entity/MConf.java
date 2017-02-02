@@ -1,6 +1,10 @@
 package com.massivecraft.massivetickets.entity;
 
 import com.massivecraft.massivecore.collections.MassiveList;
+import com.massivecraft.massivecore.command.editor.annotation.EditorName;
+import com.massivecraft.massivecore.command.editor.annotation.EditorTypeInner;
+import com.massivecraft.massivecore.command.type.TypeStringCommand;
+import com.massivecraft.massivecore.command.type.primitive.TypeString;
 import com.massivecraft.massivecore.store.Entity;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivetickets.Reaction;
@@ -11,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+@EditorName("config")
 public class MConf extends Entity<MConf>
 {
 	// -------------------------------------------- //
@@ -153,6 +158,7 @@ public class MConf extends Entity<MConf>
 	// Rewards
 	public int ticketsPerReward = 5;
 
+	@EditorTypeInner({TypeString.class, TypeStringCommand.class})
 	private Map<String, String> rewards = MUtil.map(
 		"Moldy Bread", "give {m} bread 1 name:&aMoldy_Bread lore:&r&7Nasty_II|Is_this_even_edible...? unbreaking:1",
 		"Backwash Water", "give {m} waterbottle 1 name:&aBackwash_Water lore:&r&7Gross_III|Ew!_Is_that_a_spit_bubble?",

@@ -8,6 +8,8 @@ import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import com.massivecraft.massivecore.command.type.RegistryType;
+import com.massivecraft.massivetickets.cmd.type.TypeReaction;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -58,6 +60,9 @@ public class MassiveTickets extends MassivePlugin
 	@Override
 	public void onEnableInner()
 	{
+		// Types
+		RegistryType.register(Reaction.class, TypeReaction.get());
+		
 		// Activate
 		this.activate(
 			// Coll

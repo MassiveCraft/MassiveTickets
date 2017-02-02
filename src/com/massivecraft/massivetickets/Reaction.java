@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.massivecraft.massivecore.command.editor.annotation.EditorTypeInner;
+import com.massivecraft.massivecore.command.type.TypeStringCommand;
 import com.massivecraft.massivecore.mixin.MixinCommand;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.Txt;
@@ -20,12 +22,15 @@ public final class Reaction
 	// FIELDS
 	// -------------------------------------------- //
 	
+	@EditorTypeInner(TypeStringCommand.class)
 	private final List<String> moderatorCommands;
 	public List<String> getModeratorCommands() { return new ArrayList<String>(this.moderatorCommands); }
 	
+	@EditorTypeInner(TypeStringCommand.class)
 	private final List<String> playerCommands;
 	public List<String> getPlayerCommands() { return new ArrayList<String>(this.playerCommands); }
 	
+	@EditorTypeInner(TypeStringCommand.class)
 	private final List<String> consoleCommands;
 	public List<String> getConsoleCommands() { return new ArrayList<String>(this.consoleCommands); }
 	

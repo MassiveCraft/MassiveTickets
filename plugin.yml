@@ -25,6 +25,7 @@ permissions:
   massivetickets.teleport: {description: teleport to a player, default: false}
   massivetickets.cheat: {description: give a point 4NORaisins, default: false}
   massivetickets.version: {description: show plugin version, default: false}
+  massivetickets.config: {description: edit MassiveTickets config, default: false}
 # -------------------------------------------- #
 # STAR NOTATION
 # -------------------------------------------- #
@@ -46,6 +47,7 @@ permissions:
       massivetickets.teleport: true
       massivetickets.cheat: true
       massivetickets.version: true
+      massivetickets.config: true
 # -------------------------------------------- #
 # KITS
 # -------------------------------------------- #
@@ -57,6 +59,7 @@ permissions:
     default: false
     children:
       massivetickets.kit.rank2: true
+      massivetickets.config: true
   massivetickets.kit.rank2:
     default: false
     children:

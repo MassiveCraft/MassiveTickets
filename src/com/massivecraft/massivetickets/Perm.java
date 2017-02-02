@@ -27,6 +27,7 @@ public enum Perm implements Identified
 	CHEAT,
 	VERSION,
 	TELEPORT,
+	CONFIG,
 	
 	// END OF LIST
 	;
