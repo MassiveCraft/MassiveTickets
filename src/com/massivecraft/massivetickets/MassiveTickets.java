@@ -8,12 +8,11 @@ import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import com.massivecraft.massivecore.command.type.RegistryType;
-import com.massivecraft.massivetickets.cmd.type.TypeReaction;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import com.massivecraft.massivecore.MassivePlugin;
+import com.massivecraft.massivecore.command.type.RegistryType;
 import com.massivecraft.massivecore.mixin.MixinMessage;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.util.MUtil;
@@ -32,6 +31,7 @@ import com.massivecraft.massivetickets.cmd.CmdTicketsVersion;
 import com.massivecraft.massivetickets.cmd.CmdTicketsWorking;
 import com.massivecraft.massivetickets.cmd.CmdTicketsYield;
 import com.massivecraft.massivetickets.cmd.MassiveTicketsCommand;
+import com.massivecraft.massivetickets.cmd.type.TypeReaction;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MConfColl;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
@@ -88,7 +88,6 @@ public class MassiveTickets extends MassivePlugin
 			CmdTicketsWorking.class,
 			CmdTicketsTeleport.class,
 			CmdTicketsCheat.class,
-			CmdTicketsVersion.class,
 			CmdTicketsVersion.class
 		);
 	}
