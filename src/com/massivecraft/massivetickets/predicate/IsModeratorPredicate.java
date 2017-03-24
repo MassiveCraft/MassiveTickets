@@ -1,11 +1,10 @@
 package com.massivecraft.massivetickets.predicate;
 
-import java.io.Serializable;
-
-import org.bukkit.command.CommandSender;
-
 import com.massivecraft.massivecore.predicate.Predicate;
 import com.massivecraft.massivetickets.Perm;
+import org.bukkit.command.CommandSender;
+
+import java.io.Serializable;
 
 public class IsModeratorPredicate implements Predicate<CommandSender>, Serializable
 {

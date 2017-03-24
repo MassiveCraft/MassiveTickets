@@ -1,18 +1,17 @@
 package com.massivecraft.massivetickets.cmd;
 
-import java.util.List;
-
-import org.bukkit.ChatColor;
-
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.MassiveCommand;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
-import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
+import com.massivecraft.massivetickets.entity.TypeMPlayer;
+import org.bukkit.ChatColor;
+
+import java.util.List;
 
 public class CmdTicketsPick extends MassiveTicketsCommand
 {

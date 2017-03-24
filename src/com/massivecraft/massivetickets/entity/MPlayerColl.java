@@ -1,13 +1,13 @@
 package com.massivecraft.massivetickets.entity;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.store.SenderColl;
 import com.massivecraft.massivetickets.predicate.PredicateIsCurrentlyWorking;
 import com.massivecraft.massivetickets.predicate.PredicateIsTicket;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class MPlayerColl extends SenderColl<MPlayer>
 {

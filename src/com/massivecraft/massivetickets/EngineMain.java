@@ -1,18 +1,17 @@
 package com.massivecraft.massivetickets;
 
-import com.massivecraft.massivetickets.entity.MPlayerColl;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.player.PlayerJoinEvent;
-
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.event.EventMassiveCorePlayerLeave;
 import com.massivecraft.massivecore.mixin.MixinActual;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
+import com.massivecraft.massivetickets.entity.MPlayerColl;
 import com.massivecraft.massivetickets.predicate.IsModeratorPredicate;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 
 public class EngineMain extends Engine

@@ -1,10 +1,5 @@
 package com.massivecraft.massivetickets.cmd;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-
-import org.bukkit.ChatColor;
-
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.MassiveCommand;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
@@ -15,9 +10,13 @@ import com.massivecraft.massivecore.util.TimeDiffUtil;
 import com.massivecraft.massivecore.util.TimeUnit;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.Perm;
-import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
+import com.massivecraft.massivetickets.entity.TypeMPlayer;
+import org.bukkit.ChatColor;
+
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class CmdTicketsShow extends MassiveTicketsCommand
 {

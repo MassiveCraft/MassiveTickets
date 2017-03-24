@@ -1,9 +1,5 @@
 package com.massivecraft.massivetickets.cmd;
 
-import java.util.List;
-
-import org.bukkit.ChatColor;
-
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.type.primitive.TypeBooleanYes;
@@ -11,6 +7,9 @@ import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
+import org.bukkit.ChatColor;
+
+import java.util.List;
 
 public class CmdTicketsWorking extends MassiveTicketsCommand
 {

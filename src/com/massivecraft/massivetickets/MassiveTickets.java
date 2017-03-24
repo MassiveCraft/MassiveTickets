@@ -1,16 +1,5 @@
 package com.massivecraft.massivetickets;
 
-import static com.massivecraft.massivecore.mson.Mson.mson;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.GregorianCalendar;
-import java.util.List;
-
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
-
 import com.massivecraft.massivecore.MassivePlugin;
 import com.massivecraft.massivecore.command.type.RegistryType;
 import com.massivecraft.massivecore.mixin.MixinMessage;
@@ -36,6 +25,16 @@ import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MConfColl;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
 import com.massivecraft.massivetickets.predicate.IsModeratorPredicate;
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import static com.massivecraft.massivecore.mson.Mson.mson;
 
 public class MassiveTickets extends MassivePlugin
 {

@@ -1,14 +1,14 @@
 package com.massivecraft.massivetickets;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import com.massivecraft.massivecore.command.editor.annotation.EditorTypeInner;
 import com.massivecraft.massivecore.command.type.TypeStringCommand;
 import com.massivecraft.massivecore.mixin.MixinCommand;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.Txt;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public final class Reaction
 {

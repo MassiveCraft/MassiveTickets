@@ -1,11 +1,10 @@
 package com.massivecraft.massivetickets.cmd;
 
-import org.bukkit.ChatColor;
-
 import com.massivecraft.massivecore.command.MassiveCommand;
 import com.massivecraft.massivecore.command.Visibility;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivetickets.entity.MPlayer;
+import org.bukkit.ChatColor;
 
 public abstract class MassiveTicketsCommand extends MassiveCommand
 {

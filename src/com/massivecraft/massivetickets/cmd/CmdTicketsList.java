@@ -1,10 +1,5 @@
 package com.massivecraft.massivetickets.cmd;
 
-import java.util.Collection;
-import java.util.List;
-
-import org.bukkit.command.CommandSender;
-
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.Parameter;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
@@ -15,6 +10,10 @@ import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
+import org.bukkit.command.CommandSender;
+
+import java.util.Collection;
+import java.util.List;
 
 public class CmdTicketsList extends MassiveTicketsCommand
 {

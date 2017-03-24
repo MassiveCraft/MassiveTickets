@@ -1,10 +1,10 @@
 package com.massivecraft.massivetickets.cmd;
 
-import java.util.List;
-
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
+
+import java.util.List;
 
 public class CmdTickets extends MassiveTicketsCommand
 {

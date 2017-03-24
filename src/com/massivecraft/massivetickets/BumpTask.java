@@ -1,13 +1,13 @@
 package com.massivecraft.massivetickets;
 
-import com.massivecraft.massivecore.mson.Mson;
-import org.bukkit.entity.Player;
 import com.massivecraft.massivecore.ModuloRepeatTask;
+import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.TimeUnit;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
 import com.massivecraft.massivetickets.predicate.IsModeratorPredicate;
+import org.bukkit.entity.Player;
 
 public class BumpTask extends ModuloRepeatTask
 {

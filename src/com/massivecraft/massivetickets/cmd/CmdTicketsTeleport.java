@@ -1,7 +1,5 @@
 package com.massivecraft.massivetickets.cmd;
 
-import java.util.List;
-
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
@@ -9,9 +7,11 @@ import com.massivecraft.massivecore.mixin.MixinTeleport;
 import com.massivecraft.massivecore.mixin.TeleporterException;
 import com.massivecraft.massivecore.teleport.DestinationPlayer;
 import com.massivecraft.massivetickets.Perm;
-import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
+import com.massivecraft.massivetickets.entity.TypeMPlayer;
+
+import java.util.List;
 
 public class CmdTicketsTeleport extends MassiveTicketsCommand
 {

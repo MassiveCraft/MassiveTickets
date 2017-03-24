@@ -1,9 +1,9 @@
 package com.massivecraft.massivetickets.predicate;
 
-import java.io.Serializable;
-
 import com.massivecraft.massivecore.predicate.Predicate;
 import com.massivecraft.massivetickets.entity.MPlayer;
+
+import java.io.Serializable;
 
 public class PredicateIsCurrentlyWorking implements Predicate<MPlayer>, Serializable
 {

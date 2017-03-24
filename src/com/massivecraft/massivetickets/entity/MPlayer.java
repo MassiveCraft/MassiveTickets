@@ -1,16 +1,5 @@
 package com.massivecraft.massivetickets.entity;
 
-import static com.massivecraft.massivecore.mson.Mson.mson;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeSet;
-
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
-
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.store.SenderEntity;
 import com.massivecraft.massivecore.util.IdUtil;
@@ -18,6 +7,16 @@ import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.cmd.CmdTickets;
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeSet;
+
+import static com.massivecraft.massivecore.mson.Mson.mson;
 
 public class MPlayer extends SenderEntity<MPlayer>
 {
