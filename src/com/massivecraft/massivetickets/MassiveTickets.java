@@ -45,13 +45,7 @@ public class MassiveTickets extends MassivePlugin
 	
 	private static MassiveTickets i;
 	public static MassiveTickets get() { return i; }
-	public MassiveTickets()
-	{
-		MassiveTickets.i = this;
-		
-		// Version Synchronized
-		this.setVersionSynchronized(true);
-	}
+	public MassiveTickets() { MassiveTickets.i = this; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE
