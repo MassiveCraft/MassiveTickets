@@ -56,7 +56,8 @@ public class CmdTicketsList extends MassiveTicketsCommand
 		// Pager Create
 		Collection<MPlayer> tickets = MPlayerColl.get().getAllTickets();
 		final CommandSender sender = this.sender;
-		final Pager<MPlayer> pager = new Pager<MPlayer>(this, "Tickets", page, tickets, new Msonifier<MPlayer>(){
+		final Pager<MPlayer> pager = new Pager<>(this, "Tickets", page, tickets, new Msonifier<MPlayer>()
+		{
 			@Override
 			public Mson toMson(MPlayer ticket, int index)
 			{

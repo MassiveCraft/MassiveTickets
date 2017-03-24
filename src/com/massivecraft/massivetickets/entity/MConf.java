@@ -34,40 +34,40 @@ public class MConf extends Entity<MConf>
 	public List<String> aliasesOuterTickets = MUtil.list("t", "ti", "ticket", "tickets", "massiveticket", "massivetickets", "mt");
 	
 	public List<String> aliasesInnerTicketsList = MUtil.list("list");
-	public List<String> aliasesOuterTicketsList = new ArrayList<String>();
+	public List<String> aliasesOuterTicketsList = new ArrayList<>();
 	
 	public List<String> aliasesInnerTicketsShow = MUtil.list("show");
-	public List<String> aliasesOuterTicketsShow = new ArrayList<String>();
+	public List<String> aliasesOuterTicketsShow = new ArrayList<>();
 	
 	public List<String> aliasesInnerTicketsCreate = MUtil.list("create", "new");
 	public List<String> aliasesOuterTicketsCreate = MUtil.list("helpop", "modreq");
 	
 	public List<String> aliasesInnerTicketsDone = MUtil.list("done");
-	public List<String> aliasesOuterTicketsDone = new ArrayList<String>();
+	public List<String> aliasesOuterTicketsDone = new ArrayList<>();
 	
 	public List<String> aliasesInnerTicketsPick = MUtil.list("pick");
-	public List<String> aliasesOuterTicketsPick = new ArrayList<String>();
+	public List<String> aliasesOuterTicketsPick = new ArrayList<>();
 	
 	public List<String> aliasesInnerTicketsYield = MUtil.list("yield");
-	public List<String> aliasesOuterTicketsYield = new ArrayList<String>();
+	public List<String> aliasesOuterTicketsYield = new ArrayList<>();
 	
 	public List<String> aliasesInnerTicketsHighscore = MUtil.list("hs", "highscore");
-	public List<String> aliasesOuterTicketsHighscore = new ArrayList<String>();
+	public List<String> aliasesOuterTicketsHighscore = new ArrayList<>();
 	
 	public List<String> aliasesInnerTicketsModlist = MUtil.list("ml", "modlist");
 	public List<String> aliasesOuterTicketsModlist = MUtil.list("modlist");
 	
 	public List<String> aliasesInnerTicketsWorking = MUtil.list("working");
-	public List<String> aliasesOuterTicketsWorking = new ArrayList<String>();
+	public List<String> aliasesOuterTicketsWorking = new ArrayList<>();
 	
 	public List<String> aliasesInnerTicketsCheat = MUtil.list("cheat");
-	public List<String> aliasesOuterTicketsCheat = new ArrayList<String>();
+	public List<String> aliasesOuterTicketsCheat = new ArrayList<>();
 	
 	public List<String> aliasesInnerTicketsTeleport = MUtil.list("tp", "teleport");
-	public List<String> aliasesOuterTicketsTeleport = new ArrayList<String>();
+	public List<String> aliasesOuterTicketsTeleport = new ArrayList<>();
 	
 	public List<String> aliasesInnerTicketsVersion = MUtil.list("version");
-	public List<String> aliasesOuterTicketsVersion = new ArrayList<String>();
+	public List<String> aliasesOuterTicketsVersion = new ArrayList<>();
 	
 	// Format
 	
@@ -335,12 +335,12 @@ public class MConf extends Entity<MConf>
 
 	public Map<String, String> getRewards()
 	{
-		return new TreeMap<String, String>(this.rewards);
+		return new TreeMap<>(this.rewards);
 	}
 
 	public void setRewards(Map<String, String> rewards)
 	{
-		this.rewards = new TreeMap<String, String>(rewards);
+		this.rewards = new TreeMap<>(rewards);
 		this.changed();
 	}
 
@@ -351,7 +351,7 @@ public class MConf extends Entity<MConf>
 
 	public Reaction getRewardReaction(String name)
 	{
-		return Reaction.valueOf(null, null, new MassiveList<String>(this.getRewards().get(name)));
+		return Reaction.valueOf(null, null, new MassiveList<>(this.getRewards().get(name)));
 	}
 
 }

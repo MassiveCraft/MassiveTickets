@@ -44,7 +44,7 @@ public class CmdTicketsModlist extends MassiveTicketsCommand
 	{
 		message(Txt.titleize("Moderators Working Right Now"));
 		
-		List<String> names = new ArrayList<String>();
+		List<String> names = new ArrayList<>();
 		for (MPlayer mplayer : MPlayerColl.get().getAllCurrentlyWorking())
 		{
 			if ( ! mplayer.isVisible(sender)) continue;

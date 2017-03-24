@@ -45,7 +45,7 @@ public class MPlayerColl extends SenderColl<MPlayer>
 	// For the list command
 	public List<Mson> getAllTicketListLines(Object watcherObject)
 	{
-		List<Mson> ret = new ArrayList<Mson>();
+		List<Mson> ret = new ArrayList<>();
 		for (MPlayer ticket : this.getAllTickets())
 		{
 			ret.add(ticket.getListLine(watcherObject));

@@ -57,7 +57,7 @@ public class CmdTicketsHighscore extends MassiveTicketsCommand
 		int year = this.readArg(MassiveTickets.getCurrentYear());
 		
 		// Compile highscore data
-		Map<MPlayer, Integer> mplayer2count = new HashMap<MPlayer, Integer>();
+		Map<MPlayer, Integer> mplayer2count = new HashMap<>();
 		for (MPlayer mplayer : MPlayerColl.get().getAll())
 		{
 			int count = mplayer.getCount(year, week);

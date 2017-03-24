@@ -24,15 +24,15 @@ public final class Reaction
 	
 	@EditorTypeInner(TypeStringCommand.class)
 	private final List<String> moderatorCommands;
-	public List<String> getModeratorCommands() { return new ArrayList<String>(this.moderatorCommands); }
+	public List<String> getModeratorCommands() { return new ArrayList<>(this.moderatorCommands); }
 	
 	@EditorTypeInner(TypeStringCommand.class)
 	private final List<String> playerCommands;
-	public List<String> getPlayerCommands() { return new ArrayList<String>(this.playerCommands); }
+	public List<String> getPlayerCommands() { return new ArrayList<>(this.playerCommands); }
 	
 	@EditorTypeInner(TypeStringCommand.class)
 	private final List<String> consoleCommands;
-	public List<String> getConsoleCommands() { return new ArrayList<String>(this.consoleCommands); }
+	public List<String> getConsoleCommands() { return new ArrayList<>(this.consoleCommands); }
 	
 	// -------------------------------------------- //
 	// CONSTUCT
@@ -40,9 +40,9 @@ public final class Reaction
 	
 	private Reaction(Collection<String> moderatorCommands, Collection<String> playerCommands, Collection<String> consoleCommands)
 	{
-		this.moderatorCommands = (moderatorCommands == null ? new ArrayList<String>() : new ArrayList<String>(moderatorCommands));
-		this.playerCommands = (playerCommands == null ? new ArrayList<String>() : new ArrayList<String>(playerCommands));
-		this.consoleCommands = (consoleCommands == null ? new ArrayList<String>() : new ArrayList<String>(consoleCommands));
+		this.moderatorCommands = (moderatorCommands == null ? new ArrayList<String>() : new ArrayList<>(moderatorCommands));
+		this.playerCommands = (playerCommands == null ? new ArrayList<String>() : new ArrayList<>(playerCommands));
+		this.consoleCommands = (consoleCommands == null ? new ArrayList<String>() : new ArrayList<>(consoleCommands));
 	}
 	
 	private Reaction()
@@ -109,7 +109,7 @@ public final class Reaction
 	
 	public static List<String> prepareCmds(Collection<String> cmds, String moderatorId, String playerId)
 	{
-		List<String> ret = new ArrayList<String>();
+		List<String> ret = new ArrayList<>();
 		for (String cmd : cmds)
 		{
 			ret.add(prepareCmd(cmd, moderatorId, playerId));

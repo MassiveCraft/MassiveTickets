@@ -135,7 +135,7 @@ public class MassiveTickets extends MassivePlugin
 	}
 	public static boolean alertModeratorsMessage(Collection<Object> messages)
 	{
-		List<Mson> target = new ArrayList<Mson>();
+		List<Mson> target = new ArrayList<>();
 		for (Object message : messages)
 		{
 			target.add(getPrefix().add(message));
@@ -154,7 +154,7 @@ public class MassiveTickets extends MassivePlugin
 	}
 	public static boolean alertOneMessage(CommandSender sender, Collection<Object> messages)
 	{
-		List<Mson> target = new ArrayList<Mson>();
+		List<Mson> target = new ArrayList<>();
 		for (Object message : messages)
 		{
 			target.add(getPrefix().add(message));
@@ -173,7 +173,7 @@ public class MassiveTickets extends MassivePlugin
 	}
 	public static boolean alertOneMessage(String senderId, Collection<Object> messages)
 	{
-		List<Mson> target = new ArrayList<Mson>();
+		List<Mson> target = new ArrayList<>();
 		for (Object message : messages)
 		{
 			target.add(getPrefix().add(message));
@@ -192,7 +192,7 @@ public class MassiveTickets extends MassivePlugin
 	}
 	public static boolean alertModeratorsMsg(Collection<String> msgs)
 	{
-		List<String> target = new ArrayList<String>();
+		List<String> target = new ArrayList<>();
 		for (String msg : msgs)
 		{
 			target.add(MConf.get().getPrefix() + msg);
@@ -211,7 +211,7 @@ public class MassiveTickets extends MassivePlugin
 	}
 	public static boolean alertOneMsg(CommandSender sender, Collection<String> msgs)
 	{
-		List<String> target = new ArrayList<String>();
+		List<String> target = new ArrayList<>();
 		for (String msg : msgs)
 		{
 			target.add(MConf.get().getPrefix() + msg);
@@ -230,7 +230,7 @@ public class MassiveTickets extends MassivePlugin
 	}
 	public static boolean alertOneMsg(String senderId, Collection<String> msgs)
 	{
-		List<String> target = new ArrayList<String>();
+		List<String> target = new ArrayList<>();
 		for (String msg : msgs)
 		{
 			target.add(MConf.get().getPrefix() + msg);

@@ -174,7 +174,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 	public Map<Integer, Map<Integer, Integer>> getCount()
 	{
 		Map<Integer, Map<Integer, Integer>> ret = mapcopy(this.count);
-		if (ret == null) ret = new LinkedHashMap<Integer, Map<Integer, Integer>>();
+		if (ret == null) ret = new LinkedHashMap<>();
 		return ret;
 	}
 	public boolean hasCount() { return this.count != null; }
@@ -200,7 +200,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 	private static <K, V> Map<K, V> mapcopy(Map<K, V> map)
 	{
 		if (map == null) return null;
-		Map<K, V> ret = new LinkedHashMap<K, V>();
+		Map<K, V> ret = new LinkedHashMap<>();
 		for (Entry<K, V> entry : map.entrySet())
 		{
 			K key = entry.getKey();
@@ -238,7 +238,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 	public Map<Integer, Integer> getCount(int year)
 	{
 		Map<Integer, Integer> ret = this.getCount().get(year);
-		if (ret == null) ret = new LinkedHashMap<Integer, Integer>();
+		if (ret == null) ret = new LinkedHashMap<>();
 		return ret;
 	}
 	public void setCount(int year, Map<Integer, Integer> count)
@@ -323,7 +323,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 		if (this == receiver) receiver = null;
 		
 		// Done Inform!
-		Set<String> moderatorAlerteeIds = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
+		Set<String> moderatorAlerteeIds = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
 		if (receiver != null)
 		{
 			moderatorAlerteeIds.add(receiver.getId());
