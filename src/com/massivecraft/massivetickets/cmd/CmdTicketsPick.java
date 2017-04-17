@@ -70,6 +70,9 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 			return;
 		}
 		
+		// Are you trying to pick your own ticket?
+		if (ticket == msender) throw new MassiveException().setMessage("<bad>You can not pick your own ticket.");
+		
 		// Already picked?
 		MPlayer moderator = ticket.getModerator();
 		if (moderator != null)
