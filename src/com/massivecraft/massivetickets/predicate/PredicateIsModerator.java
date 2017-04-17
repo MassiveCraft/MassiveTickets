@@ -6,16 +6,20 @@ import org.bukkit.command.CommandSender;
 
 import java.io.Serializable;
 
-public class IsModeratorPredicate implements Predicate<CommandSender>, Serializable
+public class PredicateIsModerator implements Predicate<CommandSender>, Serializable
 {
+	// -------------------------------------------- //
+	// SERIALIZABLE
+	// -------------------------------------------- //
+	
 	private static final long serialVersionUID = 1L;
 	
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static IsModeratorPredicate i = new IsModeratorPredicate();
-	public static IsModeratorPredicate get() { return i; }
+	private static PredicateIsModerator i = new PredicateIsModerator();
+	public static PredicateIsModerator get() { return i; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE

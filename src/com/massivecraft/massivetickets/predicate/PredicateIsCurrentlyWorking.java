@@ -7,6 +7,10 @@ import java.io.Serializable;
 
 public class PredicateIsCurrentlyWorking implements Predicate<MPlayer>, Serializable
 {
+	// -------------------------------------------- //
+	// SERIALIZABLE
+	// -------------------------------------------- //
+	
 	private static final long serialVersionUID = 1L;
 	
 	// -------------------------------------------- //

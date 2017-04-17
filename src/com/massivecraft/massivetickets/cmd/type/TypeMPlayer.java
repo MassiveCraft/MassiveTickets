@@ -1,7 +1,9 @@
-package com.massivecraft.massivetickets.entity;
+package com.massivecraft.massivetickets.cmd.type;
 
 import com.massivecraft.massivecore.SenderPresence;
 import com.massivecraft.massivecore.command.type.Type;
+import com.massivecraft.massivetickets.entity.MPlayer;
+import com.massivecraft.massivetickets.entity.MPlayerColl;
 
 public class TypeMPlayer
 {

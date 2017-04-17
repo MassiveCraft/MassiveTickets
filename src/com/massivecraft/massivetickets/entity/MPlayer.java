@@ -158,7 +158,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 	{
 		// Clean input
 		Boolean target = working;
-		if (target == false) target = null;
+		if (!target) target = null;
 		
 		// Detect Nochange
 		if (MUtil.equals(this.working, target)) return;
@@ -324,14 +324,9 @@ public class MPlayer extends SenderEntity<MPlayer>
 		
 		// Done Inform!
 		Set<String> moderatorAlerteeIds = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
-		if (receiver != null)
-		{
-			moderatorAlerteeIds.add(receiver.getId());
-		}
-		if (cause != null)
-		{
-			moderatorAlerteeIds.add(cause.getId());
-		}
+		if (receiver != null) moderatorAlerteeIds.add(receiver.getId());
+		if (cause != null) moderatorAlerteeIds.add(cause.getId());
+		
 		moderatorAlerteeIds.remove(this.getId());
 		
 		if (cause == null)
@@ -402,22 +397,25 @@ public class MPlayer extends SenderEntity<MPlayer>
 		
 		this.message(Txt.titleize("MassiveTickets | Counter"));
 		
+		String id = this.getId();
+		
 		if (remainder == 0)
 		{
 			this.msg(progress + "<g>You will receive a reward!", totalMax, totalMax, 100 + "%");
 			String name = MConf.get().getRandomReward();
-			MassiveTickets.alertModeratorsMsg("<white>%s<pink> has done <aqua>%d <pink>tickets!", this.getDisplayName(null), countAfter);
-			MassiveTickets.alertModeratorsMsg("<pink>Enjoy your <aqua>%s <white>%s<pink>!", name, this.getDisplayName(null));
+			String displayName = this.getDisplayName(null);
+			MassiveTickets.alertModeratorsMsg("<white>%s<pink> has done <aqua>%d <pink>tickets!", displayName, countAfter);
+			MassiveTickets.alertModeratorsMsg("<pink>Enjoy your <aqua>%s <white>%s<pink>!", name, displayName);
 			
-			MConf.get().getRewardReaction(name).run(this.getId(), playerId);
-			MConf.get().getDoneReactionLevel().run(this.getId(), playerId);
+			MConf.get().getRewardReaction(name).run(id, playerId);
+			MConf.get().getDoneReactionLevel().run(id, playerId);
 		}
 		else
 		{
 			String pluralS = leftOver > 1 ? "s" : "";
 			this.msg(progress + "<i>Only %s ticket%s left till your next reward!", remainder, totalMax, percent + "%", leftOver, pluralS);
 			
-			MConf.get().getDoneReactionNormal().run(this.getId(), playerId);
+			MConf.get().getDoneReactionNormal().run(id, playerId);
 		}
 	}
 	

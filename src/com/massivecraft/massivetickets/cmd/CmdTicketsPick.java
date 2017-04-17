@@ -6,12 +6,14 @@ import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
+import com.massivecraft.massivetickets.cmd.type.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
-import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import org.bukkit.ChatColor;
 
 import java.util.List;
+
+import static com.massivecraft.massivecore.mson.Mson.SPACE;
 
 public class CmdTicketsPick extends MassiveTicketsCommand
 {
@@ -21,6 +23,13 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 	
 	private static CmdTicketsPick i = new CmdTicketsPick() { @Override public List<String> getAliases() { return MConf.get().aliasesOuterTicketsPick; } };
 	public static CmdTicketsPick get() { return i; }
+	
+	// -------------------------------------------- //
+	// CONSTANTS
+	// -------------------------------------------- //
+	
+	private static final Mson TICKET_ALREADY_PICKED_SELF = mson("You have already picked this ticket.").color(ChatColor.YELLOW);
+	private static final Mson TICKET_ALREADY_PICKED_OTHER = mson(" has already picked this ticket.").color(ChatColor.RED);
 	
 	// -------------------------------------------- //
 	// CONSTRUCT
@@ -71,7 +80,7 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 			
 			if (moderator == msender)
 			{
-				message = mson("You have already picked this ticket.").color(ChatColor.YELLOW);
+				message = TICKET_ALREADY_PICKED_SELF;
 				
 				if (Perm.YIELD.has(sender)) commandLine = command.getCommandLine(msender.getName());
 			}
@@ -79,7 +88,7 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 			{
 				message = mson(
 					ChatColor.stripColor(moderator.getDisplayName(sender)),
-					mson(" has already picked this ticket.").color(ChatColor.RED)
+					TICKET_ALREADY_PICKED_OTHER
 				);
 				
 				if (Perm.YIELD_OTHER.has(sender)) commandLine = command.getCommandLine(moderator.getName());
@@ -87,7 +96,7 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 			
 			if (commandLine != null)
 			{
-				message = mson(message, Mson.SPACE, CmdTicketsShow.BUTTON_YIELD.command(commandLine));
+				message = mson(message, SPACE, CmdTicketsShow.BUTTON_YIELD.command(commandLine));
 			}
 			message(message);
 			return;

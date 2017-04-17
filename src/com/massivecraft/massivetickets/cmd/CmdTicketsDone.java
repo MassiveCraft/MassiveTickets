@@ -3,9 +3,9 @@ package com.massivecraft.massivetickets.cmd;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivetickets.Perm;
+import com.massivecraft.massivetickets.cmd.type.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
-import com.massivecraft.massivetickets.entity.TypeMPlayer;
 
 import java.util.List;
 

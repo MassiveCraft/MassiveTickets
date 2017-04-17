@@ -5,12 +5,14 @@ import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
+import com.massivecraft.massivetickets.cmd.type.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
-import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import org.bukkit.ChatColor;
 
 import java.util.List;
+
+import static com.massivecraft.massivecore.mson.Mson.SPACE;
 
 public class CmdTicketsYield extends MassiveTicketsCommand
 {
@@ -81,20 +83,22 @@ public class CmdTicketsYield extends MassiveTicketsCommand
 		MConf.get().getYieldReaction().run(moderator.getId(), ticket.getId());
 	}
 	
-	private static Mson YIELDED = Mson.SPACE.add(mson("yielded").color(ChatColor.LIGHT_PURPLE)).add(Mson.SPACE);
-	private static Mson TICKET = Mson.SPACE.add(mson("'s ticket.").color(ChatColor.LIGHT_PURPLE)).add(Mson.SPACE);
+	private static Mson YIELDED = mson("yielded");
+	private static Mson TICKET = mson("'s ticket.");
 	
 	private Mson getYieldedMson(MPlayer ticket)
 	{
-		Mson yielded = mson(
+		return mson(
 			mson(msender.getDisplayName(null)).color(ChatColor.WHITE),
+			SPACE,
 			YIELDED,
+			SPACE,
 			mson(ticket.getDisplayName(null)).color(ChatColor.WHITE),
+			SPACE,
 			TICKET,
+			SPACE,
 			BUTTON_SHOW.command(CmdTickets.get().cmdTicketsShow, ticket.getName())
-		);
-		
-		return yielded;
+		).color(ChatColor.LIGHT_PURPLE);
 	}
 	
 }

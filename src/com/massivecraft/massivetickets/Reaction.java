@@ -4,11 +4,13 @@ import com.massivecraft.massivecore.command.editor.annotation.EditorTypeInner;
 import com.massivecraft.massivecore.command.type.TypeStringCommand;
 import com.massivecraft.massivecore.mixin.MixinCommand;
 import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 public final class Reaction
 {
@@ -88,32 +90,40 @@ public final class Reaction
 		}
 	}
 	
-	public static String prepareCmd(String cmd, String moderatorId, String playerId)
-	{
-		cmd = Txt.removeLeadingCommandDust(cmd);
-		
-		cmd = cmd.replace("{w}", String.valueOf(MassiveTickets.getCurrentWeek()));
-		cmd = cmd.replace("{y}", String.valueOf(MassiveTickets.getCurrentYear()));
-		
-		if (moderatorId != null)
-		{
-			cmd = cmd.replace("{m}", IdUtil.getName(moderatorId));
-		}
-		if (playerId != null)
-		{
-			cmd = cmd.replace("{p}", IdUtil.getName(playerId));
-		}
-		
-		return cmd;
-	}
-	
 	public static List<String> prepareCmds(Collection<String> cmds, String moderatorId, String playerId)
 	{
+		// Create return collection
 		List<String> ret = new ArrayList<>();
+		
+		// Calculate values for variables and save the results for reuse.
+		String currentWeek = String.valueOf(MassiveTickets.getCurrentWeek());
+		String currentYear = String.valueOf(MassiveTickets.getCurrentYear());
+		boolean moderatorIdNull = moderatorId == null;
+		boolean playerIdNull = playerId == null;
+		String moderatorName = IdUtil.getName(moderatorId);
+		String playerName = IdUtil.getName(playerId);
+		
+		// For each command string
 		for (String cmd : cmds)
 		{
-			ret.add(prepareCmd(cmd, moderatorId, playerId));
+			// Apply basic command string trimming
+			cmd = Txt.removeLeadingCommandDust(cmd);
+			
+			// Apply the week and year variables
+			cmd = cmd.replace("{w}", currentWeek);
+			cmd = cmd.replace("{y}", currentYear);
+			
+			// Apply moderator name variable, if possible
+			if (!moderatorIdNull) cmd = cmd.replace("{m}", moderatorName);
+			
+			// Apply the player name variable, if possible
+			if (!playerIdNull) cmd = cmd.replace("{p}", playerName);
+			
+			// Attach to the output
+			ret.add(cmd);
 		}
+		
+		// Return
 		return ret;
 	}
 
@@ -124,17 +134,11 @@ public final class Reaction
 	@Override
 	public int hashCode()
 	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((consoleCommands == null) ? 0 : consoleCommands.hashCode());
-		result = prime
-				* result
-				+ ((moderatorCommands == null) ? 0 : moderatorCommands
-						.hashCode());
-		result = prime * result
-				+ ((playerCommands == null) ? 0 : playerCommands.hashCode());
-		return result;
+		return Objects.hash(
+			this.getConsoleCommands(),
+			this.getModeratorCommands(),
+			this.getPlayerCommands()
+		);
 	}
 
 	@Override
@@ -144,22 +148,12 @@ public final class Reaction
 		if (obj == null) return false;
 		if (!(obj instanceof Reaction)) return false;
 		Reaction other = (Reaction) obj;
-		if (consoleCommands == null)
-		{
-			if (other.consoleCommands != null) return false;
-		}
-		else if (!consoleCommands.equals(other.consoleCommands)) return false;
-		if (moderatorCommands == null)
-		{
-			if (other.moderatorCommands != null) return false;
-		}
-		else if (!moderatorCommands.equals(other.moderatorCommands)) return false;
-		if (playerCommands == null)
-		{
-			if (other.playerCommands != null) return false;
-		}
-		else if (!playerCommands.equals(other.playerCommands)) return false;
-		return true;
+		
+		return MUtil.equals(
+			this.getConsoleCommands(), other.getConsoleCommands(),
+			this.getModeratorCommands(), other.getModeratorCommands(),
+			this.getPlayerCommands(), other.getPlayerCommands()
+		);
 	}
 	
 }

@@ -16,6 +16,8 @@ import org.bukkit.ChatColor;
 
 import java.util.List;
 
+import static com.massivecraft.massivecore.mson.Mson.SPACE;
+
 public class CmdTicketsCreate extends MassiveTicketsCommand
 {
 	// -------------------------------------------- //
@@ -79,16 +81,16 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		MassiveCommand cmd = null;
 		
 		cmd = CmdTickets.get().cmdTicketsShow;
-		MixinMessage.get().messageOne(sender, getUseCommand(cmd, " to show your ticket"));
+		MixinMessage.get().messageOne(sender, this.getUseCommand(cmd, " to show your ticket"));
 		
 		cmd = CmdTickets.get().cmdTicketsDone;
-		MixinMessage.get().messageOne(sender, getUseCommand(cmd, " to mark it as done"));
+		MixinMessage.get().messageOne(sender, this.getUseCommand(cmd, " to mark it as done"));
 		
 		cmd = CmdTickets.get().cmdTicketsModlist;
-		MixinMessage.get().messageOne(sender, getUseCommand(cmd, " to list the moderators"));
+		MixinMessage.get().messageOne(sender, this.getUseCommand(cmd, " to list the moderators"));
 		
 		cmd = CmdTickets.get().cmdTicketsCreate;
-		MixinMessage.get().messageOne(sender, getUseCommand(cmd, " to update the message"));
+		MixinMessage.get().messageOne(sender, this.getUseCommand(cmd, " to update the message"));
 		
 		// React
 		if (update)
@@ -115,17 +117,15 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 	
 	private Mson getCreatedMson(MPlayer mplayer, String verb, String message)
 	{
-		Mson created = mson(
+		return mson(
 			mson(mplayer.getDisplayName(null)).color(ChatColor.WHITE),
-			Mson.SPACE,
-			mson(verb).color(ChatColor.LIGHT_PURPLE),
-			Mson.SPACE,
-			mson("ticket: " + message).color(ChatColor.LIGHT_PURPLE),
-			Mson.SPACE,
+			SPACE,
+			mson(verb),
+			SPACE,
+			mson("ticket: " + message),
+			SPACE,
 			BUTTON_SHOW.command(CmdTickets.get().cmdTicketsShow, mplayer.getName())
-		);
-		
-		return created;
+		).color(ChatColor.LIGHT_PURPLE);
 	}
 	
 }

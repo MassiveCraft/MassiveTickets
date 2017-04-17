@@ -10,13 +10,15 @@ import com.massivecraft.massivecore.util.TimeDiffUtil;
 import com.massivecraft.massivecore.util.TimeUnit;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.Perm;
+import com.massivecraft.massivetickets.cmd.type.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
-import com.massivecraft.massivetickets.entity.TypeMPlayer;
 import org.bukkit.ChatColor;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+
+import static com.massivecraft.massivecore.mson.Mson.SPACE;
 
 public class CmdTicketsShow extends MassiveTicketsCommand
 {
@@ -60,7 +62,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		if (mplayer != msender && !Perm.SHOW_OTHER.has(sender, true)) return;
 		
 		// Send them messages!
-		message(Txt.titleize(mplayer.getDisplayName(sender)+Txt.parse("'s <green>ticket")));
+		message(Txt.titleize(mplayer.getDisplayName(sender) + Txt.parse("'s <green>ticket")));
 		if (!mplayer.hasMessage())
 		{
 			msg("<silver><em>has not created a ticket");
@@ -97,14 +99,14 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 		{
 			MassiveCommand command = CmdTickets.get().cmdTicketsCreate;
 			buttonUpdate = getButtonFunctional(BUTTON_UPDATE, Perm.CREATE, null, mplayer, command, false, true);
-			buttonUpdate = mson(buttonUpdate.suggest(command, msender.getMessage()), Mson.SPACE);
+			buttonUpdate = mson(buttonUpdate.suggest(command, msender.getMessage()), SPACE);
 			
 			buttonTeleport = buttonTeleport.color(ChatColor.GRAY).tooltipParse("<b>You cannot teleport to yourself.").event(false, MsonEvent.suggest(""));
 		}
 		
 		// Send moderator info and buttons
 		msg("<k>Picked By: <v>%s", pickedByDesc);
-		message(mson(buttonUpdate, buttonPick, Mson.SPACE, buttonYield, Mson.SPACE, buttonDone, Mson.SPACE, buttonTeleport));
+		message(mson(buttonUpdate, buttonPick, SPACE, buttonYield, SPACE, buttonDone, SPACE, buttonTeleport));
 		
 		// React
 		MConf.get().getShowReaction().run(msender.getId(), mplayer.getId());
@@ -113,7 +115,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 	private Mson getButtonFunctional(Mson button, Perm perm, Perm permOther, MPlayer other, MassiveCommand command, boolean addName, boolean suggest)
 	{
 		// Handle Permissions
-		if (! perm.has(sender)) return getDenied(button, perm);
+		if (!perm.has(sender)) return getDenied(button, perm);
 		
 		// Handle Permissions other
 		if (permOther != null && sender == other && permOther.has(sender))  return getDenied(button, permOther);

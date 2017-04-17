@@ -30,7 +30,6 @@ public class MConf extends Entity<MConf>
 	// -------------------------------------------- //
 	
 	// Command Aliases
-	
 	public List<String> aliasesOuterTickets = MUtil.list("t", "ti", "ticket", "tickets", "massiveticket", "massivetickets", "mt");
 	
 	public List<String> aliasesInnerTicketsList = MUtil.list("list");
@@ -70,7 +69,6 @@ public class MConf extends Entity<MConf>
 	public List<String> aliasesOuterTicketsVersion = new ArrayList<>();
 	
 	// Format
-	
 	private String prefix = "<pink><T> ";
 	public String getPrefix() { return this.prefix; }
 	public void setPrefix(String prefix) { this.prefix = prefix; this.changed(); }
@@ -80,7 +78,6 @@ public class MConf extends Entity<MConf>
 	public void setExcerptLength(int excerptLength) { this.excerptLength = excerptLength; this.changed(); }
 	
 	// Bump
-	
 	private boolean bumpOnJoinActive = true;
 	public boolean isBumpOnJoinActive() { return this.bumpOnJoinActive; }
 	public void setBumpOnJoinActive(boolean bumpOnJoinActive) { this.bumpOnJoinActive = bumpOnJoinActive; this.changed(); }
@@ -94,7 +91,6 @@ public class MConf extends Entity<MConf>
 	public void setBumpEachMinutes(double bumpEachMinutes) { this.bumpEachMinutes = bumpEachMinutes; this.changed(); }
 	
 	// Reactions
-	
 	private Reaction createReaction = Reaction.EMPTY;
 	public Reaction getCreateReaction() { return this.createReaction; }
 	public void setCreateReaction(Reaction createReaction) { this.createReaction = createReaction; this.changed(); }

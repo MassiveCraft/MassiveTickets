@@ -1,27 +1,27 @@
-package com.massivecraft.massivetickets;
+package com.massivecraft.massivetickets.engine;
 
 import com.massivecraft.massivecore.Engine;
-import com.massivecraft.massivecore.event.EventMassiveCorePlayerLeave;
 import com.massivecraft.massivecore.mixin.MixinActual;
 import com.massivecraft.massivecore.util.MUtil;
+import com.massivecraft.massivetickets.MassiveTickets;
+import com.massivecraft.massivetickets.Perm;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
-import com.massivecraft.massivetickets.predicate.IsModeratorPredicate;
+import com.massivecraft.massivetickets.predicate.PredicateIsModerator;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-
-public class EngineMain extends Engine
+public class EngineJoin extends Engine
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static EngineMain i = new EngineMain();
-	public static EngineMain get() { return i; }
+	private static EngineJoin i = new EngineJoin();
+	public static EngineJoin get() { return i; }
 	
 	// -------------------------------------------- //
 	// VERIFY WORKING ON JOIN
@@ -56,7 +56,7 @@ public class EngineMain extends Engine
 		final Player player = event.getPlayer();
 		
 		// ... and this player is a moderator ...
-		if (!IsModeratorPredicate.get().apply(player)) return;
+		if (!PredicateIsModerator.get().apply(player)) return;
 		
 		// If the bump on join is activated ...
 		if (!MConf.get().isBumpOnJoinActive()) return;
@@ -65,7 +65,7 @@ public class EngineMain extends Engine
 		if (MConf.get().getBumpOnJoinPriority() != priority) return;
 		
 		// ... and this is an actual join ...
-		if ( ! MixinActual.get().isActualJoin(event)) return;
+		if (!MixinActual.get().isActualJoin(event)) return;
 		
 		// ... and if there are any tickets ...
 		if (MPlayerColl.get().getAllTickets().size() == 0) return;
@@ -108,31 +108,6 @@ public class EngineMain extends Engine
 	public void bumpOnJoinMonitor(PlayerJoinEvent event)
 	{
 		bumpOnJoin(event, EventPriority.MONITOR);
-	}
-	
-	// -------------------------------------------- //
-	// DONE-MARK ON LEAVE
-	// -------------------------------------------- //
-	
-	@EventHandler(priority = EventPriority.NORMAL)
-	public void doneMarkOnLeave(EventMassiveCorePlayerLeave event)
-	{
-		// If a player is leaving the server ...
-		final Player player = event.getPlayer();
-		if (MUtil.isntPlayer(player)) return;
-		final MPlayer mplayer = MPlayer.get(player);
-		
-		// ... and it's actually a leave ...
-		if ( ! MixinActual.get().isActualLeave(event)) return;
-		
-		// Force Sync
-		mplayer.sync();
-		
-		// ... and this player has made a ticket ... 
-		if (!mplayer.hasMessage()) return;
-		
-		// ... then mark it as done.
-		mplayer.markAsDone(null);
 	}
 	
 }

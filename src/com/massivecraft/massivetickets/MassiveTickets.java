@@ -21,10 +21,13 @@ import com.massivecraft.massivetickets.cmd.CmdTicketsWorking;
 import com.massivecraft.massivetickets.cmd.CmdTicketsYield;
 import com.massivecraft.massivetickets.cmd.MassiveTicketsCommand;
 import com.massivecraft.massivetickets.cmd.type.TypeReaction;
+import com.massivecraft.massivetickets.engine.EngineJoin;
+import com.massivecraft.massivetickets.engine.EngineLeave;
+import com.massivecraft.massivetickets.engine.TaskBump;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MConfColl;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
-import com.massivecraft.massivetickets.predicate.IsModeratorPredicate;
+import com.massivecraft.massivetickets.predicate.PredicateIsModerator;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -63,10 +66,11 @@ public class MassiveTickets extends MassivePlugin
 			MPlayerColl.class,
 				
 			// Engines
-			EngineMain.class,
+			EngineJoin.class,
+			EngineLeave.class,
 			
 			// Schedule recurring non-tps-dependent tasks
-			BumpTask.class,
+			TaskBump.class,
 			
 			// Command
 			CmdTickets.class,
@@ -140,7 +144,7 @@ public class MassiveTickets extends MassivePlugin
 		{
 			target.add(getPrefix().add(message));
 		}
-		return MixinMessage.get().messagePredicate(IsModeratorPredicate.get(), target);
+		return MixinMessage.get().messagePredicate(PredicateIsModerator.get(), target);
 	}
 	
 	// One
@@ -184,11 +188,11 @@ public class MassiveTickets extends MassivePlugin
 	// All Moderators
 	public static boolean alertModeratorsMsg(String msg) // WORKS
 	{
-		return MixinMessage.get().msgPredicate(IsModeratorPredicate.get(), MConf.get().getPrefix() + msg);
+		return MixinMessage.get().msgPredicate(PredicateIsModerator.get(), MConf.get().getPrefix() + msg);
 	}
 	public static boolean alertModeratorsMsg(String msg, Object... args)
 	{
-		return MixinMessage.get().msgPredicate(IsModeratorPredicate.get(), MConf.get().getPrefix() + msg, args);
+		return MixinMessage.get().msgPredicate(PredicateIsModerator.get(), MConf.get().getPrefix() + msg, args);
 	}
 	public static boolean alertModeratorsMsg(Collection<String> msgs)
 	{
@@ -197,7 +201,7 @@ public class MassiveTickets extends MassivePlugin
 		{
 			target.add(MConf.get().getPrefix() + msg);
 		}
-		return MixinMessage.get().msgPredicate(IsModeratorPredicate.get(), target);
+		return MixinMessage.get().msgPredicate(PredicateIsModerator.get(), target);
 	}
 	
 	// One

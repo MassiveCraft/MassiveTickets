@@ -1,37 +1,32 @@
-package com.massivecraft.massivetickets;
+package com.massivecraft.massivetickets.engine;
 
 import com.massivecraft.massivecore.ModuloRepeatTask;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.TimeUnit;
+import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
-import com.massivecraft.massivetickets.predicate.IsModeratorPredicate;
+import com.massivecraft.massivetickets.predicate.PredicateIsModerator;
 import org.bukkit.entity.Player;
 
-public class BumpTask extends ModuloRepeatTask
+public class TaskBump extends ModuloRepeatTask
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static BumpTask i = new BumpTask();
-	public static BumpTask get() { return i; }
+	private static TaskBump i = new TaskBump();
+	public static TaskBump get() { return i; }
 	
 	// -------------------------------------------- //
-	// OVERRIDE: MODULO REPEAT TASK
+	// OVERRIDE
 	// -------------------------------------------- //
 	
 	@Override
 	public long getDelayMillis()
 	{
 		return (long) (MConf.get().getBumpEachMinutes() * TimeUnit.MILLIS_PER_MINUTE);
-	}
-	
-	@Override
-	public void setDelayMillis(long delayMillis)
-	{
-		MConf.get().setBumpEachMinutes(delayMillis / (double) TimeUnit.MILLIS_PER_MINUTE);
 	}
 	
 	@Override
@@ -44,7 +39,7 @@ public class BumpTask extends ModuloRepeatTask
 		Mson message = MassiveTickets.createBumpMessage();
 		for (Player player : MUtil.getOnlinePlayers())
 		{
-			if ( ! IsModeratorPredicate.get().apply(player)) continue;
+			if (!PredicateIsModerator.get().apply(player)) continue;
 			MassiveTickets.alertOneMessage(player, message);
 		}
 	}

@@ -7,9 +7,9 @@ import com.massivecraft.massivecore.mixin.MixinTeleport;
 import com.massivecraft.massivecore.mixin.TeleporterException;
 import com.massivecraft.massivecore.teleport.DestinationPlayer;
 import com.massivecraft.massivetickets.Perm;
+import com.massivecraft.massivetickets.cmd.type.TypeMPlayer;
 import com.massivecraft.massivetickets.entity.MConf;
 import com.massivecraft.massivetickets.entity.MPlayer;
-import com.massivecraft.massivetickets.entity.TypeMPlayer;
 
 import java.util.List;
 
@@ -53,7 +53,7 @@ public class CmdTicketsTeleport extends MassiveTicketsCommand
 		MPlayer mplayer = this.readArg();
 		
 		// If not a player, return
-		if ( ! mplayer.isPlayer()) return;
+		if (!mplayer.isPlayer()) return;
 		
 		// Try teleport
 		try
