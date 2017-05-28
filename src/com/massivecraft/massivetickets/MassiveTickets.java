@@ -7,25 +7,9 @@ import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.cmd.CmdTickets;
-import com.massivecraft.massivetickets.cmd.CmdTicketsCheat;
-import com.massivecraft.massivetickets.cmd.CmdTicketsCreate;
-import com.massivecraft.massivetickets.cmd.CmdTicketsDone;
-import com.massivecraft.massivetickets.cmd.CmdTicketsHighscore;
-import com.massivecraft.massivetickets.cmd.CmdTicketsList;
-import com.massivecraft.massivetickets.cmd.CmdTicketsModlist;
-import com.massivecraft.massivetickets.cmd.CmdTicketsPick;
-import com.massivecraft.massivetickets.cmd.CmdTicketsShow;
-import com.massivecraft.massivetickets.cmd.CmdTicketsTeleport;
-import com.massivecraft.massivetickets.cmd.CmdTicketsVersion;
-import com.massivecraft.massivetickets.cmd.CmdTicketsWorking;
-import com.massivecraft.massivetickets.cmd.CmdTicketsYield;
 import com.massivecraft.massivetickets.cmd.MassiveTicketsCommand;
 import com.massivecraft.massivetickets.cmd.type.TypeReaction;
-import com.massivecraft.massivetickets.engine.EngineJoin;
-import com.massivecraft.massivetickets.engine.EngineLeave;
-import com.massivecraft.massivetickets.engine.TaskBump;
 import com.massivecraft.massivetickets.entity.MConf;
-import com.massivecraft.massivetickets.entity.MConfColl;
 import com.massivecraft.massivetickets.entity.MPlayerColl;
 import com.massivecraft.massivetickets.predicate.PredicateIsModerator;
 import org.bukkit.ChatColor;
@@ -60,33 +44,7 @@ public class MassiveTickets extends MassivePlugin
 		RegistryType.register(Reaction.class, TypeReaction.get());
 		
 		// Activate
-		this.activate(
-			// Coll
-			MConfColl.class,
-			MPlayerColl.class,
-				
-			// Engines
-			EngineJoin.class,
-			EngineLeave.class,
-			
-			// Schedule recurring non-tps-dependent tasks
-			TaskBump.class,
-			
-			// Command
-			CmdTickets.class,
-			CmdTicketsList.class,
-			CmdTicketsShow.class,
-			CmdTicketsCreate.class,
-			CmdTicketsDone.class,
-			CmdTicketsPick.class,
-			CmdTicketsYield.class,
-			CmdTicketsHighscore.class,
-			CmdTicketsModlist.class,
-			CmdTicketsWorking.class,
-			CmdTicketsTeleport.class,
-			CmdTicketsCheat.class,
-			CmdTicketsVersion.class
-		);
+		this.activateAuto();
 	}
 	
 	// -------------------------------------------- //
