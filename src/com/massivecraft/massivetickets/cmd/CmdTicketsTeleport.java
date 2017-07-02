@@ -3,6 +3,7 @@ package com.massivecraft.massivetickets.cmd;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
+import com.massivecraft.massivecore.mixin.MixinMessage;
 import com.massivecraft.massivecore.mixin.MixinTeleport;
 import com.massivecraft.massivecore.mixin.TeleporterException;
 import com.massivecraft.massivecore.teleport.DestinationPlayer;
@@ -62,7 +63,8 @@ public class CmdTicketsTeleport extends MassiveTicketsCommand
 		}
 		catch (TeleporterException e)
 		{
-			me.sendMessage(e.getMessage());
+			String message = e.getMessage();
+			MixinMessage.get().messageOne(me, message);
 		}
 	}
 	
