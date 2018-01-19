@@ -1,5 +1,6 @@
 package com.massivecraft.massivetickets.entity;
 
+import com.massivecraft.massivecore.collections.MassiveMap;
 import com.massivecraft.massivecore.mson.Mson;
 import com.massivecraft.massivecore.store.SenderEntity;
 import com.massivecraft.massivecore.util.IdUtil;
@@ -174,7 +175,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 	public Map<Integer, Map<Integer, Integer>> getCount()
 	{
 		Map<Integer, Map<Integer, Integer>> ret = mapcopy(this.count);
-		if (ret == null) ret = new LinkedHashMap<>();
+		if (ret == null) ret = new MassiveMap<>();
 		return ret;
 	}
 	public boolean hasCount() { return this.count != null; }
@@ -200,7 +201,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 	private static <K, V> Map<K, V> mapcopy(Map<K, V> map)
 	{
 		if (map == null) return null;
-		Map<K, V> ret = new LinkedHashMap<>();
+		Map<K, V> ret = new MassiveMap<>();
 		for (Entry<K, V> entry : map.entrySet())
 		{
 			K key = entry.getKey();
@@ -238,7 +239,7 @@ public class MPlayer extends SenderEntity<MPlayer>
 	public Map<Integer, Integer> getCount(int year)
 	{
 		Map<Integer, Integer> ret = this.getCount().get(year);
-		if (ret == null) ret = new LinkedHashMap<>();
+		if (ret == null) ret = new MassiveMap<>();
 		return ret;
 	}
 	public void setCount(int year, Map<Integer, Integer> count)
