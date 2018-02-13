@@ -8,6 +8,7 @@ import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.cmd.CmdTickets;
 import com.massivecraft.massivetickets.cmd.CmdTicketsCheat;
+import com.massivecraft.massivetickets.cmd.CmdTicketsClose;
 import com.massivecraft.massivetickets.cmd.CmdTicketsCreate;
 import com.massivecraft.massivetickets.cmd.CmdTicketsDone;
 import com.massivecraft.massivetickets.cmd.CmdTicketsHighscore;
@@ -84,6 +85,7 @@ public class MassiveTickets extends MassivePlugin
 			CmdTicketsModlist.class,
 			CmdTicketsWorking.class,
 			CmdTicketsTeleport.class,
+			CmdTicketsClose.class,
 			CmdTicketsCheat.class,
 			CmdTicketsVersion.class
 		);

@@ -24,6 +24,7 @@ permissions:
   massivetickets.working: {description: set if you are working, default: false}
   massivetickets.teleport: {description: teleport to a player, default: false}
   massivetickets.cheat: {description: give a point 4NORaisins, default: false}
+  massivetickets.close: {description: close an offline or invalid ticket, default: false}
   massivetickets.version: {description: show plugin version, default: false}
   massivetickets.config: {description: edit MassiveTickets config, default: false}
 # -------------------------------------------- #
@@ -46,6 +47,7 @@ permissions:
       massivetickets.working: true
       massivetickets.teleport: true
       massivetickets.cheat: true
+      massivetickets.close: true
       massivetickets.version: true
       massivetickets.config: true
 # -------------------------------------------- #
@@ -59,6 +61,7 @@ permissions:
     default: false
     children:
       massivetickets.kit.rank2: true
+      massivetickets.close: true
       massivetickets.config: true
   massivetickets.kit.rank2:
     default: false
