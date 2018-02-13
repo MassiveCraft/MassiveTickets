@@ -25,7 +25,7 @@ public class CmdTicketsDone extends MassiveTicketsCommand
 	public CmdTicketsDone()
 	{
 		// Parameters
-		this.addParameter(TypeMPlayer.getOnline(), "player", "you");
+		this.addParameter(TypeMPlayer.getAny(), "player", "you");
 		
 		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.DONE));
