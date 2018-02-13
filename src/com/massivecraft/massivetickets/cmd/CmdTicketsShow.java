@@ -36,7 +36,7 @@ public class CmdTicketsShow extends MassiveTicketsCommand
 	public CmdTicketsShow()
 	{
 		// Parameters
-		this.addParameter(TypeMPlayer.getOnline(), "player", "you");
+		this.addParameter(TypeMPlayer.getAny(), "player", "you");
 		
 		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.SHOW));
