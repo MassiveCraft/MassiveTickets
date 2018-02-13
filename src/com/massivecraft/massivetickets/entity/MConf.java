@@ -59,11 +59,14 @@ public class MConf extends Entity<MConf>
 	public List<String> aliasesInnerTicketsWorking = MUtil.list("working");
 	public List<String> aliasesOuterTicketsWorking = new ArrayList<>();
 	
+	public List<String> aliasesInnerTicketsTeleport = MUtil.list("tp", "teleport");
+	public List<String> aliasesOuterTicketsTeleport = new ArrayList<>();
+	
 	public List<String> aliasesInnerTicketsCheat = MUtil.list("cheat");
 	public List<String> aliasesOuterTicketsCheat = new ArrayList<>();
 	
-	public List<String> aliasesInnerTicketsTeleport = MUtil.list("tp", "teleport");
-	public List<String> aliasesOuterTicketsTeleport = new ArrayList<>();
+	public List<String> aliasesInnerTicketsClose = MUtil.list("close");
+	public List<String> aliasesOuterTicketsClose = new ArrayList<>();
 	
 	public List<String> aliasesInnerTicketsVersion = MUtil.list("version");
 	public List<String> aliasesOuterTicketsVersion = new ArrayList<>();

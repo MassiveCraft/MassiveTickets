@@ -14,6 +14,7 @@ public enum Perm implements Identified
 	LIST,
 	SHOW,
 	SHOW_OTHER,
+	CLOSE,
 	CREATE,
 	DONE,
 	DONE_OTHER,
