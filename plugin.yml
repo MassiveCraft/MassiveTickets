@@ -60,6 +60,7 @@ permissions:
     children:
       massivetickets.kit.rank2: true
       massivetickets.config: true
+      massivetickets.cheat: true
   massivetickets.kit.rank2:
     default: false
     children:
