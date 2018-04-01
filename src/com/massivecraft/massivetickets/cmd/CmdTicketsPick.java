@@ -38,7 +38,7 @@ public class CmdTicketsPick extends MassiveTicketsCommand
 	public CmdTicketsPick()
 	{
 		// Parameters
-		this.addParameter(TypeMPlayer.getOnline(), "player");
+		this.addParameter(TypeMPlayer.getAny(), "player");
 		
 		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.PICK));
