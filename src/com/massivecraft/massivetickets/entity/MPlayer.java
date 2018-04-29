@@ -270,10 +270,8 @@ public class MPlayer extends SenderEntity<MPlayer>
 
 	public void setTotalCount(int totalCount)
 	{
+		this.changed(this.totalCount, totalCount);
 		this.totalCount = totalCount;
-		
-		// Mark as changed
-		this.changed();
 	}
 	
 	// -------------------------------------------- //
