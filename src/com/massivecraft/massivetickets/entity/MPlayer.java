@@ -37,12 +37,12 @@ public class MPlayer extends SenderEntity<MPlayer>
 	@Override
 	public MPlayer load(MPlayer that)
 	{
-		this.setMessage(that.getMessage());
-		this.setMillis(that.getMillis());
-		this.setModeratorId(that.getModeratorId());
-		this.setWorking(that.isWorking());
-		this.setCount(that.getCount());
-		this.setTotalCount(that.getTotalCount());
+		this.message = that.message;
+		this.millis = that.millis;
+		this.moderatorId = that.moderatorId;
+		this.working = that.working;
+		this.count = that.count;
+		this.totalCount = that.totalCount;
 				
 		return this;
 	}
