@@ -6,6 +6,7 @@ import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.type.primitive.TypeString;
 import com.massivecraft.massivecore.mixin.MixinMessage;
 import com.massivecraft.massivecore.mson.Mson;
+import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 import com.massivecraft.massivetickets.MassiveTickets;
 import com.massivecraft.massivetickets.Perm;
@@ -61,6 +62,12 @@ public class CmdTicketsCreate extends MassiveTicketsCommand
 		boolean update = msender.hasMessage();
 		String verb = update ? "updated" : "created";
 		
+		// But only if the ticket has been changed
+		if (update && MUtil.equals(msender.getMessage(), message))
+		{
+			msg("<b>Please do not spam our ticket system. Someone will be with you shortly.");
+			return;
+		}
 		msender.setMessage(message);
 		if (!update) msender.setMillis(System.currentTimeMillis());
 		
